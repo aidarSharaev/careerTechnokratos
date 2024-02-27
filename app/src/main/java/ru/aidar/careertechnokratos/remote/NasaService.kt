@@ -29,8 +29,8 @@ interface NasaService : BaseApi {
 
     @GET("/neo/rest/v1/feed")
     suspend fun getNeoWs(
-        @Query("start_date") start_date: String? = null,
-        @Query("end_date") end_date: String? = null,
-        @Query("api_key") api_key: String = NASA_API_KEY,
+        @Query("start_date") startDate: String? = null,
+        @Query("end_date") endDate: String? = null,
+        @Query("api_key") apiKey: String = NASA_API_KEY,
     ): NeoDto
 }

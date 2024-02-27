@@ -1,7 +1,10 @@
 package ru.aidar.careertechnokratos.model
 
+import com.google.gson.annotations.SerializedName
+
 data class RelativeVelocity(
-    val kilometers_per_hour: String,
-    val kilometers_per_second: String,
-    val miles_per_hour: String
+    @SerializedName("kilometers_per_hour")
+    val kilometersPerHour: String,
+    @SerializedName("miles_per_hour")
+    val milesPerHour: String
 )

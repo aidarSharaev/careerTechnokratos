@@ -8,7 +8,7 @@ class NasaRemoteDataSource @Inject constructor(
 ) {
 
     suspend fun get(): NeoDto {
-        return nasaService.getNeoWs(start_date = "2024-02-27", end_date = "2024-02-27")
+        return nasaService.getNeoWs(startDate = "2024-02-27", endDate = "2024-02-27")
     }
 
 }
