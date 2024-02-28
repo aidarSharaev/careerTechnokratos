@@ -2,11 +2,13 @@ package ru.aidar.careertechnokratos.model.additional
 
 import androidx.room.TypeConverter
 
+import com.google.gson.annotations.SerializedName
+
 data class CloseApproachData(
-    val close_approach_date: String,
-    val close_approach_date_full: String,
-    val epoch_date_close_approach: Long,
-    val miss_distance: MissDistance,
-    val orbiting_body: String,
-    val relative_velocity: RelativeVelocity
+    @SerializedName("close_approach_date_full")
+    val closeApproachDateFull: String,
+    @SerializedName("miss_distance")
+    val missDistance: MissDistance,
+    @SerializedName("relative_velocity")
+    val relativeVelocity: RelativeVelocity
 )

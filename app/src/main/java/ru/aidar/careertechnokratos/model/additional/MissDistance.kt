@@ -1,8 +1,10 @@
 package ru.aidar.careertechnokratos.model.additional
 
+import com.google.gson.annotations.SerializedName
+
 data class MissDistance(
-    val astronomical: String,
+    @SerializedName("kilometers")
     val kilometers: String,
-    val lunar: String,
+    @SerializedName("miles")
     val miles: String
 )

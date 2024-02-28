@@ -1,6 +1,10 @@
 package ru.aidar.careertechnokratos.model.additional
 
+import com.google.gson.annotations.SerializedName
+
 data class Meters(
-    val estimated_diameter_max: Double,
-    val estimated_diameter_min: Double
+    @SerializedName("estimated_diameter_max")
+    val estimatedDiameterMax: Double,
+    @SerializedName("estimated_diameter_min")
+    val estimatedDiameterMin: Double
 )
