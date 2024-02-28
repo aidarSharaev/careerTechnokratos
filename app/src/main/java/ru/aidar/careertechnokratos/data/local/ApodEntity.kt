@@ -2,10 +2,12 @@ package ru.aidar.careertechnokratos.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ru.aidar.careertechnokratos.base.BaseDto
 import ru.aidar.careertechnokratos.base.BaseEntity
+import ru.aidar.careertechnokratos.constants.Constants.APOD_ENTITY_TABLE
 import ru.aidar.careertechnokratos.model.ApodDto
 
-@Entity(tableName = "ApodEntity")
+@Entity(tableName = APOD_ENTITY_TABLE)
 data class ApodEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
@@ -17,6 +19,7 @@ data class ApodEntity(
 ) : BaseEntity {
     override fun toDto(): ApodDto {
         return ApodDto(
+            // todo id?
             id = id,
             copyright = copyright,
             date = date,
@@ -25,4 +28,5 @@ data class ApodEntity(
             url = url,
         )
     }
+
 }

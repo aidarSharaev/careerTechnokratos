@@ -1,14 +1,13 @@
 package ru.aidar.careertechnokratos.remote
 
-import ru.aidar.careertechnokratos.model.NeoDto
 import javax.inject.Inject
 
 class NasaRemoteDataSource @Inject constructor(
-    private val nasaService: NasaService
+    private val nasaServiceApi: NasaServiceApi
 ) {
 
-    suspend fun get(): NeoDto {
-        return nasaService.getNeoWs(start_date = "2024-02-27", end_date = "2024-02-27")
-    }
+    // todo check null
+    suspend fun get() = nasaServiceApi.getNeoWs(startDate = "2024-02-24", endDate = "2024-02-27")
+
 
 }

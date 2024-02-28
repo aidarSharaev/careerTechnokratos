@@ -1,19 +1,22 @@
 package ru.aidar.careertechnokratos.model
 
+import com.google.gson.annotations.SerializedName
 import ru.aidar.careertechnokratos.base.BaseDto
 import ru.aidar.careertechnokratos.data.local.ApodEntity
 
 data class ApodDto(
-    val id: Long?,
+    val id: Long,
+    @SerializedName("copyright")
     val copyright: String?,
+    @SerializedName("date")
     val date: String,
+    @SerializedName("explanation")
     val explanation: String,
+    @SerializedName("title")
     val title: String,
+    @SerializedName("url")
     val url: String,
-    val hdurl: String? = null,
-    val media_type: String? = null,
-    val service_version: String? = null,
-) : BaseDto {
+) : BaseDto.BaseEntityDto() {
     override fun toEntity(): ApodEntity {
         return ApodEntity(
             copyright = copyright ?: "NASA",

@@ -4,7 +4,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import ru.aidar.careertechnokratos.base.BaseApi
 import ru.aidar.careertechnokratos.model.ApodDto
-import ru.aidar.careertechnokratos.model.NeoDto
+import ru.aidar.careertechnokratos.model.NeoCloud
 
 private const val NASA_API_KEY = "yruPHVQxgVnwCvVTLeMDA19F9QI4U7I8yHfkAIjB"
 
@@ -17,11 +17,11 @@ private const val neoWsValue = "/neo/rest/v1/feed"
  * проверить на пустоту и на ошибки
  */
 
-interface NasaService : BaseApi {
+interface NasaServiceApi : BaseApi {
 
     @GET(apodValue)
     suspend fun getApod(
-        @Query("count") count: Int = 20,
+        @Query("count") count: Int? = null,
         @Query("start_date") startDate: String? = null,
         @Query("end_date") endDate: String? = null,
         @Query("api_key") apiKey: String = NASA_API_KEY,
@@ -29,8 +29,8 @@ interface NasaService : BaseApi {
 
     @GET("/neo/rest/v1/feed")
     suspend fun getNeoWs(
-        @Query("start_date") start_date: String? = null,
-        @Query("end_date") end_date: String? = null,
-        @Query("api_key") api_key: String = NASA_API_KEY,
-    ): NeoDto
+        @Query("start_date") startDate: String? = null,
+        @Query("end_date") endDate: String? = null,
+        @Query("api_key") apiKey: String = NASA_API_KEY,
+    ): NeoCloud
 }

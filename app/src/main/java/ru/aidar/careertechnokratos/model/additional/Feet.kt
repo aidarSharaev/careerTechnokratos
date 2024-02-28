@@ -1,4 +1,4 @@
-package ru.aidar.careertechnokratos.model
+package ru.aidar.careertechnokratos.model.additional
 
 data class Feet(
     val estimated_diameter_max: Double,

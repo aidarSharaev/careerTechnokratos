@@ -1,4 +1,6 @@
-package ru.aidar.careertechnokratos.model
+package ru.aidar.careertechnokratos.model.additional
+
+import androidx.room.TypeConverter
 
 data class CloseApproachData(
     val close_approach_date: String,

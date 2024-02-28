@@ -1,4 +1,4 @@
-package ru.aidar.careertechnokratos.model
+package ru.aidar.careertechnokratos.model.additional
 
 data class RelativeVelocity(
     val kilometers_per_hour: String,

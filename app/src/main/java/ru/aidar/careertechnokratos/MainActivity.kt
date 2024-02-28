@@ -2,16 +2,12 @@ package ru.aidar.careertechnokratos
 
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.aidar.careertechnokratos.databinding.ActivityMainBinding
 import ru.aidar.careertechnokratos.di.appComponent
-
-import ru.aidar.careertechnokratos.remote.NasaRemoteDataSource
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,8 +21,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         lifecycleScope.launch(Dispatchers.IO) {
             val a = dataSource.get()
-            Log.d("KEYLEY", a.toString())
+            //Log.d("KEYLEY222", a.near_earth_objects.size.toString())
+            a.nearEarthObjects.forEach {
+                Log.d("KEYLEY222", it.toString())
+            }
         }
     }
 }
+
 

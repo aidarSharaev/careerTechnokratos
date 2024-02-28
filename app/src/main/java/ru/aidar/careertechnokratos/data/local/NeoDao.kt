@@ -6,17 +6,15 @@ import androidx.room.Query
 import androidx.room.Upsert
 import ru.aidar.careertechnokratos.constants.Constants.NEO_ENTITY_TABLE
 
-
 @Dao
-interface ApodDao {
+interface NeoDao {
 
     @Upsert
-    suspend fun upsertAllApods(apods: List<ApodEntity>)
+    suspend fun upsertAllNeos(neos: List<NeoEntity>)
 
     @Query("SELECT * FROM $NEO_ENTITY_TABLE")
-    fun pagingApodSource(): PagingSource<Int, ApodEntity>
+    fun pagingNeoSource(): PagingSource<Int, NeoEntity>
 
     @Query("DELETE FROM $NEO_ENTITY_TABLE")
     suspend fun deleteAll()
-
 }

@@ -1,13 +1,16 @@
 package ru.aidar.careertechnokratos.di
 
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.aidar.careertechnokratos.model.CustomDeserializer
+import ru.aidar.careertechnokratos.model.NeoCloud
 import ru.aidar.careertechnokratos.remote.NasaRemoteDataSource
-import ru.aidar.careertechnokratos.remote.NasaService
+import ru.aidar.careertechnokratos.remote.NasaServiceApi
 
 private const val NASA_URL = "https://api.nasa.gov"
 private const val SOLARIE_URL = "https://api.le-systeme-solaire.net"
@@ -25,9 +28,9 @@ object DataSources {
 
     @Provides
     fun provideNasaDataSource(
-        nasaService: NasaService
+        nasaServiceApi: NasaServiceApi
     ): NasaRemoteDataSource {
-        return NasaRemoteDataSource(nasaService = nasaService)
+        return NasaRemoteDataSource(nasaServiceApi = nasaServiceApi)
     }
 
 }
@@ -58,13 +61,12 @@ object NetworkModule {
     fun provideRetrofit(
         okHttpClient: OkHttpClient
     ): Retrofit {
-//        val contentType = "application/json".toMediaType()
-//        val json = Json {
-//            ignoreUnknownKeys = true
-//        }
+        val gson = GsonBuilder()
+            .registerTypeAdapter(NeoCloud::class.java, CustomDeserializer())
+            .create()
         return Retrofit.Builder()
             .baseUrl(NASA_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
             .build()
     }
@@ -74,8 +76,8 @@ object NetworkModule {
 class ApiServiceModule {
 
     @Provides
-    fun provideNasaService(retrofit: Retrofit): NasaService {
-        return retrofit.create(NasaService::class.java)
+    fun provideNasaService(retrofit: Retrofit): NasaServiceApi {
+        return retrofit.create(NasaServiceApi::class.java)
     }
 
 //    @Provides

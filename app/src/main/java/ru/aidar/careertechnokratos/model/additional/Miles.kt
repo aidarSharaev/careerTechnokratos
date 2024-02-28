@@ -1,6 +1,6 @@
-package ru.aidar.careertechnokratos.model
+package ru.aidar.careertechnokratos.model.additional
 
-data class Kilometers(
+data class Miles(
     val estimated_diameter_max: Double,
     val estimated_diameter_min: Double
 )
