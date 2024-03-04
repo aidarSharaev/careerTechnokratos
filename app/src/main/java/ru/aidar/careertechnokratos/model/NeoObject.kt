@@ -1,6 +1,8 @@
 package ru.aidar.careertechnokratos.model
 
 import com.google.gson.annotations.SerializedName
+import ru.aidar.careertechnokratos.model.additional.CloseApproachData
+import ru.aidar.careertechnokratos.model.additional.EstimatedDiameter
 
 data class NeoObject(
     @SerializedName("absolute_magnitude_h")

@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
+import ru.aidar.careertechnokratos.constants.Constants.APOD_ENTITY_TABLE
 import ru.aidar.careertechnokratos.constants.Constants.NEO_ENTITY_TABLE
 
 
@@ -13,10 +14,10 @@ interface ApodDao {
     @Upsert
     suspend fun upsertAllApods(apods: List<ApodEntity>)
 
-    @Query("SELECT * FROM $NEO_ENTITY_TABLE")
+    @Query("SELECT * FROM $APOD_ENTITY_TABLE")
     fun pagingApodSource(): PagingSource<Int, ApodEntity>
 
-    @Query("DELETE FROM $NEO_ENTITY_TABLE")
+    @Query("DELETE FROM $APOD_ENTITY_TABLE")
     suspend fun deleteAll()
 
 }

@@ -19,7 +19,7 @@ data class NeoDto(
     val name: String,
 ) : BaseDto.BaseEntityDto() {
     override fun toEntity(): NeoEntity {
-        return NeoEntity(
+        return NeoEntity (
             id = id,
             absoluteMagnitudeH = absoluteMagnitudeH,
             closeApproachData = closeApproachData,

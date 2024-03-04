@@ -9,7 +9,9 @@ import androidx.room.TypeConverters
     version = 1,
 )
 @TypeConverters(Converters::class)
-abstract class NasaDatabase: RoomDatabase() {
+abstract class GalaxyPulseDatabase: RoomDatabase() {
+
     abstract val neoDao: NeoDao
     abstract val apodDao: ApodDao
+
 }

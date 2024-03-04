@@ -5,53 +5,41 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import ru.aidar.careertechnokratos.data.local.NasaDatabase
-import ru.aidar.careertechnokratos.model.ApodDto
+import retrofit2.HttpException
+import ru.aidar.careertechnokratos.data.local.ApodEntity
+import ru.aidar.careertechnokratos.data.local.GalaxyPulseDatabase
 import ru.aidar.careertechnokratos.remote.NasaServiceApi
+import java.io.IOException
 
 @OptIn(ExperimentalPagingApi::class)
 class ApodRemoteMediator(
-    private val nasaDb: NasaDatabase,
+    private val galaxyPulseDb: GalaxyPulseDatabase,
     private val nasaServiceApi: NasaServiceApi,
-) : RemoteMediator<Int, ApodDto>() {
+) : RemoteMediator<Int, ApodEntity>() {
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, ApodDto>
+        state: PagingState<Int, ApodEntity>
     ): MediatorResult {
         return try {
-//            val loadKey = when(loadType) {
-//                LoadType.REFRESH -> 1
-//                LoadType.PREPEND -> return MediatorResult.Success(
-//                    endOfPaginationReached = true
-//                )
-//
-//                LoadType.APPEND -> {
-//                    val lastItem = state.lastItemOrNull()
-//                    if(lastItem == null) {
-//                        1
-//                    } else {
-//                        (lastItem.id / state.config.pageSize) + 1
-//                    }
-//                }
-//            }
             // todo date
             // todo equal images
             val apods = nasaServiceApi.getApod(
                 count = 30
             )
-            nasaDb.withTransaction {
+            galaxyPulseDb.withTransaction {
                 if(loadType == LoadType.REFRESH) {
-                    nasaDb.apodDao.deleteAll()
+                    galaxyPulseDb.apodDao.deleteAll()
                 }
                 val apods = apods.map { it.toEntity() }
-                nasaDb.apodDao.upsertAllApods(apods = apods)
+                galaxyPulseDb.apodDao.upsertAllApods(apods = apods)
             }
             MediatorResult.Success(
                 endOfPaginationReached = apods.isEmpty()
             )
-        } catch(e: Exception) {
+        } catch(e: IOException) {
+            MediatorResult.Error(throwable = e)
+        } catch(e: HttpException) {
             MediatorResult.Error(throwable = e)
         }
     }
-
 }

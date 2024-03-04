@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CareerTechnokratos</string>
+    <string name="app_name">Galaxy Pulse</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment 22222</string>
     <string name="title_activity_main">MainActivity</string>
@@ -8,6 +8,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="download">Download</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
