@@ -1,6 +1,7 @@
 package ru.aidar.common.core.config
 
 import android.content.Context
+import ru.aidar.common.R
 import java.util.Properties
 
 @Suppress("UNCHECKED_CAST")
@@ -24,5 +25,5 @@ class AppProperties(context: Context) {
     }
 
     // TODO
-    fun getBaseUrl(): String = properties["base_url"] ?: ""
+    fun getNasaUrl(): String = properties["nasa_url"] ?: ""
 }

@@ -2,7 +2,7 @@ package ru.aidar.careertechnokratos.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Query
-import ru.aidar.careertechnokratos.model.ApodDto
+import ru.aidar.common.data.network.dto.ApodDto
 import ru.aidar.careertechnokratos.model.NeoCloud
 
 private const val NASA_API_KEY = "yruPHVQxgVnwCvVTLeMDA19F9QI4U7I8yHfkAIjB"

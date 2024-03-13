@@ -6,24 +6,16 @@
     app:startDestination="@id/firstFrag">
     <fragment
         android:id="@+id/firstFrag"
-        android:name="ru.aidar.careertechnokratos.GpMainMenuFragment"
+        android:name="ru.aidar.menu_feature_impl.presentation.MainMenuFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_gp_main_menu">
+        tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_mainMenu_to_apodDestination"
             app:destination="@id/blankFragment" />
-        <action
-            android:id="@+id/action_mainMenu_to_neoList"
-            app:destination="@id/neoFragment" />
     </fragment>
     <fragment
         android:id="@+id/blankFragment"
-        android:name="ru.aidar.careertechnokratos.presentaion.apod.ApodFragment"
+        android:name="ru.aidar.apod_feature_impl.presentation.ApodFragment"
         android:label="Pictures"
         tools:layout="@layout/fragment_apod_list" />
-    <fragment
-        android:id="@+id/neoFragment"
-        android:name="ru.aidar.careertechnokratos.presentaion.neo.NeoFragment"
-        android:label="Near objects"
-        tools:layout="@layout/fragment_neo" />
 </navigation>

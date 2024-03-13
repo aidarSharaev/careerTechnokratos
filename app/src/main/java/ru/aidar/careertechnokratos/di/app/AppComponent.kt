@@ -4,23 +4,28 @@ import dagger.BindsInstance
 import dagger.Component
 import ru.aidar.careertechnokratos.GalaxyPulseApplication
 import ru.aidar.careertechnokratos.di.main.MainDependencies
+import ru.aidar.common.di.modules.CommonModule
+import ru.aidar.common.di.modules.NetworkModule
 
 @Component(
     modules = [
         AppModule::class,
         NavigationModule::class,
-        //NetworkModule::class,
+        NetworkModule::class,
+        CommonModule::class,
         //ViewModelModule::class,
     ]
 )
-interface AppComponent: MainDependencies {
+interface AppComponent : MainDependencies {
+
     companion object {
-        fun init(application: GalaxyPulseApplication): AppComponent {
-            return DaggerAppComponent
-                .builder()
-                .application(application = application)
-                .build()
-        }
+
+//        fun init(application: GalaxyPulseApplication): AppComponent {
+//            return DA
+//                .builder()
+//                .application(application = application)
+//                .build()
+//        }
     }
 
     @Component.Builder
@@ -33,5 +38,4 @@ interface AppComponent: MainDependencies {
     }
 
     fun inject(app: GalaxyPulseApplication)
-
 }

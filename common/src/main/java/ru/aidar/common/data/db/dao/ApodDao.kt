@@ -1,0 +1,22 @@
+package ru.aidar.common.data.db.dao
+
+import androidx.paging.PagingSource
+import androidx.room.Dao
+import androidx.room.Query
+import androidx.room.Upsert
+import ru.aidar.common.data.db.model.ApodEntity
+import ru.aidar.common.utils.Constants.APOD_ENTITY_TABLE
+
+
+@Dao
+interface ApodDao {
+
+    @Upsert
+    suspend fun upsertAllApods(apods: List<ApodEntity>)
+
+    @Query("SELECT * FROM $APOD_ENTITY_TABLE")
+    fun pagingApodSource(): PagingSource<Int, ApodEntity>
+
+    @Query("DELETE FROM $APOD_ENTITY_TABLE")
+    suspend fun deleteAll()
+}

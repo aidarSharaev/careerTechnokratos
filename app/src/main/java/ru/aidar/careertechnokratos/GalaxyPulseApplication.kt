@@ -2,7 +2,7 @@ package ru.aidar.careertechnokratos
 
 import android.app.Application
 import ru.aidar.careertechnokratos.di.app.AppComponent
-import ru.aidar.careertechnokratos.di.ComponentDependenciesProvider
+import ru.aidar.careertechnokratos.di.deps.ComponentDependenciesProvider
 import javax.inject.Inject
 
 class GalaxyPulseApplication : Application() {

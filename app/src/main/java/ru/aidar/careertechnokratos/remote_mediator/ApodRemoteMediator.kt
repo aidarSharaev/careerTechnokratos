@@ -6,8 +6,8 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import retrofit2.HttpException
-import ru.aidar.careertechnokratos.data.local.ApodEntity
-import ru.aidar.careertechnokratos.data.local.GalaxyPulseDatabase
+import ru.aidar.common.data.db.model.ApodEntity
+import ru.aidar.common.data.db.GalaxyPulseDatabase
 import ru.aidar.careertechnokratos.remote.NasaServiceApi
 import java.io.IOException
 

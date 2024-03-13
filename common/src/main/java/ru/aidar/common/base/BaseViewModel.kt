@@ -1,4 +1,8 @@
 package ru.aidar.common.base
 
-class BaseViewModel {
+import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+
+abstract class BaseViewModel : ViewModel() {
+
 }
