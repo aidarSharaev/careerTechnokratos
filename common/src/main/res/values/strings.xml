@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="astronomyPictureOfTheDay">Astronomy Picture of the Day</string>
+    <string name="nearEarthObject">Near Earth Object</string>
+    <string name="astrePerAstre">Astre per astre</string>
+    <string name="spaceOverflow">Space Overflow</string>
+    <string name="celestialCompatibility">Celestial Compatibility</string>
+
+</resources>

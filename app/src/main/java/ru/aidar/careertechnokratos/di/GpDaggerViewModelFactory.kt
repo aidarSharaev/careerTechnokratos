@@ -9,9 +9,10 @@ import dagger.multibindings.IntoMap
 import ru.aidar.careertechnokratos.presentaion.apod.ApodViewModel
 import javax.inject.Inject
 import javax.inject.Provider
+import javax.inject.Singleton
 import kotlin.reflect.KClass
 
-
+@Singleton
 class GpDaggerViewModelFactory @Inject constructor(
     private val creators: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
 ) : ViewModelProvider.Factory {

@@ -4,8 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import ru.aidar.careertechnokratos.base.BaseEntity
-import ru.aidar.careertechnokratos.constants.Constants.NEO_ENTITY_TABLE
+import ru.aidar.common.base.BaseEntity
+import ru.aidar.common.utils.Constants.NEO_ENTITY_TABLE
 import ru.aidar.careertechnokratos.model.additional.CloseApproachData
 import ru.aidar.careertechnokratos.model.additional.EstimatedDiameter
 import ru.aidar.careertechnokratos.model.additional.NeoDto

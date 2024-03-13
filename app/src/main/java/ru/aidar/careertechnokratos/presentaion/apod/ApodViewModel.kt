@@ -8,9 +8,9 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import ru.aidar.careertechnokratos.constants.Constants.APOD_INITIAL_SIZE
-import ru.aidar.careertechnokratos.constants.Constants.APOD_PAGE_SIZE
-import ru.aidar.careertechnokratos.constants.Constants.APOD_PREFETCH_DISTANCE
+import ru.aidar.common.utils.Constants.APOD_INITIAL_SIZE
+import ru.aidar.common.utils.Constants.APOD_PAGE_SIZE
+import ru.aidar.common.utils.Constants.APOD_PREFETCH_DISTANCE
 import ru.aidar.careertechnokratos.data.local.GalaxyPulseDatabase
 import ru.aidar.careertechnokratos.model.ApodDto
 import ru.aidar.careertechnokratos.remote.NasaServiceApi

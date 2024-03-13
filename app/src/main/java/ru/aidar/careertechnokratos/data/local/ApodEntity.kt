@@ -2,9 +2,8 @@ package ru.aidar.careertechnokratos.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ru.aidar.careertechnokratos.base.BaseDto
-import ru.aidar.careertechnokratos.base.BaseEntity
-import ru.aidar.careertechnokratos.constants.Constants.APOD_ENTITY_TABLE
+import ru.aidar.common.base.BaseEntity
+import ru.aidar.common.utils.Constants.APOD_ENTITY_TABLE
 import ru.aidar.careertechnokratos.model.ApodDto
 
 @Entity(tableName = APOD_ENTITY_TABLE)

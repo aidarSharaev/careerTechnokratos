@@ -1,7 +1,7 @@
 package ru.aidar.careertechnokratos.model
 
 import com.google.gson.annotations.SerializedName
-import ru.aidar.careertechnokratos.base.BaseDto
+import ru.aidar.common.base.BaseDto
 import ru.aidar.careertechnokratos.data.local.ApodEntity
 
 data class ApodDto(

@@ -2,7 +2,6 @@ package ru.aidar.careertechnokratos.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Query
-import ru.aidar.careertechnokratos.base.BaseApi
 import ru.aidar.careertechnokratos.model.ApodDto
 import ru.aidar.careertechnokratos.model.NeoCloud
 
@@ -17,7 +16,7 @@ private const val neoWsValue = "/neo/rest/v1/feed"
  * проверить на пустоту и на ошибки
  */
 
-interface NasaServiceApi : BaseApi {
+interface NasaServiceApi {
 
     @GET(apodValue)
     suspend fun getApod(

@@ -1,7 +1,7 @@
 package ru.aidar.careertechnokratos.model.additional
 
 import com.google.gson.annotations.SerializedName
-import ru.aidar.careertechnokratos.base.BaseDto
+import ru.aidar.common.base.BaseDto
 import ru.aidar.careertechnokratos.data.local.NeoEntity
 
 data class NeoDto(
