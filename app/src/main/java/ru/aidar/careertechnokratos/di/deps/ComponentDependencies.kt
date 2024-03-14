@@ -22,4 +22,3 @@ fun Activity.findComponentDependenciesProvider(): ComponentDependenciesProvider 
     return (application as? GalaxyPulseApplication)?.dependencies
         ?: throw IllegalStateException("Can not find suitable dagger provider for $this")
 }
-

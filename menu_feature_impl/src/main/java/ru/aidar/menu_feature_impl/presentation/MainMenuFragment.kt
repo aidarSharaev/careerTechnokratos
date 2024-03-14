@@ -5,13 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.fragment.app.Fragment
+import ru.aidar.common.base.BaseFragment
 import ru.aidar.menu_feature_impl.databinding.FragmentMainMenuBinding
 import ru.aidar.menu_feature_impl.presentation.view.MainMenuScreen
 
-class MainMenuFragment : Fragment() {
-
+class MainMenuFragment : BaseFragment<MainMenuViewModel>() {
     private lateinit var binding: FragmentMainMenuBinding
+
+    override fun initViews() {
+        TODO("Not yet implemented")
+    }
+
+    override fun inject() {
+        TODO("Not yet implemented")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +27,7 @@ class MainMenuFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentMainMenuBinding.inflate(inflater)
         val view = binding.root

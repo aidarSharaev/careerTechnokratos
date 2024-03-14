@@ -9,7 +9,6 @@ import ru.aidar.common.di.scope.ApplicationScope
 
 @Module
 class DbModule {
-
     @Provides
     @ApplicationScope
     fun provideAppDatabase(context: Context): GalaxyPulseDatabase {

@@ -12,7 +12,7 @@ import ru.aidar.common.compose_component.model.DropDownModel
 fun ComponentDropDownMenu(
     onDismissRequest: () -> Unit,
     expanded: Boolean,
-    items: Array<DropDownModel>
+    items: Array<DropDownModel>,
 ) {
     DropdownMenu(expanded = expanded, onDismissRequest = onDismissRequest) {
         items.forEach {
@@ -22,7 +22,7 @@ fun ComponentDropDownMenu(
                 trailingIcon = {
                     Icon(
                         painter = painterResource(it.trailingImage),
-                        contentDescription = null
+                        contentDescription = null,
                     )
                 },
             )

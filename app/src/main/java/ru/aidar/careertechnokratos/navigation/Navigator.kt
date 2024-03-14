@@ -1,72 +1,35 @@
-package ru.aidar.careertechnokratos.base
+package ru.aidar.careertechnokratos.navigation
 
 import androidx.navigation.NavController
 import ru.aidar.apa_feature_impl.ApaRouter
-import ru.aidar.apod_feature_impl.ApodRouter
+import ru.aidar.apods_feature_impl.ApodRouter
+import ru.aidar.auth_feature_impl.AuthRouter
 import ru.aidar.careertechnokratos.R
-import ru.aidar.educationmenu_feature_impl.SoRouter
-import ru.aidar.horoscope_feature_impl.CcRouter
+import ru.aidar.cc_feature_impl.CcRouter
+import ru.aidar.menu_feature_impl.MenuRouter
+import ru.aidar.spaceoverflow_feature_impl.SoRouter
 
+class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRouter {
 
-class Navigator : AppRouter() {
+    private var appNavController: NavController? = null
 
-    override var gpNavController: NavController? = null
-
-    override fun attachNavController(navController: NavController, graph: Int) {
+    fun attachNavController(
+        navController: NavController,
+        graph: Int,
+    ) {
         navController.setGraph(graph)
-        gpNavController = navController
+        appNavController = navController
     }
 
-    override fun detachNavController(navController: NavController) {
-        if(gpNavController == navController) {
-            gpNavController = null
+    fun detachNavController(navController: NavController) {
+        if(appNavController == navController) {
+            appNavController = null
         }
     }
 
-    override fun navigateToApodDestination() {
-        gpNavController?.navigate(R.id.action_mainMenu_to_apodDestination)
-    }
-
-    override fun navigateToApodDetail() {
-        //
-    }
-
-    override fun navigateToApaDestination() {
-        // TODO("Not yet implemented")
-    }
-
-    override fun navigateToApaDetail() {
-        //TODO("Not yet implemented")
-    }
-
-    override fun navigateToSoDestination() {
-        //TODO("Not yet implemented")
-    }
-
-    override fun navigateToPosts() {
-        //TODO("Not yet implemented")
-    }
-
-    override fun navigateToPostDetail() {
-        //TODO("Not yet implemented")
-    }
-
-    override fun navigateToTest() {
-        //TODO("Not yet implemented")
-    }
-
-    override fun navigateToCcDestination() {
-        //TODO("Not yet implemented")
-    }
-
-    override fun navigateToChat() {
-        //TODO("Not yet implemented")
+    override fun navigateToApod() {
+        appNavController?.navigate(R.id.action_mainMenu_to_apodFeature, null)
     }
 }
 
-abstract class AppRouter : ApodRouter, ApaRouter, SoRouter, CcRouter {
 
-    protected abstract var gpNavController: NavController?
-    abstract fun attachNavController(navController: NavController, graph: Int)
-    abstract fun detachNavController(navController: NavController)
-}

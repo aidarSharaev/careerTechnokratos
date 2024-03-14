@@ -5,8 +5,8 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 
 class ResourceManagerImpl(
-    private val context: Context
-): ResourceManager {
+    private val context: Context,
+) : ResourceManager {
     override fun getString(resource: Int): String {
         return context.getString(resource)
     }

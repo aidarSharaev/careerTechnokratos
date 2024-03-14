@@ -5,8 +5,7 @@ import ru.aidar.common.R
 import java.util.Properties
 
 @Suppress("UNCHECKED_CAST")
-class AppProperties(context: Context) {
-
+class AppProperties(private val context: Context) {
     private val properties: Map<String, String> = initProperties(context)
 
     private fun initProperties(context: Context): Map<String, String> {

@@ -7,7 +7,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 import ru.aidar.careertechnokratos.MainViewModel
-import ru.aidar.common.core.resources.ResourceManager
 import ru.aidar.common.di.viewmodel.ViewModelKey
 import ru.aidar.common.di.viewmodel.ViewModelModule
 
@@ -16,8 +15,8 @@ class MainModule {
     @Provides
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    fun provideViewModel(resourceManager: ResourceManager): ViewModel {
-        return MainViewModel(resourceManager = resourceManager)
+    fun provideViewModel(/*resourceManager: ResourceManager*/): ViewModel {
+        return MainViewModel(/*resourceManager = resourceManager*/)
     }
 
     @Provides

@@ -25,7 +25,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -56,23 +56,17 @@ dependencies {
     implementation(project(":apods_feature_api"))
     implementation(project(":apods_feature_impl"))
 
-    implementation(project(":chart_feature_api"))
-    implementation(project(":chart_feature_impl"))
+    implementation(project(":cc_feature_api"))
+    implementation(project(":cc_feature_impl"))
 
-    implementation(project(":horoscope_feature_api"))
-    implementation(project(":horoscope_feature_impl"))
-
-    implementation(project(":login_feature_api"))
-    implementation(project(":login_feature_impl"))
+    implementation(project(":auth_feature_api"))
+    implementation(project(":auth_feature_impl"))
 
     implementation(project(":menu_feature_api"))
     implementation(project(":menu_feature_impl"))
 
-    implementation(project(":spaceOverflow_feature_api"))
-    implementation(project(":spaceOverflow_feature_impl"))
-
-    implementation(project(":educationMenu_feature_api"))
-    implementation(project(":educationMenu_feature_impl"))
+    implementation(project(":so_feature_api"))
+    implementation(project(":so_feature_impl"))
 
     // core
     implementation(rootProject.extra["coreDep"].toString())
@@ -95,7 +89,7 @@ dependencies {
     implementation(rootProject.extra["navFragmentDep"].toString())
     implementation(rootProject.extra["navUiDep"].toString())
 
-    //firebase
+    // firebase
     implementation(rootProject.extra["firebaseDep"].toString())
 
     // viewmodel
@@ -120,10 +114,11 @@ dependencies {
     implementation(rootProject.extra["roomPagingDep"].toString())
     implementation(rootProject.extra["roomToolKspDep"].toString())
 
+    // splash_screen
+    implementation(rootProject.extra["splashDep"].toString())
+
     // test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-
 }

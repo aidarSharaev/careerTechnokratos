@@ -20,13 +20,16 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
     buildFeatures {
         compose = true
         viewBinding = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.9"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -60,6 +63,9 @@ dependencies {
     implementation(rootProject.extra["roomPagingDep"].toString())
     implementation(rootProject.extra["roomToolKspDep"].toString())
 
+    // dagger
+    implementation(rootProject.extra["daggerDep"].toString())
+    ksp(rootProject.extra["daggerKspDep"].toString())
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

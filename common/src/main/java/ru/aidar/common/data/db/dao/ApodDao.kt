@@ -7,10 +7,8 @@ import androidx.room.Upsert
 import ru.aidar.common.data.db.model.ApodEntity
 import ru.aidar.common.utils.Constants.APOD_ENTITY_TABLE
 
-
 @Dao
 interface ApodDao {
-
     @Upsert
     suspend fun upsertAllApods(apods: List<ApodEntity>)
 

@@ -5,19 +5,16 @@ import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import ru.aidar.apod_feature_impl.remote.NasaServiceApi
 import ru.aidar.common.core.config.AppProperties
 import ru.aidar.common.core.config.NetworkProperties
 import ru.aidar.common.data.network.NetworkApiCreator
 import ru.aidar.common.di.scope.ApplicationScope
 import java.util.concurrent.TimeUnit
 
-//private const val SOLARIE_URL = "https://api.le-systeme-solaire.net"
+// private const val SOLARIE_URL = "https://api.le-systeme-solaire.net"
 
-@Module(includes = [ApiServiceModule::class])
+@Module
 class NetworkModule {
-
     @Provides
     @ApplicationScope
     fun provideNetworkProperties(appProperties: AppProperties): NetworkProperties {
@@ -59,15 +56,5 @@ class NetworkModule {
             okHttpClient = okHttpClient,
             nasaUrl = appProperties.getNasaUrl(),
         )
-    }
-}
-
-@Module
-class ApiServiceModule {
-
-    @ApplicationScope
-    @Provides
-    fun provideNasaService(retrofit: Retrofit): ru.aidar.apod_feature_impl.remote.NasaServiceApi {
-        return retrofit.create(ru.aidar.apod_feature_impl.remote.NasaServiceApi::class.java)
     }
 }

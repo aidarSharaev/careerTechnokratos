@@ -20,7 +20,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -43,7 +43,7 @@ dependencies {
 
     // dagger
     implementation(rootProject.extra["daggerDep"].toString())
-    implementation(rootProject.extra["daggerKspDep"].toString())
+    ksp(rootProject.extra["daggerKspDep"].toString())
 
     // compose
     implementation(rootProject.extra["composeDep"].toString())
@@ -57,7 +57,7 @@ dependencies {
     implementation(rootProject.extra["roomPagingDep"].toString())
     implementation(rootProject.extra["roomToolKspDep"].toString())
 
-    //retrofit
+    // retrofit
     implementation(rootProject.extra["retrofitDep"].toString())
     implementation(rootProject.extra["retrofitConverterDep"].toString())
     implementation(rootProject.extra["serializationDep"].toString())
@@ -66,6 +66,10 @@ dependencies {
 
     // firebase
     implementation(rootProject.extra["firebaseDep"].toString())
+
+    // data store
+    implementation(rootProject.extra["dataStoreDep"].toString())
+    implementation(rootProject.extra["dataStoreCoreDep"].toString())
 
     // test
     testImplementation("junit:junit:4.13.2")

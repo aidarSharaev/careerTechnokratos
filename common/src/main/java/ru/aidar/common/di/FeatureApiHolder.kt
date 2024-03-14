@@ -3,7 +3,7 @@ package ru.aidar.common.di
 import java.util.concurrent.locks.ReentrantLock
 
 abstract class FeatureApiHolder(
-    private val mFeatureContainer: FeatureContainer
+    private val mFeatureContainer: FeatureContainer,
 ) {
     private val mFeatureLocker = ReentrantLock()
 
@@ -12,7 +12,7 @@ abstract class FeatureApiHolder(
     @Suppress("UNCHECKED_CAST")
     fun <T> getFeatureApi(): T {
         mFeatureLocker.lock()
-        if(mFeatureApi == null) {
+        if (mFeatureApi == null) {
             mFeatureApi = initializeDependencies()
         }
         mFeatureLocker.unlock()

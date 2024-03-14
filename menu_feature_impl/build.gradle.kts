@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -19,13 +20,16 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
     buildFeatures {
         compose = true
         viewBinding = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.9"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -53,6 +57,10 @@ dependencies {
     implementation(rootProject.extra["composePreviewDep"].toString())
     implementation(rootProject.extra["composeFoundationDep"].toString())
     implementation(rootProject.extra["materialDep"].toString())
+
+    // dagger2
+    implementation(rootProject.extra["daggerDep"].toString())
+    ksp(rootProject.extra["daggerKspDep"].toString())
 
     // navigation
     implementation(rootProject.extra["navFragmentDep"].toString())

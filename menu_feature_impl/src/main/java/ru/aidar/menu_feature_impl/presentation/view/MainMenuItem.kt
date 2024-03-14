@@ -35,18 +35,20 @@ fun GpMainMenuItem(
 ) {
     ElevatedCard(
         onClick = { onClick() },
-        modifier = Modifier
-            .height(170.dp)
-            .padding(horizontal = 28.dp)
-            .padding(top = 8.dp)
-            .fillMaxWidth(),
+        modifier =
+            Modifier
+                .height(170.dp)
+                .padding(horizontal = 28.dp)
+                .padding(top = 8.dp)
+                .fillMaxWidth(),
         shape = RoundedCornerShape(25.dp),
         colors = CardDefaults.cardColors(containerColor = color),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxSize(),
+            modifier =
+                Modifier
+                    .fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
@@ -58,14 +60,16 @@ fun GpMainMenuItem(
             Text(
                 modifier = Modifier.padding(horizontal = 16.dp),
                 text = stringResource(id = text),
-                style = GpTypography.mainMenuCardTypo.copy(
-                    shadow = Shadow(
-                        color = GpColors.GpBlack,
-                        offset = Offset(2f, 2f),
-                        blurRadius = 4f
-                    )
-                ),
-                textAlign = TextAlign.Start
+                style =
+                    GpTypography.mainMenuCardTypo.copy(
+                        shadow =
+                            Shadow(
+                                color = GpColors.GpBlack,
+                                offset = Offset(2f, 2f),
+                                blurRadius = 4f,
+                            ),
+                    ),
+                textAlign = TextAlign.Start,
             )
         }
     }

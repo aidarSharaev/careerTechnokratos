@@ -19,38 +19,38 @@ object GpColors {
     val GpBlack = Color(0xFF16181F)
 }
 
-val GpFontFamily = FontFamily(
-
-    Font(R.font.gp_bold, FontWeight.Bold),
-    Font(R.font.gp_extra_bold, FontWeight.ExtraBold),
-    Font(R.font.gp_semi_bold, FontWeight.SemiBold),
-
-    Font(R.font.gp_medium, FontWeight.Medium),
-    Font(R.font.gp_regular, FontWeight.Normal),
-
-    Font(R.font.gp_light, FontWeight.Light),
-    Font(R.font.gp_extra_light, FontWeight.ExtraLight),
-    Font(R.font.gp_thin, FontWeight.Thin),
-)
+val GpFontFamily =
+    FontFamily(
+        Font(R.font.gp_bold, FontWeight.Bold),
+        Font(R.font.gp_extra_bold, FontWeight.ExtraBold),
+        Font(R.font.gp_semi_bold, FontWeight.SemiBold),
+        Font(R.font.gp_medium, FontWeight.Medium),
+        Font(R.font.gp_regular, FontWeight.Normal),
+        Font(R.font.gp_light, FontWeight.Light),
+        Font(R.font.gp_extra_light, FontWeight.ExtraLight),
+        Font(R.font.gp_thin, FontWeight.Thin),
+    )
 
 object GpTypography {
+    val titleLargeTypo =
+        TextStyle(
+            fontSize = 28.sp,
+            fontFamily = GpFontFamily,
+            fontWeight = FontWeight.ExtraLight,
+        )
 
-    val titleLargeTypo = TextStyle(
-        fontSize = 28.sp,
-        fontFamily = GpFontFamily,
-        fontWeight = FontWeight.ExtraLight,
-    )
+    val mainMenuCardTypo =
+        TextStyle(
+            fontSize = 20.sp,
+            fontFamily = GpFontFamily,
+            fontWeight = FontWeight.Thin,
+        )
 
-    val mainMenuCardTypo = TextStyle(
-        fontSize = 20.sp,
-        fontFamily = GpFontFamily,
-        fontWeight = FontWeight.Thin,
-    )
-
-    val dropDownMenuTypo = TextStyle(
-        fontSize = 14.sp,
-        fontFamily = GpFontFamily,
-        fontWeight = FontWeight.Normal,
-        color = GpTurquoise
-    )
+    val dropDownMenuTypo =
+        TextStyle(
+            fontSize = 14.sp,
+            fontFamily = GpFontFamily,
+            fontWeight = FontWeight.Normal,
+            color = GpTurquoise,
+        )
 }

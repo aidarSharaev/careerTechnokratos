@@ -31,6 +31,10 @@ buildscript {
 
     val viewModelVersion by extra { "2.7.0" }
 
+    val splashVersion by extra { "1.0.1" }
+
+    val dataStoreVersion by extra { "1.0.0" }
+
 
     val coreDep by extra { "androidx.core:core-ktx:$coreVersion" }
 
@@ -66,6 +70,12 @@ buildscript {
     val firebaseDep by extra { "com.google.firebase:firebase-auth:$firebaseVersion" }
 
     val viewModelDep by extra { "androidx.lifecycle:lifecycle-viewmodel-compose:$viewModelVersion" }
+
+    val splashDep by extra { "androidx.core:core-splashscreen:$splashVersion" }
+
+    val dataStoreDep by extra { "androidx.datastore:datastore-preferences:$dataStoreVersion" }
+    val dataStoreCoreDep by extra { "androidx.datastore:datastore-preferences-core:$dataStoreVersion" }
+
 
 }
 

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -19,14 +20,17 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
     buildFeatures {
-        compose = true
+//        compose = true
         viewBinding = true
     }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = "1.5.9"
+//    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -37,6 +41,10 @@ android {
 }
 
 dependencies {
+
+    // dagger
+    implementation(rootProject.extra["daggerDep"].toString())
+    ksp(rootProject.extra["daggerKspDep"].toString())
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

@@ -8,7 +8,6 @@ import ru.aidar.careertechnokratos.di.main.MainDependencies
 
 @Module
 interface ComponentDependenciesModule {
-
     @Binds
     @IntoMap
     @ComponentDependenciesKey(MainDependencies::class)

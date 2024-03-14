@@ -13,17 +13,16 @@ import ru.aidar.common.utils.Constants.GP_DATABASE
     version = 1,
 )
 abstract class GalaxyPulseDatabase : RoomDatabase() {
-
     companion object {
-
-        fun get(context: Context): GalaxyPulseDatabase = Room
-            .databaseBuilder(
-                context.applicationContext,
-                GalaxyPulseDatabase::class.java,
-                GP_DATABASE
-            )
-            .fallbackToDestructiveMigration()
-            .build()
+        fun get(context: Context): GalaxyPulseDatabase =
+            Room
+                .databaseBuilder(
+                    context.applicationContext,
+                    GalaxyPulseDatabase::class.java,
+                    GP_DATABASE,
+                )
+                .fallbackToDestructiveMigration()
+                .build()
     }
 
     abstract fun apodDao(): ApodDao

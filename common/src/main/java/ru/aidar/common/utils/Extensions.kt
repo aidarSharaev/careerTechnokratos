@@ -1,5 +1,9 @@
 package ru.aidar.common.utils
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import ru.aidar.common.data.db.model.ApodEntity
 import ru.aidar.common.data.network.dto.ApodDto
 
@@ -14,7 +18,7 @@ fun ApodEntity.toDto(): ApodDto {
     )
 }
 
-// TODO
+// TODO check maybe
 fun ApodDto.toEntity(): ApodEntity {
     return ApodEntity(
         copyright = copyright ?: "Nasa",
@@ -24,3 +28,6 @@ fun ApodDto.toEntity(): ApodEntity {
         url = url,
     )
 }
+
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "appSettings")
+

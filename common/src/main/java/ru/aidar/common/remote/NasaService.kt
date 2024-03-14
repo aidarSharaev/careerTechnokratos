@@ -4,10 +4,10 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import ru.aidar.common.data.network.dto.ApodDto
 
+// todo add to raw.config
 private const val NASA_API_KEY = "yruPHVQxgVnwCvVTLeMDA19F9QI4U7I8yHfkAIjB"
 
 interface NasaServiceApi {
-
     @GET("/planetary/apod")
     suspend fun getApod(
         @Query("count") count: Int? = null,

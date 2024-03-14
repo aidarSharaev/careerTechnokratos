@@ -8,7 +8,6 @@ import ru.aidar.common.di.scope.ApplicationScope
 
 @Module
 class AppModule {
-
     @ApplicationScope
     @Provides
     fun providesContext(application: GalaxyPulseApplication): Context {

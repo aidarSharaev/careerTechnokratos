@@ -13,7 +13,6 @@ import ru.aidar.common.di.scope.ApplicationScope
 
 @Module
 interface ComponentHolderModule {
-
     @ApplicationScope
     @Binds
     fun provideFeatureContainer(application: GalaxyPulseApplication): FeatureContainer
@@ -25,9 +24,9 @@ interface ComponentHolderModule {
 //    @IntoMap
 //    fun provideUserFeatureHolder(userFeatureHolder: UserFeatureHolder): FeatureApiHolder
 //
-//    @ApplicationScope
-//    @Binds
-//    @ClassKey(DbApi::class)
-//    @IntoMap
-//    fun provideDbFeature(dbHolder: DbHolder): FeatureApiHolder
+    @ApplicationScope
+    @Binds
+    @ClassKey(DbApi::class)
+    @IntoMap
+    fun provideDbFeature(dbHolder: DbHolder): FeatureApiHolder
 }
