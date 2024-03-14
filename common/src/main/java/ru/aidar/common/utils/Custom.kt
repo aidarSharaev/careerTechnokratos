@@ -7,19 +7,19 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import ru.aidar.common.R
-import ru.aidar.common.utils.GpColors.GpTurquoise
+import ru.aidar.common.utils.AppColors.AppTurquoise
 
-object GpColors {
-    val GpYellow = Color(0xFFFFEB3B)
-    val GpBlue = Color(0xFF3550D6)
-    val GpGreen = Color(0xFF19BD20)
-    val GpRed = Color(0xFFD23917)
-    val GpPink = Color(0xFFEE1DD2)
-    val GpTurquoise = Color(0xFFFFFAFA)
-    val GpBlack = Color(0xFF16181F)
+object AppColors {
+    val AppYellow = Color(0xFFFFEB3B)
+    val AppBlue = Color(0xFF3550D6)
+    val AppGreen = Color(0xFF19BD20)
+    val AppRed = Color(0xFFD23917)
+    val AppPink = Color(0xFFEE1DD2)
+    val AppTurquoise = Color(0xFFFFFAFA)
+    val AppBlack = Color(0xFF16181F)
 }
 
-val GpFontFamily =
+val AppFontFamily =
     FontFamily(
         Font(R.font.gp_bold, FontWeight.Bold),
         Font(R.font.gp_extra_bold, FontWeight.ExtraBold),
@@ -31,26 +31,26 @@ val GpFontFamily =
         Font(R.font.gp_thin, FontWeight.Thin),
     )
 
-object GpTypography {
+object AppTypography {
     val titleLargeTypo =
         TextStyle(
             fontSize = 28.sp,
-            fontFamily = GpFontFamily,
+            fontFamily = AppFontFamily,
             fontWeight = FontWeight.ExtraLight,
         )
 
     val mainMenuCardTypo =
         TextStyle(
             fontSize = 20.sp,
-            fontFamily = GpFontFamily,
+            fontFamily = AppFontFamily,
             fontWeight = FontWeight.Thin,
         )
 
     val dropDownMenuTypo =
         TextStyle(
             fontSize = 14.sp,
-            fontFamily = GpFontFamily,
+            fontFamily = AppFontFamily,
             fontWeight = FontWeight.Normal,
-            color = GpTurquoise,
+            color = AppTurquoise,
         )
 }

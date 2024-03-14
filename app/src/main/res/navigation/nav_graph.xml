@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/firstFrag">
+    app:startDestination="@id/mainMenuFrag">
     <fragment
-        android:id="@+id/firstFrag"
+        android:id="@+id/mainMenuFrag"
         android:name="ru.aidar.menu_feature_impl.presentation.MainMenuFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_mainMenu_to_apodFeature"
-            app:destination="@id/blankFragment" />
+            app:destination="@id/apodListFragment" />
     </fragment>
     <fragment
-        android:id="@+id/blankFragment"
+        android:id="@+id/apodListFragment"
         android:name="ru.aidar.apods_feature_impl.presentation.ApodFragment"
         android:label="Pictures"
         tools:layout="@layout/fragment_apod_list" />

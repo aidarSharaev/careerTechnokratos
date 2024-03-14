@@ -9,7 +9,6 @@ import ru.aidar.common.core.preferences.LocalManager.Companion.PICKED_SYSTEM
 import ru.aidar.common.utils.dataStore
 
 class LocalManagerImpl(private val context: Context) : LocalManager {
-
     override fun readMeasSystem(): Flow<String> {
         return context.dataStore.data.map { preferences ->
             preferences[PICKED_SYSTEM] ?: "kph"

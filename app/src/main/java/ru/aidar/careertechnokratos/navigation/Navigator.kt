@@ -10,7 +10,6 @@ import ru.aidar.menu_feature_impl.MenuRouter
 import ru.aidar.spaceoverflow_feature_impl.SoRouter
 
 class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRouter {
-
     private var appNavController: NavController? = null
 
     fun attachNavController(
@@ -22,7 +21,7 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
     }
 
     fun detachNavController(navController: NavController) {
-        if(appNavController == navController) {
+        if (appNavController == navController) {
             appNavController = null
         }
     }
@@ -31,5 +30,3 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
         appNavController?.navigate(R.id.action_mainMenu_to_apodFeature, null)
     }
 }
-
-

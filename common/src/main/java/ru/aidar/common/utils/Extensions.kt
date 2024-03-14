@@ -30,4 +30,3 @@ fun ApodDto.toEntity(): ApodEntity {
 }
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "appSettings")
-

@@ -2,9 +2,9 @@ package ru.aidar.careertechnokratos.di.app
 
 import dagger.Module
 import dagger.Provides
-import ru.aidar.careertechnokratos.navigation.AppRouter
 import ru.aidar.careertechnokratos.navigation.Navigator
 import ru.aidar.common.di.scope.ApplicationScope
+import ru.aidar.menu_feature_impl.MenuRouter
 
 @Module
 class NavigationModule {
@@ -14,5 +14,5 @@ class NavigationModule {
 
     @ApplicationScope
     @Provides
-    fun provideGpRouter(navigator: Navigator): AppRouter = navigator
+    fun provideGpRouter(navigator: Navigator): MenuRouter = navigator
 }

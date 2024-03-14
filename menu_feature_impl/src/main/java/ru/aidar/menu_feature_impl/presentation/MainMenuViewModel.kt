@@ -1,8 +1,16 @@
 package ru.aidar.menu_feature_impl.presentation
 
+import android.util.Log
 import ru.aidar.common.base.BaseViewModel
-import ru.aidar.common.core.resources.ResourceManager
+import ru.aidar.menu_feature_api.domain.MainMenuUseCases
+import ru.aidar.menu_feature_impl.MenuRouter
 
 class MainMenuViewModel(
-    val resourceManager: ResourceManager,
-) : BaseViewModel()
+//    private val router: MenuRouter,
+//    private val mmUseCases: MainMenuUseCases,
+) : BaseViewModel() {
+
+    init {
+        Log.d("ViewModelInstance", "${this::class.java.name} init")
+    }
+}

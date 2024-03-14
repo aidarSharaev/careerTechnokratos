@@ -6,10 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import ru.aidar.common.base.BaseFragment
+import ru.aidar.common.di.FeatureUtils
+import ru.aidar.menu_feature_api.di.MainMenuFeatureApi
 import ru.aidar.menu_feature_impl.databinding.FragmentMainMenuBinding
+import ru.aidar.menu_feature_impl.di.MainMenuFeatureComponent
 import ru.aidar.menu_feature_impl.presentation.view.MainMenuScreen
 
 class MainMenuFragment : BaseFragment<MainMenuViewModel>() {
+
     private lateinit var binding: FragmentMainMenuBinding
 
     override fun initViews() {
@@ -17,11 +21,10 @@ class MainMenuFragment : BaseFragment<MainMenuViewModel>() {
     }
 
     override fun inject() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        FeatureUtils.getFeature<MainMenuFeatureComponent>(this, MainMenuFeatureApi::class.java)
+            .mmComponentFactory()
+            .create(this)
+            .inject(this)
     }
 
     override fun onCreateView(
@@ -42,14 +45,3 @@ class MainMenuFragment : BaseFragment<MainMenuViewModel>() {
         return view
     }
 }
-
-/*
-*
-*     <string name="astrePerAstre">Astre per astre</string>
-    <string name="spaceOverflow">Space Overflow</string>
-    <string name="celestialCompatibility">Celestial Compatibility</string>
-    <string name="astronomyPictureOfTheDay">Astronomy Picture of the Day</string>
-    <string name="qwe">qwe</string>
-    <string name="asdsda">sdasda</string>
-*
-* */

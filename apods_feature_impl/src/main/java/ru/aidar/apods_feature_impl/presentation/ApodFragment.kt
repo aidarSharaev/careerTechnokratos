@@ -23,10 +23,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.unit.dp
-import androidx.fragment.app.Fragment
-import ru.aidar.apods_feature_impl.databinding.FragmentApodListBinding
-import ru.aidar.common.utils.GpColors.GpTurquoise
-import ru.aidar.common.utils.GpTypography
+import ru.aidar.apod_feature_impl.databinding.FragmentApodListBinding
+import ru.aidar.common.base.BaseFragment
+import ru.aidar.common.utils.AppColors.AppTurquoise
+import ru.aidar.common.utils.AppTypography
 
 /**
  *
@@ -34,8 +34,16 @@ import ru.aidar.common.utils.GpTypography
  *
  * */
 
-class ApodFragment : Fragment() {
+class ApodFragment : BaseFragment<ApodViewModel>() {
     private lateinit var binding: FragmentApodListBinding
+
+    override fun initViews() {
+        TODO("Not yet implemented")
+    }
+
+    override fun inject() {
+        TODO("Not yet implemented")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,15 +71,15 @@ fun GpApodList(text: String) {
                 title = {
                     Text(
                         text = "Pictures",
-                        style = GpTypography.titleLargeTypo,
+                        style = AppTypography.titleLargeTypo,
                     )
                 },
                 colors =
                     TopAppBarDefaults.topAppBarColors(
                         containerColor = Color.Transparent.copy(0.5f),
-                        navigationIconContentColor = GpTurquoise,
-                        titleContentColor = GpTurquoise,
-                        actionIconContentColor = GpTurquoise,
+                        navigationIconContentColor = AppTurquoise,
+                        titleContentColor = AppTurquoise,
+                        actionIconContentColor = AppTurquoise,
                     ),
                 navigationIcon = {
                     IconButton(onClick = { /* do something */ }) {

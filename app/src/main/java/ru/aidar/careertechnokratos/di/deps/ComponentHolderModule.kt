@@ -10,6 +10,8 @@ import ru.aidar.common.data.db.di.DbHolder
 import ru.aidar.common.di.FeatureApiHolder
 import ru.aidar.common.di.FeatureContainer
 import ru.aidar.common.di.scope.ApplicationScope
+import ru.aidar.menu_feature_api.di.MainMenuFeatureApi
+import ru.aidar.menu_feature_impl.di.MainMenuFeatureHolder
 
 @Module
 interface ComponentHolderModule {
@@ -18,11 +20,11 @@ interface ComponentHolderModule {
     fun provideFeatureContainer(application: GalaxyPulseApplication): FeatureContainer
 
     // todo
-//    @ApplicationScope
-//    @Binds
-//    @ClassKey(UserFeatureApi::class)
-//    @IntoMap
-//    fun provideUserFeatureHolder(userFeatureHolder: UserFeatureHolder): FeatureApiHolder
+    @ApplicationScope
+    @Binds
+    @ClassKey(MainMenuFeatureApi::class)
+    @IntoMap
+    fun provideUserFeatureHolder(mainMenuFeatureHolder: MainMenuFeatureHolder): FeatureApiHolder
 //
     @ApplicationScope
     @Binds

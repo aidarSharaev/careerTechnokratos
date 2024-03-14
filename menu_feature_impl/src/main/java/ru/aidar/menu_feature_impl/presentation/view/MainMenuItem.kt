@@ -23,8 +23,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import ru.aidar.common.utils.GpColors
-import ru.aidar.common.utils.GpTypography
+import ru.aidar.common.utils.AppColors
+import ru.aidar.common.utils.AppTypography
 
 @Composable
 fun GpMainMenuItem(
@@ -61,10 +61,10 @@ fun GpMainMenuItem(
                 modifier = Modifier.padding(horizontal = 16.dp),
                 text = stringResource(id = text),
                 style =
-                    GpTypography.mainMenuCardTypo.copy(
+                    AppTypography.mainMenuCardTypo.copy(
                         shadow =
                             Shadow(
-                                color = GpColors.GpBlack,
+                                color = AppColors.AppBlack,
                                 offset = Offset(2f, 2f),
                                 blurRadius = 4f,
                             ),

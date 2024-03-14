@@ -28,12 +28,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import ru.aidar.common.compose_component.ComponentDropDownMenu
 import ru.aidar.common.compose_component.model.DropDownModel
-import ru.aidar.common.utils.GpColors
-import ru.aidar.common.utils.GpColors.GpGreen
-import ru.aidar.common.utils.GpColors.GpPink
-import ru.aidar.common.utils.GpColors.GpRed
-import ru.aidar.common.utils.GpColors.GpYellow
-import ru.aidar.common.utils.GpTypography
+import ru.aidar.common.utils.AppColors
+import ru.aidar.common.utils.AppColors.AppGreen
+import ru.aidar.common.utils.AppColors.AppPink
+import ru.aidar.common.utils.AppColors.AppRed
+import ru.aidar.common.utils.AppColors.AppYellow
+import ru.aidar.common.utils.AppTypography
 import ru.aidar.menu_feature_impl.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,11 +41,11 @@ import ru.aidar.menu_feature_impl.R
 fun MainMenuScreen(
 //    viewModel: MainMenuViewModel,
 ) {
-    var dropDownExpanded by remember { mutableStateOf(false) }
-
-    fun switchDropDownExpanded() {
-        dropDownExpanded = !dropDownExpanded
-    }
+//    var dropDownExpanded by remember { mutableStateOf(false) }
+//
+//    fun switchDropDownExpanded() {
+//        dropDownExpanded = !dropDownExpanded
+//    }
 
     Scaffold(
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
@@ -56,10 +56,10 @@ fun MainMenuScreen(
                         // todo fix
                         text = stringResource(ru.aidar.common.R.string.nasa),
                         style =
-                            GpTypography.titleLargeTypo.copy(
+                            AppTypography.titleLargeTypo.copy(
                                 shadow =
                                     Shadow(
-                                        color = GpColors.GpBlack,
+                                        color = AppColors.AppBlack,
                                         offset = Offset(2f, 2f),
                                         blurRadius = 4f,
                                     ),
@@ -68,13 +68,13 @@ fun MainMenuScreen(
                 },
                 colors =
                     TopAppBarDefaults.topAppBarColors(
-                        containerColor = GpColors.GpBlack,
-                        navigationIconContentColor = GpColors.GpTurquoise,
-                        titleContentColor = GpColors.GpTurquoise,
-                        actionIconContentColor = GpColors.GpTurquoise,
+                        containerColor = AppColors.AppBlack,
+                        navigationIconContentColor = AppColors.AppTurquoise,
+                        titleContentColor = AppColors.AppTurquoise,
+                        actionIconContentColor = AppColors.AppTurquoise,
                     ),
                 actions = {
-                    IconButton(onClick = { switchDropDownExpanded() }) {
+                    IconButton(onClick = { /*switchDropDownExpanded()*/ }) {
                         Icon(
                             // todo вынести
                             painter = painterResource(id = R.drawable.ic_more_vert),
@@ -85,7 +85,7 @@ fun MainMenuScreen(
             )
         },
     ) {
-        ComponentDropDownMenu(
+        /*ComponentDropDownMenu(
             onDismissRequest = ::switchDropDownExpanded,
             expanded = dropDownExpanded,
             items =
@@ -101,7 +101,7 @@ fun MainMenuScreen(
                         action = {},
                     ),
                 ),
-        )
+        )*/
         LazyColumn(
             modifier =
                 Modifier
@@ -111,11 +111,11 @@ fun MainMenuScreen(
                     .windowInsetsPadding(
                         WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal),
                     )
-                    .background(GpColors.GpBlack),
+                    .background(AppColors.AppBlack),
         ) {
             item { // imagesDestination
                 GpMainMenuItem(
-                    color = GpYellow,
+                    color = AppYellow,
                     onClick = { },
                     image = R.drawable.ic_galaxy,
                     text = R.string.astronomy_picture_of_the_day,
@@ -123,7 +123,7 @@ fun MainMenuScreen(
             }
             item { // astreDestination
                 GpMainMenuItem(
-                    color = GpGreen,
+                    color = AppGreen,
                     onClick = {},
                     // todo глянуть
                     image = R.drawable.ic_planet,
@@ -132,7 +132,7 @@ fun MainMenuScreen(
             }
             item { // testDestination
                 GpMainMenuItem(
-                    color = GpRed,
+                    color = AppRed,
                     onClick = {},
                     image = R.drawable.ic_rocket,
                     text = R.string.space_overflow,
@@ -140,7 +140,7 @@ fun MainMenuScreen(
             }
             item { // loveDestination
                 GpMainMenuItem(
-                    color = GpPink,
+                    color = AppPink,
                     onClick = {},
                     image = R.drawable.ic_tarot,
                     text = R.string.celestial_compatibility,
