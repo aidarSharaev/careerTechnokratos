@@ -3,25 +3,31 @@ package ru.aidar.careertechnokratos.di.app
 import dagger.BindsInstance
 import dagger.Component
 import ru.aidar.careertechnokratos.GalaxyPulseApplication
+import ru.aidar.careertechnokratos.di.deps.ComponentDependenciesModule
+import ru.aidar.careertechnokratos.di.deps.ComponentHolderModule
 import ru.aidar.careertechnokratos.di.main.MainDependencies
+import ru.aidar.common.di.CommonApi
 import ru.aidar.common.di.modules.CommonModule
 import ru.aidar.common.di.modules.NetworkModule
 
 @Component(
     modules = [
         AppModule::class,
-        NavigationModule::class,
-        NetworkModule::class,
         CommonModule::class,
+        NetworkModule::class,
+        NavigationModule::class,
+        FeatureManagerModule::class,
+        ComponentHolderModule::class,
+        ComponentDependenciesModule::class
         //ViewModelModule::class,
     ]
 )
-interface AppComponent : MainDependencies {
+interface AppComponent : MainDependencies, CommonApi {
 
     companion object {
 
 //        fun init(application: GalaxyPulseApplication): AppComponent {
-//            return DA
+//            return DaggerA
 //                .builder()
 //                .application(application = application)
 //                .build()

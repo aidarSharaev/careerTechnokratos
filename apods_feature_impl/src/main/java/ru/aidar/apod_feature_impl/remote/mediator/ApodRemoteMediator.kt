@@ -1,4 +1,4 @@
-package ru.aidar.careertechnokratos.remote_mediator
+package ru.aidar.apod_feature_impl.remote.mediator
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
@@ -6,9 +6,10 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import retrofit2.HttpException
-import ru.aidar.common.data.db.model.ApodEntity
 import ru.aidar.common.data.db.GalaxyPulseDatabase
-import ru.aidar.careertechnokratos.remote.NasaServiceApi
+import ru.aidar.common.data.db.model.ApodEntity
+import ru.aidar.common.remote.NasaServiceApi
+import ru.aidar.common.utils.toEntity
 import java.io.IOException
 
 @OptIn(ExperimentalPagingApi::class)
@@ -22,16 +23,15 @@ class ApodRemoteMediator(
     ): MediatorResult {
         return try {
             // todo date
-            // todo equal images
             val apods = nasaServiceApi.getApod(
                 count = 30
             )
             galaxyPulseDb.withTransaction {
                 if(loadType == LoadType.REFRESH) {
-                    galaxyPulseDb.apodDao.deleteAll()
+                    galaxyPulseDb.apodDao().deleteAll()
                 }
-                val apods = apods.map { it.toEntity() }
-                galaxyPulseDb.apodDao.upsertAllApods(apods = apods)
+                val list = apods.map { it.toEntity() }
+                galaxyPulseDb.apodDao().upsertAllApods(apods = list)
             }
             MediatorResult.Success(
                 endOfPaginationReached = apods.isEmpty()

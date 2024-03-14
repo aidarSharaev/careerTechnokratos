@@ -13,6 +13,4 @@ data class ApodEntity(
     val explanation: String,
     val title: String,
     val url: String,
-){
-
-}
+)

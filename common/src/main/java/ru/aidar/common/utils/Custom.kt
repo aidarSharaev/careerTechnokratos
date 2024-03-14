@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import ru.aidar.common.R
+import ru.aidar.common.utils.GpColors.GpTurquoise
 
 object GpColors {
     val GpYellow = Color(0xFFFFEB3B)
@@ -17,6 +18,7 @@ object GpColors {
     val GpTurquoise = Color(0xFFFFFAFA)
     val GpBlack = Color(0xFF16181F)
 }
+
 val GpFontFamily = FontFamily(
 
     Font(R.font.gp_bold, FontWeight.Bold),
@@ -33,15 +35,22 @@ val GpFontFamily = FontFamily(
 
 object GpTypography {
 
-    val titleLarge = TextStyle(
+    val titleLargeTypo = TextStyle(
         fontSize = 28.sp,
         fontFamily = GpFontFamily,
         fontWeight = FontWeight.ExtraLight,
+    )
 
-        )
-    val menuText = TextStyle(
+    val mainMenuCardTypo = TextStyle(
         fontSize = 20.sp,
         fontFamily = GpFontFamily,
         fontWeight = FontWeight.Thin,
+    )
+
+    val dropDownMenuTypo = TextStyle(
+        fontSize = 14.sp,
+        fontFamily = GpFontFamily,
+        fontWeight = FontWeight.Normal,
+        color = GpTurquoise
     )
 }

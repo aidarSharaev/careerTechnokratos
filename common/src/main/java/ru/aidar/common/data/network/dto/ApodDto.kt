@@ -14,4 +14,6 @@ data class ApodDto(
     val title: String,
     @SerializedName("url")
     val url: String,
+
+    val id: Long = 0
 )

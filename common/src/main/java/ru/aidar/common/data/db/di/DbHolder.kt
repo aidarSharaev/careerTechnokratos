@@ -5,18 +5,18 @@ import ru.aidar.common.di.FeatureContainer
 import ru.aidar.common.di.scope.ApplicationScope
 import javax.inject.Inject
 
-@ApplicationScope
-class DbHolder @Inject constructor(
-    featureContainer: FeatureContainer
-) : FeatureApiHolder(featureContainer) {
-
-    override fun initializeDependencies(): Any {
-        val dbDependencies = DaggerDbComponent_DbDependenciesComponent.builder()
-            .commonApi(commonApi())
-            .build()
-        return "as"
-//        return DaggerDbComponent.builder()
-//            .dbDependencies(dbDependencies)
+//@ApplicationScope
+//class DbHolder @Inject constructor(
+//    featureContainer: FeatureContainer
+//) : FeatureApiHolder(featureContainer) {
+//
+//    override fun initializeDependencies(): Any {
+//        val dbDependencies = DaggerDbComponent_DbDependenciesComponent.builder()
+//            .commonApi(commonApi())
 //            .build()
-    }
-}
+//        return "as"
+////        return DaggerDbComponent.builder()
+////            .dbDependencies(dbDependencies)
+////            .build()
+//    }
+//}

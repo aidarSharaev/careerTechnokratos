@@ -63,7 +63,7 @@ fun GpApodList(text: String) {
                 title = {
                     Text(
                         text = "Pictures",
-                        style = GpTypography.titleLarge
+                        style = GpTypography.titleLargeTypo
                     )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(

@@ -6,7 +6,7 @@ import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import ru.aidar.careertechnokratos.remote.NasaServiceApi
+import ru.aidar.apod_feature_impl.remote.NasaServiceApi
 import ru.aidar.common.core.config.AppProperties
 import ru.aidar.common.core.config.NetworkProperties
 import ru.aidar.common.data.network.NetworkApiCreator
@@ -67,7 +67,7 @@ class ApiServiceModule {
 
     @ApplicationScope
     @Provides
-    fun provideNasaService(retrofit: Retrofit): NasaServiceApi {
-        return retrofit.create(NasaServiceApi::class.java)
+    fun provideNasaService(retrofit: Retrofit): ru.aidar.apod_feature_impl.remote.NasaServiceApi {
+        return retrofit.create(ru.aidar.apod_feature_impl.remote.NasaServiceApi::class.java)
     }
 }

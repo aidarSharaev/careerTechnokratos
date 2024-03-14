@@ -3,7 +3,7 @@ package ru.aidar.common.data.network
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.aidar.careertechnokratos.remote.NasaServiceApi
+import ru.aidar.apod_feature_impl.remote.NasaServiceApi
 
 // TODO изменить юрлки
 class NetworkApiCreator(

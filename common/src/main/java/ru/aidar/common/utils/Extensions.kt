@@ -5,19 +5,18 @@ import ru.aidar.common.data.network.dto.ApodDto
 
 fun ApodEntity.toDto(): ApodDto {
     return ApodDto(
-        id = id,
         copyright = copyright,
         date = date,
         explanation = explanation,
         title = title,
         url = url,
+        id = id,
     )
 }
 
 // TODO
-fun ApodDto.toDto(): ApodEntity {
+fun ApodDto.toEntity(): ApodEntity {
     return ApodEntity(
-        id = id,
         copyright = copyright ?: "Nasa",
         date = date,
         explanation = explanation,

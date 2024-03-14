@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "ru.aidar.chart_feature_impl"
-    compileSdk = 34
+    compileSdk = rootProject.extra["compileSdk"] as Int
 
     defaultConfig {
-        minSdk = 21
+        minSdk = rootProject.extra["minSdk"].toString().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

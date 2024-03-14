@@ -1,14 +1,15 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
     namespace = "ru.aidar.apod_feature_impl"
-    compileSdk = 34
+    compileSdk = rootProject.extra["compileSdk"] as Int
 
     defaultConfig {
-        minSdk = 21
+        minSdk = rootProject.extra["minSdk"].toString().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -39,6 +40,7 @@ android {
 dependencies {
 
     implementation(project(":common"))
+    implementation(project(":apods_feature_api"))
 
     // compose
     debugImplementation(rootProject.extra["composeToolingDep"].toString())
@@ -46,6 +48,18 @@ dependencies {
     implementation(rootProject.extra["composePreviewDep"].toString())
     implementation(rootProject.extra["composeFoundationDep"].toString())
     implementation(rootProject.extra["materialDep"].toString())
+
+    // retrofit
+    implementation(rootProject.extra["retrofitDep"].toString())
+
+    // room
+    implementation(rootProject.extra["roomRuntimeDep"].toString())
+    annotationProcessor(rootProject.extra["roomKspDep"].toString())
+    ksp(rootProject.extra["roomKspDep"].toString())
+    implementation(rootProject.extra["roomKtxDep"].toString())
+    implementation(rootProject.extra["roomPagingDep"].toString())
+    implementation(rootProject.extra["roomToolKspDep"].toString())
+
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

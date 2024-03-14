@@ -1,5 +1,6 @@
 package ru.aidar.careertechnokratos.remote
 
+import ru.aidar.apod_feature_impl.remote.NasaServiceApi
 import javax.inject.Inject
 
 class NasaRemoteDataSource @Inject constructor(
@@ -7,7 +8,7 @@ class NasaRemoteDataSource @Inject constructor(
 ) {
 
     // todo check null
-    suspend fun get() = nasaServiceApi.getNeoWs(startDate = "2024-02-24", endDate = "2024-02-27")
+    suspend fun get() = nasaServiceApi.getApod(startDate = "2024-02-24", endDate = "2024-02-27")
 
 
 }

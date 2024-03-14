@@ -1,6 +1,7 @@
 package ru.aidar.menu_feature_impl.presentation.view
 
-import android.graphics.drawable.Drawable
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -17,8 +18,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import ru.aidar.common.utils.GpColors
@@ -28,8 +30,8 @@ import ru.aidar.common.utils.GpTypography
 fun GpMainMenuItem(
     color: Color,
     onClick: () -> Unit = {},
-    image: Drawable,
-    text: String,
+    @DrawableRes image: Int,
+    @StringRes text: Int,
 ) {
     ElevatedCard(
         onClick = { onClick() },
@@ -49,14 +51,14 @@ fun GpMainMenuItem(
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Image(
-                bitmap = image as ImageBitmap,
+                painterResource(id = image),
                 contentDescription = null,
                 modifier = Modifier.padding(vertical = 20.dp, horizontal = 20.dp),
             )
             Text(
                 modifier = Modifier.padding(horizontal = 16.dp),
-                text = text,
-                style = GpTypography.menuText.copy(
+                text = stringResource(id = text),
+                style = GpTypography.mainMenuCardTypo.copy(
                     shadow = Shadow(
                         color = GpColors.GpBlack,
                         offset = Offset(2f, 2f),

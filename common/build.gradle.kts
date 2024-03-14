@@ -6,10 +6,10 @@ plugins {
 
 android {
     namespace = "ru.aidar.common"
-    compileSdk = 34
+    compileSdk = rootProject.extra["compileSdk"] as Int
 
     defaultConfig {
-        minSdk = 21
+        minSdk = rootProject.extra["minSdk"].toString().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -35,8 +35,6 @@ android {
 
 dependencies {
 
-    implementation(project(":app"))
-
     // core
     implementation(rootProject.extra["coreDep"].toString())
 
@@ -49,6 +47,7 @@ dependencies {
 
     // compose
     implementation(rootProject.extra["composeDep"].toString())
+    implementation(rootProject.extra["materialDep"].toString())
 
     // room
     implementation(rootProject.extra["roomRuntimeDep"].toString())
@@ -64,6 +63,9 @@ dependencies {
     implementation(rootProject.extra["serializationDep"].toString())
     implementation(rootProject.extra["okhttpDep"].toString())
     implementation(rootProject.extra["interceptorDep"].toString())
+
+    // firebase
+    implementation(rootProject.extra["firebaseDep"].toString())
 
     // test
     testImplementation("junit:junit:4.13.2")

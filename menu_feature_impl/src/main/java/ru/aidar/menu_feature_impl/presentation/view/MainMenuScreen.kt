@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,12 +17,17 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import ru.aidar.common.compose_component.ComponentDropDownMenu
+import ru.aidar.common.compose_component.model.DropDownModel
 import ru.aidar.common.utils.GpColors
 import ru.aidar.common.utils.GpColors.GpGreen
 import ru.aidar.common.utils.GpColors.GpPink
@@ -31,21 +35,28 @@ import ru.aidar.common.utils.GpColors.GpRed
 import ru.aidar.common.utils.GpColors.GpYellow
 import ru.aidar.common.utils.GpTypography
 import ru.aidar.menu_feature_impl.R
-import ru.aidar.menu_feature_impl.presentation.MainMenuViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainMenuScreen(
-    viewModel: MainMenuViewModel
+//    viewModel: MainMenuViewModel,
 ) {
+
+    var dropDownExpanded by remember { mutableStateOf(false) }
+
+    fun switchDropDownExpanded() {
+        dropDownExpanded = !dropDownExpanded
+    }
+
     Scaffold(
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(id = R.string.app_name),
-                        style = GpTypography.titleLarge.copy(
+                        // todo fix
+                        text = stringResource(ru.aidar.common.R.string.nasa),
+                        style = GpTypography.titleLargeTypo.copy(
                             shadow = Shadow(
                                 color = GpColors.GpBlack,
                                 offset = Offset(2f, 2f),
@@ -61,18 +72,31 @@ fun MainMenuScreen(
                     actionIconContentColor = GpColors.GpTurquoise,
                 ),
                 actions = {
-                    IconButton(onClick = { /* do something */ }) {
+                    IconButton(onClick = { switchDropDownExpanded() }) {
                         Icon(
-                            imageVector = viewModel.resourceManager.getDrawable(ru.aidar.common.R.drawable.ic_sun) ,
-                            contentDescription = "Localized description",
-                            modifier = Modifier.size(35.dp),
-                            //modifier = Modifier.padding(end = 5.dp)
+                            // todo вынести
+                            painter = painterResource(id = R.drawable.ic_more_vert),
+                            contentDescription = null,
                         )
                     }
                 },
             )
         },
     ) {
+        ComponentDropDownMenu(
+            onDismissRequest = ::switchDropDownExpanded,
+            expanded = dropDownExpanded,
+            items = arrayOf(
+                DropDownModel(
+                    text = R.string.moonrise,
+                    trailingImage = R.drawable.ic_sun,
+                    action = {}),
+                DropDownModel(
+                    text = R.string.logout,
+                    trailingImage = R.drawable.ic_logout,
+                    action = {}),
+            )
+        )
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -87,32 +111,36 @@ fun MainMenuScreen(
                 GpMainMenuItem(
                     color = GpYellow,
                     onClick = { },
-                    image = viewModel.resourceManager.getDrawable(ru.aidar.common.R.drawable.ic_galaxy)!!,
-                    text = viewModel.resourceManager.getString(ru.aidar.common.R.string.astronomyPictureOfTheDay),
+                    image = R.drawable.ic_galaxy,
+                    text = R.string.astronomy_picture_of_the_day,
                 )
             }
             item {// astreDestination
                 GpMainMenuItem(
                     color = GpGreen,
+                    onClick = {},
                     // todo глянуть
-                    image = viewModel.resourceManager.getDrawable(ru.aidar.common.R.drawable.ic_planet)!!,
-                    text = viewModel.resourceManager.getString(ru.aidar.common.R.string.astrePerAstre),
+                    image = R.drawable.ic_planet,
+                    text = R.string.astre_per_astre,
                 )
             }
             item {// testDestination
                 GpMainMenuItem(
                     color = GpRed,
-                    image = viewModel.resourceManager.getDrawable(ru.aidar.common.R.drawable.ic_rocket)!!,
-                    text = viewModel.resourceManager.getString(ru.aidar.common.R.string.spaceOverflow),
+                    onClick = {},
+                    image = R.drawable.ic_rocket,
+                    text = R.string.space_overflow,
                 )
             }
             item {// loveDestination
                 GpMainMenuItem(
                     color = GpPink,
-                    image = viewModel.resourceManager.getDrawable(ru.aidar.common.R.drawable.ic_tarot)!!,
-                    text = viewModel.resourceManager.getString(ru.aidar.common.R.string.celestialCompatibility),
+                    onClick = {},
+                    image = R.drawable.ic_tarot,
+                    text = R.string.celestial_compatibility,
                 )
             }
         }
     }
 }
+

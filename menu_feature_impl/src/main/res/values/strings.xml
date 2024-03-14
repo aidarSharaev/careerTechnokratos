@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="astre_per_astre">Astre per astre</string>
+    <string name="space_overflow">Space Overflow</string>
+    <string name="celestial_compatibility">Celestial Compatibility</string>
+    <string name="astronomy_picture_of_the_day">Astronomy Picture of the Day</string>
+
+    <string name="moonrise">Moonrise</string>
+    <string name="logout">Logout</string>
+
+</resources>

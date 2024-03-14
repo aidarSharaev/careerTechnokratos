@@ -1,6 +1,14 @@
 buildscript {
     dependencies { classpath("com.google.gms:google-services:4.4.1") }
 
+    val compileSdk by extra { 34 }
+
+    val minSdk by extra { 21 }
+    val targetSdk by extra { 34 }
+    val versionCode by extra { 1 }
+    val versionName by extra { "1.0" }
+
+
     val coreVersion by extra { "1.12.0" }
 
     val appCompatVersion by extra { "1.6.1" }
