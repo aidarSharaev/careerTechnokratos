@@ -7,7 +7,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import ru.aidar.common.R
-import ru.aidar.common.utils.AppColors.AppTurquoise
+import ru.aidar.common.utils.AppColors.AppWhite
 
 object AppColors {
     val AppYellow = Color(0xFFFFEB3B)
@@ -17,6 +17,7 @@ object AppColors {
     val AppPink = Color(0xFFEE1DD2)
     val AppTurquoise = Color(0xFFFFFAFA)
     val AppBlack = Color(0xFF16181F)
+    val AppWhite = Color(0xFFFFFFFF)
 }
 
 val AppFontFamily =
@@ -46,11 +47,23 @@ object AppTypography {
             fontWeight = FontWeight.Thin,
         )
 
-    val dropDownMenuTypo =
+    val textFieldTypo =
         TextStyle(
-            fontSize = 14.sp,
             fontFamily = AppFontFamily,
-            fontWeight = FontWeight.Normal,
-            color = AppTurquoise,
+            fontSize = 18.sp
+        )
+
+    val buttonTypo =
+        TextStyle(
+            fontSize = 18.sp,
+            fontFamily = AppFontFamily,
+            fontWeight = FontWeight.Medium,
+        )
+
+    val labelTypo =
+        TextStyle(
+            fontFamily = AppFontFamily,
+            fontWeight = FontWeight.Light,
+            color = AppWhite,
         )
 }

@@ -24,6 +24,12 @@ android {
             )
         }
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.9"
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -48,6 +54,8 @@ dependencies {
     // compose
     implementation(rootProject.extra["composeDep"].toString())
     implementation(rootProject.extra["materialDep"].toString())
+
+    runtimeOnly("androidx.lifecycle:lifecycle-common:2.7.0")
 
     // room
     implementation(rootProject.extra["roomRuntimeDep"].toString())

@@ -17,17 +17,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import ru.aidar.common.compose_component.ComponentDropDownMenu
-import ru.aidar.common.compose_component.model.DropDownModel
 import ru.aidar.common.utils.AppColors
 import ru.aidar.common.utils.AppColors.AppGreen
 import ru.aidar.common.utils.AppColors.AppPink
@@ -85,23 +79,6 @@ fun MainMenuScreen(
             )
         },
     ) {
-        /*ComponentDropDownMenu(
-            onDismissRequest = ::switchDropDownExpanded,
-            expanded = dropDownExpanded,
-            items =
-                arrayOf(
-                    DropDownModel(
-                        text = R.string.moonrise,
-                        trailingImage = R.drawable.ic_sun,
-                        action = {},
-                    ),
-                    DropDownModel(
-                        text = R.string.logout,
-                        trailingImage = R.drawable.ic_logout,
-                        action = {},
-                    ),
-                ),
-        )*/
         LazyColumn(
             modifier =
                 Modifier
