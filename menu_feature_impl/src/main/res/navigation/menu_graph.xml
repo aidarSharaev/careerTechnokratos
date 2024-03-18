@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_graph"
+    app:startDestination="@id/mainMenuFragment">
+
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="ru.aidar.menu_feature_impl.presentation.MainMenuFragment"
+        android:label="MainMenuFragment" />
+    <deepLink
+        android:id="@+id/deepLink"
+        app:uri="gpapp://menu_destination" />
+
+</navigation>

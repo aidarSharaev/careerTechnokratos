@@ -29,7 +29,6 @@ fun CreateAccountScreen(viewModel: CreateAccountViewModel) {
         modifier =
             Modifier
                 .fillMaxSize()
-                // .verticalScroll(scrollState)
                 .background(AppColors.AppBlack),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -75,7 +74,7 @@ fun CreateAccountScreen(viewModel: CreateAccountViewModel) {
 
         GpTextButtonWithAnnotatedString(
             modifier = Modifier.padding(top = 10.dp),
-            onClick = {},
+            onClick = viewModel::navigateToLogin,
             annotatedString =
                 buildAnnotatedString {
                     pushStyle(

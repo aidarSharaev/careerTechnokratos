@@ -10,6 +10,10 @@ class MainMenuViewModel(
     private val mmUseCases: MainMenuUseCases,
 ) : BaseViewModel() {
     init {
-        Log.d("ViewModelInstance", "${this::class.java.name} init")
+        Log.d("ViewModelInstance", "init MainMenuViewModel")
+    }
+
+    override fun onCleared() {
+        Log.d("ViewModelInstance", "clear MainMenuViewModel")
     }
 }

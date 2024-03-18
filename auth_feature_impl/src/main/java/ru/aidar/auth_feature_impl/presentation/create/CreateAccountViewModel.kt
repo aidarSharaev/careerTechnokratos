@@ -9,7 +9,16 @@ class CreateAccountViewModel(
     private val createAccUseCases: CreateAccUseCases,
     private val router: AuthRouter,
 ) : BaseViewModel() {
+
+    fun navigateToLogin() {
+        router.navigateToLogin()
+    }
     init {
-        Log.d("ViewModelInstance", "CreateAccountViewModel")
+        Log.d("ViewModelInstance", "init CreateAccountViewModel")
+    }
+
+    override fun onCleared() {
+        Log.d("ViewModelInstance", "clear CreateAccountViewModel")
+        super.onCleared()
     }
 }

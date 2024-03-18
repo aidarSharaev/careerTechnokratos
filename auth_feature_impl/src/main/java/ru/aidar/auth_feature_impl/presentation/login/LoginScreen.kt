@@ -53,17 +53,17 @@ fun LoginScreen(viewModel: LoginViewModel) {
     val scrollState = rememberScrollState()
 
     LaunchedEffect(key1 = imeState.value) {
-        if (imeState.value) {
+        if(imeState.value) {
             scrollState.animateScrollTo(scrollState.maxValue, tween(300))
         }
     }
 
     Column(
         modifier =
-            Modifier
-                .fillMaxSize()
-                .verticalScroll(scrollState)
-                .background(AppBlack),
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(scrollState)
+            .background(AppBlack),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -87,7 +87,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
         )
         TextButton(
             modifier = Modifier.padding(top = 16.dp),
-            onClick = {},
+            onClick = viewModel::navigateToMenuGraph,
             colors = ButtonDefaults.textButtonColors(containerColor = Color.Transparent),
         ) {
             Text(
@@ -95,19 +95,19 @@ fun LoginScreen(viewModel: LoginViewModel) {
                 style = AppTypography.buttonTypo,
                 color = AppWhite,
                 modifier =
-                    Modifier
-                        .drawBehind {
-                            drawRoundRect(
-                                AppPink,
-                                cornerRadius = CornerRadius(6.dp.toPx()),
-                            )
-                        }
-                        .padding(horizontal = 18.dp, vertical = 10.dp),
+                Modifier
+                    .drawBehind {
+                        drawRoundRect(
+                            AppPink,
+                            cornerRadius = CornerRadius(6.dp.toPx()),
+                        )
+                    }
+                    .padding(horizontal = 18.dp, vertical = 10.dp),
             )
         }
         TextButton(
             modifier = Modifier.padding(top = 10.dp),
-            onClick = { viewModel.navigateToCreate() },
+            onClick = viewModel::navigateToCreate,
             colors = ButtonDefaults.textButtonColors(containerColor = Color.Transparent),
         ) {
             Text(

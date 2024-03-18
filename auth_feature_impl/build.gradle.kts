@@ -46,9 +46,12 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":auth_feature_api"))
 
+    // navigation
+    implementation(rootProject.extra["navFragmentDep"].toString())
+    implementation(rootProject.extra["navUiDep"].toString())
+
     // dagger
     implementation(rootProject.extra["daggerDep"].toString())
-
     ksp(rootProject.extra["daggerKspDep"].toString())
 
     implementation("androidx.compose.material3:material3-android:1.2.1")

@@ -1,40 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
-    <fragment
-        android:id="@+id/mainMenuFrag"
-        android:name="ru.aidar.menu_feature_impl.presentation.MainMenuFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_main_menu">
-        <action
-            android:id="@+id/action_mainMenu_to_apodFeature"
-            app:destination="@id/apodListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/apodListFragment"
-        android:name="ru.aidar.apods_feature_impl.presentation.ApodFragment"
-        android:label="Pictures"
-        tools:layout="@layout/fragment_apod_list" />
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="ru.aidar.auth_feature_impl.presentation.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_createAccountFragment"
-            app:destination="@id/createAccountFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/createAccountFragment"
-        android:name="ru.aidar.auth_feature_impl.presentation.create.CreateAccountFragment"
-        android:label="fragment_create_account"
-        tools:layout="@layout/fragment_create_account" >
-        <action
-            android:id="@+id/action_createAccountFragment_to_mainMenuFrag"
-            app:destination="@id/mainMenuFrag" />
-    </fragment>
+    android:id="@+id/application_graph"
+    app:startDestination="@id/auth_graph">
+
+<!--    <action
+        android:id="@+id/action_mainMenu_to_authGraph"
+        app:destination="@id/auth_graph"
+        app:popUpTo="@+id/application_graph"
+        app:popUpToInclusive="true" />-->
+
+
+    <include app:graph="@navigation/auth_graph" />
+    <include app:graph="@navigation/menu_graph" />
+
 
 </navigation>

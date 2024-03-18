@@ -9,7 +9,7 @@ class MainViewModel(
     // private val resourceManager: ResourceManager,
 ) : BaseViewModel() {
     init {
-        Log.d("ViewModelInstance", "MainViewModel")
+        Log.d("ViewModelInstance", "init MainViewModel")
     }
 
     fun isUserAuthorized(): Boolean {
