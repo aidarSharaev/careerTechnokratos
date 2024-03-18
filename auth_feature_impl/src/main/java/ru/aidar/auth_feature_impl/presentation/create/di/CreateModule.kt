@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 import ru.aidar.auth_feature_api.domain.interfaces.CreateAccUseCases
+import ru.aidar.auth_feature_api.domain.wrappers.CreateAccStateWrapper
 import ru.aidar.auth_feature_impl.AuthRouter
 import ru.aidar.auth_feature_impl.presentation.create.CreateAccountViewModel
 import ru.aidar.common.di.viewmodel.ViewModelKey
@@ -28,7 +29,12 @@ class CreateModule {
     fun provideViewModel(
         router: AuthRouter,
         createAccUseCases: CreateAccUseCases,
+        wrapper: CreateAccStateWrapper,
     ): ViewModel {
-        return CreateAccountViewModel(router = router, createAccUseCases = createAccUseCases)
+        return CreateAccountViewModel(
+            router = router,
+            createAccUseCases = createAccUseCases,
+            wrapper = wrapper,
+        )
     }
 }

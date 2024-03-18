@@ -1,21 +1,21 @@
 package ru.aidar.common.core.error
 
-interface Status {
+interface ResponseStatus {
     fun apply(): Boolean
 
-    object Success : Status {
+    object Success : ResponseStatus {
         override fun apply(): Boolean {
             return true
         }
     }
 
-    data class Fail(val message: String) : Status {
+    data class Fail(val message: String) : ResponseStatus {
         override fun apply(): Boolean {
             return false
         }
     }
 
-    data class Cancel(val message: String, val throwable: String) : Status {
+    data class Cancel(val message: String, val throwable: String) : ResponseStatus {
         override fun apply(): Boolean {
             return false
         }

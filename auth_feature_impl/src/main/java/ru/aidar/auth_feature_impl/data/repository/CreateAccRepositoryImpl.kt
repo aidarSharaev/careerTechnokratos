@@ -1,6 +1,10 @@
 package ru.aidar.auth_feature_impl.data.repository
 
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 import ru.aidar.auth_feature_api.domain.interfaces.CreateAccRepository
+import ru.aidar.auth_feature_api.domain.interfaces.model.AuthResponse
+import ru.aidar.auth_feature_impl.data.mappers.AuthMappers
 import ru.aidar.common.core.auth.FirebaseManager
 import javax.inject.Inject
 
@@ -8,12 +12,22 @@ class CreateAccRepositoryImpl
     @Inject
     constructor(
         private val firebaseManager: FirebaseManager,
-//    private val mapper: FbUserToFbAuthMapper
+        private val mapper: AuthMappers,
+        private val defaultDispatcher: CoroutineDispatcher,
     ) : CreateAccRepository {
         override suspend fun createUserWithEmailAndPassword(
             email: String,
             password: String,
-        ): Boolean {
-            return firebaseManager.createUserWithEmailAndPassword(email = email, password = password)
+            nickname: String,
+        ): AuthResponse {
+            return withContext(defaultDispatcher) {
+                val response =
+                    firebaseManager.createUserWithEmailAndPassword(
+                        email = email,
+                        password = password,
+                        nickname = nickname,
+                    )
+                mapper.fbResponseToAuthResponse(response = response)
+            }
         }
     }

@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 import ru.aidar.auth_feature_api.domain.interfaces.LoginUseCases
+import ru.aidar.auth_feature_api.domain.wrappers.LoginStateWrapper
 import ru.aidar.auth_feature_impl.AuthRouter
 import ru.aidar.auth_feature_impl.presentation.login.LoginViewModel
 import ru.aidar.common.di.viewmodel.ViewModelKey
@@ -28,7 +29,8 @@ class LoginModule {
     fun provideViewModel(
         router: AuthRouter,
         loginUseCases: LoginUseCases,
+        wrapper: LoginStateWrapper,
     ): ViewModel {
-        return LoginViewModel(router = router, loginUseCases = loginUseCases)
+        return LoginViewModel(router = router, loginUseCases = loginUseCases, wrapper = wrapper)
     }
 }

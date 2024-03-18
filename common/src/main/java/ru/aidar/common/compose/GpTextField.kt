@@ -19,6 +19,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import ru.aidar.common.utils.AppColors.AppBlack
+import ru.aidar.common.utils.AppColors.AppRed
 import ru.aidar.common.utils.AppColors.AppWhite
 import ru.aidar.common.utils.AppFontFamily
 import ru.aidar.common.utils.AppTypography.textFieldTypo
@@ -39,6 +40,7 @@ fun TextFieldWithOnNext(
     additionalColor: Color = AppWhite,
     label: String? = null,
     placeholder: String? = null,
+    readOnly: Boolean = false,
 ) {
     GpTextField(
         modifier = modifier,
@@ -62,6 +64,7 @@ fun TextFieldWithOnNext(
         additionalColor = additionalColor,
         label = label,
         placeholder = placeholder,
+        readOnly = readOnly,
     )
 }
 
@@ -82,6 +85,7 @@ fun TextFieldWithOnDone(
     additionalColor: Color = AppWhite,
     label: String? = null,
     placeholder: String? = null,
+    readOnly: Boolean = false,
 ) {
     GpTextField(
         modifier = modifier,
@@ -89,6 +93,7 @@ fun TextFieldWithOnDone(
         value = value,
         isError = isError,
         width = width,
+        readOnly = readOnly,
         singleLine = singleLine,
         textStyle = textStyle,
         keyboardOptions =
@@ -125,6 +130,7 @@ fun GpTextField(
     additionalColor: Color = AppWhite,
     label: String? = null,
     placeholder: String? = null,
+    readOnly: Boolean = false,
 ) {
     OutlinedTextField(
         modifier = modifier.fillMaxWidth(width),
@@ -134,6 +140,7 @@ fun GpTextField(
         keyboardOptions = keyboardOptions,
         keyboardActions = keyboardActions,
         textStyle = textStyle,
+        readOnly = readOnly,
         visualTransformation = visualTransformation,
         placeholder = {
             placeholder?.let {
@@ -163,6 +170,9 @@ fun GpTextField(
                 unfocusedLabelColor = additionalColor.copy(0.3f),
                 focusedContainerColor = containerColor,
                 unfocusedContainerColor = containerColor,
+                errorIndicatorColor = AppRed,
+                errorContainerColor = containerColor,
+                errorTextColor = AppRed,
             ),
         isError = isError,
     )

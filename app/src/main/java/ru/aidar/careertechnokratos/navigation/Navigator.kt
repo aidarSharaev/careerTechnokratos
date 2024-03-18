@@ -12,7 +12,6 @@ import ru.aidar.menu_feature_impl.MenuRouter
 import ru.aidar.spaceoverflow_feature_impl.SoRouter
 
 class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRouter {
-
     private var appNavController: NavController? = null
 
     fun attachNavController(
@@ -24,7 +23,7 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
     }
 
     fun detachNavController(navController: NavController) {
-        if(appNavController == navController) {
+        if (appNavController == navController) {
             appNavController = null
         }
     }
@@ -37,22 +36,25 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
             appNavController?.navigate(R.id.action_mainMenu_to_apodFeature, null)
         }*/
 
-    override fun navigateToMenuGraph(@IdRes graphId: Int, uri: String) {
-        appNavController?.popBackStack(graphId, true);
+    override fun navigateToMenuGraph(
+        @IdRes graphId: Int,
+        uri: String,
+    ) {
+        appNavController?.popBackStack(graphId, true)
         appNavController?.navigate(Uri.parse(uri))
     }
 
     override fun navigateToCreate() {
         appNavController?.navigate(
             ru.aidar.signin_feature_impl.R.id.action_loginFragment_to_createAccountFragment,
-            null
+            null,
         )
     }
 
     override fun navigateToLogin() {
         appNavController?.navigate(
             ru.aidar.signin_feature_impl.R.id.action_createAccountFragment_to_loginFragment,
-            null
+            null,
         )
     }
 }

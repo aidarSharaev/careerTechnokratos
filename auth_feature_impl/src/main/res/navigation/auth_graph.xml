@@ -11,7 +11,9 @@
         android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_createAccountFragment"
-            app:destination="@id/createAccountFragment" />
+            app:destination="@id/createAccountFragment"
+            app:popUpTo="@id/auth_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -21,7 +23,9 @@
         tools:layout="@layout/fragment_create_account">
         <action
             android:id="@+id/action_createAccountFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/auth_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <deepLink

@@ -4,13 +4,6 @@
     android:id="@+id/application_graph"
     app:startDestination="@id/auth_graph">
 
-<!--    <action
-        android:id="@+id/action_mainMenu_to_authGraph"
-        app:destination="@id/auth_graph"
-        app:popUpTo="@+id/application_graph"
-        app:popUpToInclusive="true" />-->
-
-
     <include app:graph="@navigation/auth_graph" />
     <include app:graph="@navigation/menu_graph" />
 

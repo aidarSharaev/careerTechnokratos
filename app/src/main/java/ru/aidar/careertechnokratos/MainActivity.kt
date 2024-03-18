@@ -9,7 +9,6 @@ import ru.aidar.common.base.BaseActivity
 import javax.inject.Inject
 
 class MainActivity : BaseActivity<MainViewModel>() {
-
     @Inject
     lateinit var navigator: Navigator
 
@@ -19,9 +18,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
         navController =
             (supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment).navController
         val graph = navController?.navInflater?.inflate(R.navigation.nav_graph)
-        if(!viewModel.isUserAuthorized()) {
-             graph?.setStartDestination(ru.aidar.menu_feature_impl.R.id.menu_graph)
-         }
+        if (viewModel.isUserAuthorized()) {
+            graph?.setStartDestination(ru.aidar.menu_feature_impl.R.id.menu_graph)
+        }
         navigator.attachNavController(navController!!, graph)
     }
 

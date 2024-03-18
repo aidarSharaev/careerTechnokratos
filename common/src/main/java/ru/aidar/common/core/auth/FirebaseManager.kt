@@ -1,6 +1,7 @@
 package ru.aidar.common.core.auth
 
 import com.google.firebase.auth.FirebaseUser
+import ru.aidar.common.core.auth.model.FbResponse
 
 interface FirebaseManager {
     companion object {
@@ -10,12 +11,20 @@ interface FirebaseManager {
     suspend fun createUserWithEmailAndPassword(
         email: String,
         password: String,
-    ): Boolean
+        nickname: String,
+    ): FbResponse
 
     suspend fun signInWithEmailAndPassword(
         email: String,
         password: String,
-    ): Boolean
+    ): FbResponse
+
+    suspend fun setUserName(nickname: String)
 
     fun getFbUser(): FirebaseUser?
+
+    suspend fun createUser(
+        email: String,
+        password: String,
+    ): FbResponse
 }
