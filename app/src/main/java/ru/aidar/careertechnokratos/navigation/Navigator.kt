@@ -26,7 +26,15 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
         }
     }
 
+    fun navigateToAuthGraph() {
+        // todo
+    }
+
     override fun navigateToApod() {
         appNavController?.navigate(R.id.action_mainMenu_to_apodFeature, null)
+    }
+
+    override fun navigateToCreate() {
+        appNavController?.navigate(R.id.action_loginFragment_to_createAccountFragment, null)
     }
 }

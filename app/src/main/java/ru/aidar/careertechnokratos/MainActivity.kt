@@ -17,7 +17,11 @@ class MainActivity : BaseActivity<MainViewModel>() {
     override fun initViews() {
         navController =
             (supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment).navController
-        navigator.attachNavController(navController!!, R.navigation.nav_graph)
+        if (viewModel.isUserAuthorized()) {
+            navigator.attachNavController(navController!!, R.navigation.nav_graph)
+        } else {
+            navigator.attachNavController(navController!!, R.navigation.nav_graph)
+        }
     }
 
     override fun inject() {

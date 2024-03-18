@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import ru.aidar.common.data.db.GalaxyPulseDatabase
 import ru.aidar.common.data.db.dao.ApodDao
-import ru.aidar.common.di.scope.ApplicationScope
+import ru.aidar.common.di.scope.app.ApplicationScope
 
 @Module
 class DbModule {

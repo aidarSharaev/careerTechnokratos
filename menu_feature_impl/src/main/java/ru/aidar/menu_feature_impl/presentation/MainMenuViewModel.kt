@@ -6,10 +6,9 @@ import ru.aidar.menu_feature_api.domain.MainMenuUseCases
 import ru.aidar.menu_feature_impl.MenuRouter
 
 class MainMenuViewModel(
-//    private val router: MenuRouter,
-//    private val mmUseCases: MainMenuUseCases,
+    private val router: MenuRouter,
+    private val mmUseCases: MainMenuUseCases,
 ) : BaseViewModel() {
-
     init {
         Log.d("ViewModelInstance", "${this::class.java.name} init")
     }

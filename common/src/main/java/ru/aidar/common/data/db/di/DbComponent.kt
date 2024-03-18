@@ -2,7 +2,7 @@ package ru.aidar.common.data.db.di
 
 import dagger.Component
 import ru.aidar.common.di.CommonApi
-import ru.aidar.common.di.scope.ApplicationScope
+import ru.aidar.common.di.scope.app.ApplicationScope
 
 @Component(
     modules = [DbModule::class],

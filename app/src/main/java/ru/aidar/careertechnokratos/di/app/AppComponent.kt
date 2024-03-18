@@ -10,7 +10,7 @@ import ru.aidar.careertechnokratos.di.main.MainDependencies
 import ru.aidar.common.di.CommonApi
 import ru.aidar.common.di.modules.CommonModule
 import ru.aidar.common.di.modules.NetworkModule
-import ru.aidar.common.di.scope.ApplicationScope
+import ru.aidar.common.di.scope.app.ApplicationScope
 
 @Component(
     modules = [

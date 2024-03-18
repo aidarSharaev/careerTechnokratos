@@ -8,7 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import ru.aidar.common.core.config.AppProperties
 import ru.aidar.common.core.config.NetworkProperties
 import ru.aidar.common.data.network.NetworkApiCreator
-import ru.aidar.common.di.scope.ApplicationScope
+import ru.aidar.common.di.scope.app.ApplicationScope
 import java.util.concurrent.TimeUnit
 
 // private const val SOLARIE_URL = "https://api.le-systeme-solaire.net"

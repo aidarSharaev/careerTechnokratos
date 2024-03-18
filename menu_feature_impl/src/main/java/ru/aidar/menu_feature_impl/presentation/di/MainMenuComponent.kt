@@ -9,7 +9,6 @@ import ru.aidar.menu_feature_impl.presentation.MainMenuFragment
 @Subcomponent(modules = [MainMenuModule::class])
 @MainMenuScreenScope
 interface MainMenuComponent {
-
     @Subcomponent.Factory
     interface Factory {
         fun create(

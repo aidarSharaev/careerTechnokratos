@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import dagger.BindsInstance
 import dagger.Component
 import ru.aidar.careertechnokratos.MainActivity
-import ru.aidar.common.di.scope.MainMenuFeatureScope
+import ru.aidar.common.di.scope.app.ApplicationScope
 
 @Component(
     dependencies = [MainDependencies::class],
     modules = [MainModule::class],
 )
-@MainMenuFeatureScope
+@ApplicationScope
 interface MainComponent {
     companion object {
         fun init(

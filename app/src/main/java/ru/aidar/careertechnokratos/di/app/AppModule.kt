@@ -4,7 +4,7 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import ru.aidar.careertechnokratos.GalaxyPulseApplication
-import ru.aidar.common.di.scope.ApplicationScope
+import ru.aidar.common.di.scope.app.ApplicationScope
 
 @Module
 class AppModule {

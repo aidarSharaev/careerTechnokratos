@@ -14,7 +14,6 @@ import ru.aidar.menu_feature_impl.presentation.MainMenuViewModel
 
 @Module(includes = [ViewModelModule::class])
 class MainMenuModule {
-
     @Provides
     fun provideViewModelProvider(
         fragment: Fragment,
@@ -26,10 +25,10 @@ class MainMenuModule {
     @Provides
     @IntoMap
     @ViewModelKey(MainMenuViewModel::class)
-    fun provideMainMenuViewModel(
-//        router: MenuRouter,
-//        mmUseCases: MainMenuUseCases,
+    fun provideViewModel(
+        router: MenuRouter,
+        mmUseCases: MainMenuUseCases,
     ): ViewModel {
-        return MainMenuViewModel(/*router = router, mmUseCases = mmUseCases*/)
+        return MainMenuViewModel(router = router, mmUseCases = mmUseCases)
     }
 }

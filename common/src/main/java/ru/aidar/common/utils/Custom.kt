@@ -50,7 +50,7 @@ object AppTypography {
     val textFieldTypo =
         TextStyle(
             fontFamily = AppFontFamily,
-            fontSize = 18.sp
+            fontSize = 18.sp,
         )
 
     val buttonTypo =

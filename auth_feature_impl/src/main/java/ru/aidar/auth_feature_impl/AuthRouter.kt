@@ -1,3 +1,7 @@
 package ru.aidar.auth_feature_impl
 
-interface AuthRouter
+import ru.aidar.common.base.BaseRouter
+
+interface AuthRouter : BaseRouter {
+    fun navigateToCreate()
+}

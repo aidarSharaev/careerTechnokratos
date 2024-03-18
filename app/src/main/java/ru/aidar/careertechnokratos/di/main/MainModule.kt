@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 import ru.aidar.careertechnokratos.MainViewModel
+import ru.aidar.common.core.auth.FirebaseManager
 import ru.aidar.common.di.viewmodel.ViewModelKey
 import ru.aidar.common.di.viewmodel.ViewModelModule
 
@@ -15,12 +16,12 @@ class MainModule {
     @Provides
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    fun provideViewModel(/*resourceManager: ResourceManager*/): ViewModel {
-        return MainViewModel(/*resourceManager = resourceManager*/)
+    fun provideViewModel(firebaseManager: FirebaseManager): ViewModel {
+        return MainViewModel(firebaseManager = firebaseManager)
     }
 
     @Provides
-    fun provideViewModelCreator(
+    fun provideViewModelProvider(
         activity: AppCompatActivity,
         viewModelFactory: ViewModelProvider.Factory,
     ): MainViewModel {

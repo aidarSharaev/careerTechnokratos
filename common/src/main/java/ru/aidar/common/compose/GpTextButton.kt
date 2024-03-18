@@ -41,7 +41,9 @@ fun GpTextButton(
         onClick = onClick,
     ) {
         Text(
-            text = text, modifier = modifier, style = AppTypography.buttonTypo,
+            text = text,
+            modifier = modifier,
+            style = AppTypography.buttonTypo,
             color = textColor,
         )
     }
@@ -56,7 +58,7 @@ fun GpTextButtonWithDrawBehind(
     horizontalPadding: Int,
     verticalPadding: Int,
     text: String,
-    textColor: Color = AppWhite
+    textColor: Color = AppWhite,
 ) {
     TextButton(
         modifier = modifier,
@@ -66,14 +68,15 @@ fun GpTextButtonWithDrawBehind(
             text = text,
             style = AppTypography.buttonTypo,
             color = textColor,
-            modifier = Modifier
-                .drawBehind {
-                    drawRoundRect(
-                        drawColor,
-                        cornerRadius = CornerRadius(cornerRadius.dp.toPx())
-                    )
-                }
-                .padding(horizontal = horizontalPadding.dp, vertical = verticalPadding.dp)
+            modifier =
+                Modifier
+                    .drawBehind {
+                        drawRoundRect(
+                            drawColor,
+                            cornerRadius = CornerRadius(cornerRadius.dp.toPx()),
+                        )
+                    }
+                    .padding(horizontal = horizontalPadding.dp, vertical = verticalPadding.dp),
         )
     }
 }

@@ -2,7 +2,7 @@ package ru.aidar.common.data.db.di
 
 import ru.aidar.common.di.FeatureApiHolder
 import ru.aidar.common.di.FeatureContainer
-import ru.aidar.common.di.scope.ApplicationScope
+import ru.aidar.common.di.scope.app.ApplicationScope
 import javax.inject.Inject
 
 @ApplicationScope

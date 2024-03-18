@@ -1,6 +1,7 @@
 package ru.aidar.common.di
 
 import android.content.Context
+import ru.aidar.common.core.auth.FirebaseManager
 import ru.aidar.common.core.config.AppProperties
 import ru.aidar.common.core.preferences.LocalManager
 import ru.aidar.common.core.resources.ResourceManager
@@ -17,5 +18,5 @@ interface CommonApi {
 
     fun provideLocalManager(): LocalManager
 
-    // fun provideFirebaseAuth(): FirebaseAuth
+    fun provideFirebaseManager(): FirebaseManager
 }

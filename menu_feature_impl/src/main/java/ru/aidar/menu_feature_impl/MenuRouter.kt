@@ -1,6 +1,7 @@
 package ru.aidar.menu_feature_impl
 
-interface MenuRouter {
+import ru.aidar.common.base.BaseRouter
 
+interface MenuRouter : BaseRouter {
     fun navigateToApod()
 }

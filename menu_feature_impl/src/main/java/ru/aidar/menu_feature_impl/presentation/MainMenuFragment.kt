@@ -13,7 +13,6 @@ import ru.aidar.menu_feature_impl.di.MainMenuFeatureComponent
 import ru.aidar.menu_feature_impl.presentation.view.MainMenuScreen
 
 class MainMenuFragment : BaseFragment<MainMenuViewModel>() {
-
     private lateinit var binding: FragmentMainMenuBinding
 
     override fun initViews() {

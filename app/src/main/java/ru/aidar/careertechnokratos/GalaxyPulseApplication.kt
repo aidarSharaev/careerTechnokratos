@@ -9,7 +9,6 @@ import ru.aidar.common.di.FeatureContainer
 import javax.inject.Inject
 
 class GalaxyPulseApplication : Application(), FeatureContainer {
-
     @Inject
     lateinit var featureHolderManager: FeatureHolderManager
 

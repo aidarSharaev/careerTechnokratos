@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainMenuFrag">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/mainMenuFrag"
         android:name="ru.aidar.menu_feature_impl.presentation.MainMenuFragment"
@@ -18,26 +18,23 @@
         android:name="ru.aidar.apods_feature_impl.presentation.ApodFragment"
         android:label="Pictures"
         tools:layout="@layout/fragment_apod_list" />
-
-    <navigation android:id="@+id/navigation"
-        app:startDestination="@id/loginFragment">
-        <fragment
-            android:id="@+id/createAccountFragment"
-            android:name="ru.aidar.auth_feature_impl.create.CreateAccountFragment"
-            android:label="fragment_create_account"
-            tools:layout="@layout/fragment_create_account" />
-        <fragment
-            android:id="@+id/loginFragment"
-            android:name="ru.aidar.auth_feature_impl.login.LoginFragment"
-            android:label="fragment_login"
-            tools:layout="@layout/fragment_login">
-            <action
-                android:id="@+id/action_loginFragment_to_createAccountFragment"
-                app:destination="@id/createAccountFragment" />
-        </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="ru.aidar.auth_feature_impl.presentation.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_global_mainMenuFrag"
+            android:id="@+id/action_loginFragment_to_createAccountFragment"
+            app:destination="@id/createAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="ru.aidar.auth_feature_impl.presentation.create.CreateAccountFragment"
+        android:label="fragment_create_account"
+        tools:layout="@layout/fragment_create_account" >
+        <action
+            android:id="@+id/action_createAccountFragment_to_mainMenuFrag"
             app:destination="@id/mainMenuFrag" />
-    </navigation>
+    </fragment>
 
 </navigation>

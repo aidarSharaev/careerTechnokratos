@@ -48,13 +48,15 @@ fun TextFieldWithOnNext(
         width = width,
         singleLine = singleLine,
         textStyle = textStyle,
-        keyboardOptions = KeyboardOptions(
-            keyboardType = keyboardType,
-            imeAction = ImeAction.Next
-        ),
-        keyboardActions = KeyboardActions(
-            onNext = { focusManager.moveFocus(FocusDirection.Down) }
-        ),
+        keyboardOptions =
+            KeyboardOptions(
+                keyboardType = keyboardType,
+                imeAction = ImeAction.Next,
+            ),
+        keyboardActions =
+            KeyboardActions(
+                onNext = { focusManager.moveFocus(FocusDirection.Down) },
+            ),
         visualTransformation = visualTransformation,
         containerColor = containerColor,
         additionalColor = additionalColor,
@@ -89,14 +91,16 @@ fun TextFieldWithOnDone(
         width = width,
         singleLine = singleLine,
         textStyle = textStyle,
-        keyboardOptions = KeyboardOptions(
-            keyboardType = keyboardType,
-            imeAction = ImeAction.Done
-        ),
-        keyboardActions = KeyboardActions(onDone = {
-            keyboardController?.hide()
-            focusManager.clearFocus()
-        }),
+        keyboardOptions =
+            KeyboardOptions(
+                keyboardType = keyboardType,
+                imeAction = ImeAction.Done,
+            ),
+        keyboardActions =
+            KeyboardActions(onDone = {
+                keyboardController?.hide()
+                focusManager.clearFocus()
+            }),
         visualTransformation = visualTransformation,
         containerColor = containerColor,
         additionalColor = additionalColor,
@@ -136,7 +140,7 @@ fun GpTextField(
                 Text(
                     text = placeholder,
                     color = additionalColor.copy(0.3f),
-                    fontFamily = AppFontFamily
+                    fontFamily = AppFontFamily,
                 )
             }
         },
@@ -144,24 +148,22 @@ fun GpTextField(
             label?.let {
                 Text(
                     text = label,
-                    //color = additionalColor.copy(0.5f),
-                    fontFamily = AppFontFamily
+                    // color = additionalColor.copy(0.5f),
+                    fontFamily = AppFontFamily,
                 )
             }
         },
-        colors = TextFieldDefaults.colors(
-            focusedIndicatorColor = additionalColor.copy(0.8f),
-            unfocusedIndicatorColor = additionalColor.copy(0.3f),
-
-            focusedTextColor = additionalColor,
-            unfocusedTextColor = additionalColor.copy(0.85f),
-
-            focusedLabelColor = additionalColor.copy(0.8f),
-            unfocusedLabelColor = additionalColor.copy(0.3f),
-
-            focusedContainerColor = containerColor,
-            unfocusedContainerColor = containerColor,
-        ),
+        colors =
+            TextFieldDefaults.colors(
+                focusedIndicatorColor = additionalColor.copy(0.8f),
+                unfocusedIndicatorColor = additionalColor.copy(0.3f),
+                focusedTextColor = additionalColor,
+                unfocusedTextColor = additionalColor.copy(0.85f),
+                focusedLabelColor = additionalColor.copy(0.8f),
+                unfocusedLabelColor = additionalColor.copy(0.3f),
+                focusedContainerColor = containerColor,
+                unfocusedContainerColor = containerColor,
+            ),
         isError = isError,
     )
 }
