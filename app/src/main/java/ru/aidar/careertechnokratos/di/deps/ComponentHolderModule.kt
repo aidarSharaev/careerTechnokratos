@@ -35,6 +35,12 @@ interface ComponentHolderModule {
 
     @ApplicationScope
     @Binds
+    @ClassKey(AuthFeatureApi::class)
+    @IntoMap
+    fun provideApodFeatureHolder(apodFeatureHolder: ApodFeatureHolder): FeatureApiHolder
+
+    @ApplicationScope
+    @Binds
     @ClassKey(DbApi::class)
     @IntoMap
     fun provideDbFeature(dbHolder: DbHolder): FeatureApiHolder

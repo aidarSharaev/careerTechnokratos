@@ -7,5 +7,7 @@
 
     <string name="moonrise">Moonrise</string>
     <string name="logout">Logout</string>
+    <string name="switch_number_system">Switch number system</string>
+    <string name="moonlight_tracker">Moonlight Tracker</string>
 
 </resources>

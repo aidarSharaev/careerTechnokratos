@@ -1,4 +1,4 @@
-package ru.aidar.menu_feature_impl.presentation
+package ru.aidar.menu_feature_impl.presentation.menu
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import ru.aidar.common.di.FeatureUtils
 import ru.aidar.menu_feature_api.di.MainMenuFeatureApi
 import ru.aidar.menu_feature_impl.databinding.FragmentMainMenuBinding
 import ru.aidar.menu_feature_impl.di.MainMenuFeatureComponent
-import ru.aidar.menu_feature_impl.presentation.view.MainMenuScreen
+import ru.aidar.menu_feature_impl.presentation.menu.view.MainMenuScreen
 
 class MainMenuFragment : BaseFragment<MainMenuViewModel>() {
     private lateinit var binding: FragmentMainMenuBinding
@@ -36,9 +36,7 @@ class MainMenuFragment : BaseFragment<MainMenuViewModel>() {
         binding.mainMenuComposeView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                MainMenuScreen(
-//                    viewModel = viewModel,
-                )
+                MainMenuScreen(viewModel = viewModel)
             }
         }
         return view

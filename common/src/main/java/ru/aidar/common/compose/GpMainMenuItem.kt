@@ -1,4 +1,4 @@
-package ru.aidar.menu_feature_impl.presentation.view
+package ru.aidar.common.compose
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -34,7 +34,7 @@ fun GpMainMenuItem(
     @StringRes text: Int,
 ) {
     ElevatedCard(
-        onClick = { onClick() },
+        onClick = onClick,
         modifier =
             Modifier
                 .height(170.dp)

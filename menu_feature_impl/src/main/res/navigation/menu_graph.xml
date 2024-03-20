@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/mainMenuFragment"
-        android:name="ru.aidar.menu_feature_impl.presentation.MainMenuFragment"
+        android:name="ru.aidar.menu_feature_impl.presentation.menu.MainMenuFragment"
         android:label="MainMenuFragment" />
     <deepLink
         android:id="@+id/deepLink"

@@ -24,11 +24,11 @@ class LoginViewModel(
     override val coroutineContext: CoroutineContext
         get() = SupervisorJob() + CoroutineName("LoginViewModel")
 
-    init {
-        Log.d("ViewModelInstance", "init LoginViewModel")
-    }
-
     val state = wrapper.flow()
+
+    init {
+        Log.d("ViewModelInstance", "init LoginViewModel ${state.value.status}")
+    }
 
     fun navigateToCreate() {
         router.navigateToCreate()

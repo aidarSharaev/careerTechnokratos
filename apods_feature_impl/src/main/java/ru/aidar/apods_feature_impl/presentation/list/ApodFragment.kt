@@ -1,15 +1,11 @@
-package ru.aidar.apods_feature_impl.presentation
+package ru.aidar.apods_feature_impl.presentation.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -18,11 +14,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.compose.ui.unit.dp
 import ru.aidar.apod_feature_impl.databinding.FragmentApodListBinding
 import ru.aidar.common.base.BaseFragment
 import ru.aidar.common.utils.AppColors.AppTurquoise
@@ -75,12 +68,12 @@ fun GpApodList(text: String) {
                     )
                 },
                 colors =
-                    TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color.Transparent.copy(0.5f),
-                        navigationIconContentColor = AppTurquoise,
-                        titleContentColor = AppTurquoise,
-                        actionIconContentColor = AppTurquoise,
-                    ),
+                TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.Transparent.copy(0.5f),
+                    navigationIconContentColor = AppTurquoise,
+                    titleContentColor = AppTurquoise,
+                    actionIconContentColor = AppTurquoise,
+                ),
                 navigationIcon = {
                     IconButton(onClick = { /* do something */ }) {
                         Icon(
@@ -92,17 +85,6 @@ fun GpApodList(text: String) {
             )
         },
     ) {
-        Box(
-            modifier =
-                Modifier
-                    .padding(it)
-                    .fillMaxSize(),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(text = "This is $text")
-            Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(top = 40.dp)) {
-                Text("Tap")
-            }
-        }
+
     }
 }

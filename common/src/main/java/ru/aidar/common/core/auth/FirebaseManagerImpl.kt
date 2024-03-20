@@ -14,6 +14,10 @@ import kotlin.coroutines.resume
 class FirebaseManagerImpl(
     private val firebaseAuth: FirebaseAuth,
 ) : FirebaseManager {
+    init {
+        Log.d("ViewModelInstance", "Firebase init")
+    }
+
     private var user: FirebaseUser? = null
 
     override suspend fun createUserWithEmailAndPassword(
@@ -35,7 +39,7 @@ class FirebaseManagerImpl(
         suspendCancellableCoroutine { continuation ->
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-                    if(task.isSuccessful) {
+                    if (task.isSuccessful) {
                         Log.d(FirebaseManager.TAG, "createUserWithEmail:success")
                         user = firebaseAuth.currentUser
                         continuation.resume(FbResponse(user = user))
@@ -51,6 +55,11 @@ class FirebaseManagerImpl(
             }
         }
 
+    override fun signOut(): Boolean {
+        firebaseAuth.signOut()
+        return firebaseAuth.currentUser == null
+    }
+
     override suspend fun signInWithEmailAndPassword(
         email: String,
         password: String,
@@ -58,7 +67,7 @@ class FirebaseManagerImpl(
         suspendCancellableCoroutine { continuation ->
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-                    if(task.isSuccessful) {
+                    if (task.isSuccessful) {
                         Log.d(FirebaseManager.TAG, "createUserWithEmail:success")
                         user = firebaseAuth.currentUser
                         continuation.resume(FbResponse(user = user))
@@ -82,10 +91,14 @@ class FirebaseManagerImpl(
 
         user!!.updateProfile(profileUpdates)
             .addOnCompleteListener { task ->
-                if(task.isSuccessful) {
+                if (task.isSuccessful) {
                     Log.d(FirebaseManager.TAG, "User profile updated.")
                 }
             }
+    }
+
+    override fun resetUser() {
+        user = null
     }
 
     override fun getFbUser(): FirebaseUser? {
@@ -93,7 +106,7 @@ class FirebaseManagerImpl(
     }
 
     private fun handleLoginError(exception: Exception?): Int {
-        return when(exception) {
+        return when (exception) {
             is FirebaseAuthInvalidCredentialsException -> {
                 ErrorTypes.PASSWORD_ERROR.number
             }

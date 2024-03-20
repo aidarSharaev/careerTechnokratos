@@ -21,10 +21,14 @@ interface FirebaseManager {
 
     suspend fun setUserName(nickname: String)
 
+    fun resetUser()
+
     fun getFbUser(): FirebaseUser?
 
     suspend fun createUser(
         email: String,
         password: String,
     ): FbResponse
+
+    fun signOut(): Boolean
 }

@@ -17,7 +17,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
         }
 
         ScreenStatus.Loading -> {
-            GpLoadingBar()
+            GpLoadingBar("LoginScreen")
         }
     }
 }

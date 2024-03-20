@@ -1,7 +1,10 @@
 package ru.aidar.menu_feature_impl
 
-import ru.aidar.common.base.BaseRouter
+import androidx.annotation.IdRes
 
-interface MenuRouter : BaseRouter {
-    // fun navigateToApod()
+interface MenuRouter {
+    fun navigateToAuthGraph(
+        @IdRes graphId: Int,
+        uri: String,
+    )
 }

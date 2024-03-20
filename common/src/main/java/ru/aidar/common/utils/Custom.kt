@@ -53,11 +53,18 @@ object AppTypography {
             fontSize = 18.sp,
         )
 
-    val buttonTypo =
+    val buttonMediumTypo =
         TextStyle(
             fontSize = 18.sp,
             fontFamily = AppFontFamily,
             fontWeight = FontWeight.Medium,
+        )
+
+    val buttonLightTypo =
+        TextStyle(
+            fontSize = 18.sp,
+            fontFamily = AppFontFamily,
+            fontWeight = FontWeight.Light,
         )
 
     val labelTypo =

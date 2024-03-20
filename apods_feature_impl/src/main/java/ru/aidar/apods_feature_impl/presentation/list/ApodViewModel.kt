@@ -1,4 +1,4 @@
-package ru.aidar.apods_feature_impl.presentation
+package ru.aidar.apods_feature_impl.presentation.list
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager

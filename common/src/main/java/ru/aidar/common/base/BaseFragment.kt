@@ -21,5 +21,4 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
     abstract fun initViews()
 
     abstract fun inject()
-
 }

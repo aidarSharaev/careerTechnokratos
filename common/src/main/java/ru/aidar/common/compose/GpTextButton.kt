@@ -9,6 +9,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import ru.aidar.common.utils.AppColors.AppWhite
 import ru.aidar.common.utils.AppTypography
@@ -35,6 +36,7 @@ fun GpTextButton(
     onClick: () -> Unit,
     text: String,
     textColor: Color = AppWhite,
+    style: TextStyle = AppTypography.buttonMediumTypo,
 ) {
     TextButton(
         modifier = modifier,
@@ -43,7 +45,7 @@ fun GpTextButton(
         Text(
             text = text,
             modifier = modifier,
-            style = AppTypography.buttonTypo,
+            style = style,
             color = textColor,
         )
     }
@@ -59,6 +61,7 @@ fun GpTextButtonWithDrawBehind(
     verticalPadding: Int,
     text: String,
     textColor: Color = AppWhite,
+    style: TextStyle = AppTypography.buttonMediumTypo,
 ) {
     TextButton(
         modifier = modifier,
@@ -66,7 +69,7 @@ fun GpTextButtonWithDrawBehind(
     ) {
         Text(
             text = text,
-            style = AppTypography.buttonTypo,
+            style = style,
             color = textColor,
             modifier =
                 Modifier

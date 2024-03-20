@@ -21,6 +21,7 @@ import ru.aidar.common.di.scope.auth.AuthFeatureScope
 
 @Module
 class AuthFeatureModule {
+
     @Provides
     @AuthFeatureScope
     fun providesIODispatcher(): CoroutineDispatcher {
@@ -52,25 +53,21 @@ class AuthFeatureModule {
     }
 
     @Provides
-    @AuthFeatureScope
     fun provideLoginFlow(): MutableStateFlow<LoginState> {
         return MutableStateFlow(LoginState())
     }
 
     @Provides
-    @AuthFeatureScope
     fun provideLoginWrapper(flow: MutableStateFlow<LoginState>): LoginStateWrapper {
         return LoginStateWrapperImpl(flow = flow)
     }
 
     @Provides
-    @AuthFeatureScope
     fun provideCreateFlow(): MutableStateFlow<CreateAccState> {
         return MutableStateFlow(CreateAccState())
     }
 
     @Provides
-    @AuthFeatureScope
     fun provideCreateWrapper(flow: MutableStateFlow<CreateAccState>): CreateAccStateWrapper {
         return CreateAccStateWrapperImpl(flow = flow)
     }

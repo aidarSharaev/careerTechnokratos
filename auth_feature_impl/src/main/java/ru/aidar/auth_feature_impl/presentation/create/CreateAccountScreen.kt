@@ -17,7 +17,7 @@ fun CreateAccountScreen(viewModel: CreateAccountViewModel) {
         }
 
         ScreenStatus.Loading -> {
-            GpLoadingBar()
+            GpLoadingBar("CreateAccountScreen")
         }
     }
 }

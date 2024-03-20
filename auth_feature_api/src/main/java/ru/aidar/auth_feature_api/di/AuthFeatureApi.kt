@@ -4,7 +4,6 @@ import ru.aidar.auth_feature_api.domain.interfaces.CreateAccRepository
 import ru.aidar.auth_feature_api.domain.interfaces.CreateAccUseCases
 import ru.aidar.auth_feature_api.domain.interfaces.LoginRepository
 import ru.aidar.auth_feature_api.domain.interfaces.LoginUseCases
-import ru.aidar.auth_feature_api.domain.wrappers.LoginStateWrapper
 
 interface AuthFeatureApi {
     fun provideLoginRepository(): LoginRepository
@@ -15,5 +14,5 @@ interface AuthFeatureApi {
 
     fun provideCreateAccUseCases(): CreateAccUseCases
 
-    fun provideLoginWrapper(): LoginStateWrapper
+    // fun provideLoginWrapper(): LoginStateWrapper
 }

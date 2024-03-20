@@ -32,11 +32,15 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
         // todo
     }
 
-    /*    override fun navigateToApod() {
-            appNavController?.navigate(R.id.action_mainMenu_to_apodFeature, null)
-        }*/
-
     override fun navigateToMenuGraph(
+        @IdRes graphId: Int,
+        uri: String,
+    ) {
+        appNavController?.popBackStack(graphId, true)
+        appNavController?.navigate(Uri.parse(uri))
+    }
+
+    override fun navigateToAuthGraph(
         @IdRes graphId: Int,
         uri: String,
     ) {
@@ -56,5 +60,9 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
             ru.aidar.signin_feature_impl.R.id.action_createAccountFragment_to_loginFragment,
             null,
         )
+    }
+
+    override fun navigateToDetail() {
+        // TODO("Not yet implemented")
     }
 }

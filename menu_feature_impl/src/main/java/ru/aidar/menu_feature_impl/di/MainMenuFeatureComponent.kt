@@ -6,7 +6,7 @@ import ru.aidar.common.di.CommonApi
 import ru.aidar.common.di.scope.RegisteredFeatureScope
 import ru.aidar.menu_feature_api.di.MainMenuFeatureApi
 import ru.aidar.menu_feature_impl.MenuRouter
-import ru.aidar.menu_feature_impl.presentation.di.MainMenuComponent
+import ru.aidar.menu_feature_impl.presentation.menu.di.MainMenuComponent
 
 @RegisteredFeatureScope
 @Component(
