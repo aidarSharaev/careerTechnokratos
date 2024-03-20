@@ -7,4 +7,6 @@ interface MenuRouter {
         @IdRes graphId: Int,
         uri: String,
     )
+
+    fun navigateToApodGraph(uri: String)
 }

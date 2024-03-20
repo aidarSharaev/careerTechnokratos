@@ -2,11 +2,14 @@ package ru.aidar.apods_feature_impl.di
 
 import dagger.BindsInstance
 import dagger.Component
+import ru.aidar.apods_feature_api.di.ApodFeatureApi
 import ru.aidar.apods_feature_impl.ApodRouter
+import ru.aidar.apods_feature_impl.presentation.list.di.ApodListComponent
+import ru.aidar.common.data.db.di.DbApi
 import ru.aidar.common.di.CommonApi
-import ru.aidar.common.di.scope.auth.AuthFeatureScope
+import ru.aidar.common.di.scope.apod.ApodFeatureScope
 
-@AuthFeatureScope
+@ApodFeatureScope
 @Component(
     dependencies = [ApodFeatureDependencies::class],
     modules = [ApodFeatureModule::class],
@@ -14,7 +17,7 @@ import ru.aidar.common.di.scope.auth.AuthFeatureScope
 interface ApodFeatureComponent : ApodFeatureApi {
     fun apodListComponentFactory(): ApodListComponent.Factory
 
-    fun apodDetailAccComponentFactory(): ApodDetailComponent.Factory
+    // fun apodDetailAccComponentFactory(): ApodDetailComponent.Factory
 
     @Component.Builder
     interface Builder {
@@ -26,6 +29,10 @@ interface ApodFeatureComponent : ApodFeatureApi {
         fun build(): ApodFeatureComponent
     }
 
-    @Component(dependencies = [CommonApi::class])
+    @Component(
+        dependencies = [
+            CommonApi::class, DbApi::class,
+        ],
+    )
     interface ApodFeatureDependenciesComponent : ApodFeatureDependencies
 }

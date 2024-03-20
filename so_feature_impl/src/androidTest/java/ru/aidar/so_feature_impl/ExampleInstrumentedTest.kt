@@ -1,4 +1,4 @@
-package ru.aidar.spaceoverflow_feature_impl
+package ru.aidar.so_feature_impl
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

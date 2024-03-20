@@ -3,9 +3,7 @@ package ru.aidar.common.data.network
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.aidar.common.remote.NasaServiceApi
 
-// TODO изменить юрлки
 class NetworkApiCreator(
     private val okHttpClient: OkHttpClient,
     private val nasaUrl: String,
@@ -14,8 +12,8 @@ class NetworkApiCreator(
     // private val testUrl: String,
     // private val calenderUrl: String,
 ) {
-    private fun <T> nasaCreate(): NasaServiceApi {
-        return create(url = nasaUrl, NasaServiceApi::class.java)
+    fun <T> getNasaService(service: Class<T>): T {
+        return create(url = nasaUrl, service = service)
     }
 
     private fun <T> create(

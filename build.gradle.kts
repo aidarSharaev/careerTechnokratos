@@ -37,6 +37,9 @@ buildscript {
 
     val dataStoreVersion by extra { "1.0.0" }
 
+    val roomVersion by extra {"2.6.1"}
+    val roomComposeVersion by extra {"3.2.1"}
+
 
     val coreDep by extra { "androidx.core:core-ktx:$coreVersion" }
 
@@ -52,11 +55,12 @@ buildscript {
     val okhttpDep by extra { "com.squareup.okhttp3:okhttp:$okhttpVersion" }
     val interceptorDep by extra { "com.squareup.okhttp3:logging-interceptor:$okhttpVersion" }
 
-    val roomRuntimeDep by extra { "androidx.room:room-runtime:2.6.1" }
-    val roomKspDep by extra { "androidx.room:room-compiler:2.6.1" }
-    val roomKtxDep by extra { "androidx.room:room-ktx:2.6.1" }
-    val roomPagingDep by extra { "androidx.room:room-paging:2.6.1" }
+    val roomRuntimeDep by extra { "androidx.room:room-runtime:$roomVersion" }
+    val roomKspDep by extra { "androidx.room:room-compiler:$roomVersion" }
+    val roomKtxDep by extra { "androidx.room:room-ktx:$roomVersion" }
+    val roomPagingDep by extra { "androidx.room:room-paging:$roomVersion" }
     val roomToolKspDep by extra { "com.google.devtools.ksp:symbol-processing-api:1.9.22-1.0.17" }
+    val roomPagingComposeDep by extra { "androidx.paging:paging-compose:$roomComposeVersion" }
 
     val composeToolingDep by extra { "androidx.compose.ui:ui-tooling:$composeVersion" }
     val composeDep by extra { "androidx.compose.ui:ui:$composeVersion" }

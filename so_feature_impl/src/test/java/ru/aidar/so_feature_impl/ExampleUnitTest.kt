@@ -1,4 +1,4 @@
-package ru.aidar.spaceoverflow_feature_impl
+package ru.aidar.so_feature_impl
 
 import org.junit.Assert.*
 import org.junit.Test

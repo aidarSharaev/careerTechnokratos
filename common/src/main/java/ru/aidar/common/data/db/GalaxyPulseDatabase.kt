@@ -26,5 +26,4 @@ abstract class GalaxyPulseDatabase : RoomDatabase() {
     }
 
     abstract fun apodDao(): ApodDao
-    // abstract fun chartDao(): ChartDao
 }

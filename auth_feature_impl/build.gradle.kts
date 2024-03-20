@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.aidar.signin_feature_impl"
+    namespace = "ru.aidar.auth_feature_impl"
     compileSdk = rootProject.extra["compileSdk"] as Int
 
     defaultConfig {

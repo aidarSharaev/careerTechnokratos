@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import ru.aidar.auth_feature_api.di.AuthFeatureApi
+import ru.aidar.auth_feature_impl.databinding.FragmentLoginBinding
 import ru.aidar.auth_feature_impl.di.AuthFeatureComponent
 import ru.aidar.common.base.BaseFragment
 import ru.aidar.common.di.FeatureUtils
-import ru.aidar.signin_feature_impl.databinding.FragmentLoginBinding
 
 class LoginFragment : BaseFragment<LoginViewModel>() {
     private lateinit var binding: FragmentLoginBinding

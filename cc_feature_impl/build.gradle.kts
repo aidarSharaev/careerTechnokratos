@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.aidar.horoscope_feature_impl"
+    namespace = "ru.aidar.cc_feature_impl"
     compileSdk = rootProject.extra["compileSdk"] as Int
 
     defaultConfig {

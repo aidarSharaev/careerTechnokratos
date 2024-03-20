@@ -4,6 +4,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
+import ru.aidar.apods_feature_api.di.ApodFeatureApi
+import ru.aidar.apods_feature_impl.di.ApodFeatureHolder
 import ru.aidar.auth_feature_api.di.AuthFeatureApi
 import ru.aidar.auth_feature_impl.di.AuthFeatureHolder
 import ru.aidar.careertechnokratos.GalaxyPulseApplication
@@ -35,7 +37,7 @@ interface ComponentHolderModule {
 
     @ApplicationScope
     @Binds
-    @ClassKey(AuthFeatureApi::class)
+    @ClassKey(ApodFeatureApi::class)
     @IntoMap
     fun provideApodFeatureHolder(apodFeatureHolder: ApodFeatureHolder): FeatureApiHolder
 

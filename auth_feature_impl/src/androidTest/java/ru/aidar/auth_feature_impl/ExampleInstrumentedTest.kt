@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("ru.aidar.signin_feature_impl.test", appContext.packageName)
+        assertEquals("ru.aidar.auth_feature_impl.test", appContext.packageName)
     }
 }

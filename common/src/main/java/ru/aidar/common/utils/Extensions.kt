@@ -4,10 +4,8 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import ru.aidar.common.data.db.model.ApodEntity
-import ru.aidar.common.data.network.dto.ApodDto
 
-fun ApodEntity.toDto(): ApodDto {
+/*fun ApodEntity.toDto(): ApodDto {
     return ApodDto(
         copyright = copyright,
         date = date,
@@ -27,6 +25,6 @@ fun ApodDto.toEntity(): ApodEntity {
         title = title,
         url = url,
     )
-}
+}*/
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "appSettings")

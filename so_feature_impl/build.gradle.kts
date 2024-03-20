@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.aidar.spaceoverflow_feature_impl"
+    namespace = "ru.aidar.so_feature_impl"
     compileSdk = rootProject.extra["compileSdk"] as Int
 
     defaultConfig {

@@ -6,16 +6,17 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import retrofit2.HttpException
+import ru.aidar.apods_feature_impl.data.mapper.ApodMappers
+import ru.aidar.apods_feature_impl.remote.api.NasaServiceApi
 import ru.aidar.common.data.db.GalaxyPulseDatabase
 import ru.aidar.common.data.db.model.ApodEntity
-import ru.aidar.common.remote.NasaServiceApi
-import ru.aidar.common.utils.toEntity
 import java.io.IOException
 
 @OptIn(ExperimentalPagingApi::class)
 class ApodRemoteMediator(
     private val galaxyPulseDb: GalaxyPulseDatabase,
     private val nasaServiceApi: NasaServiceApi,
+    private val mappers: ApodMappers,
 ) : RemoteMediator<Int, ApodEntity>() {
     override suspend fun load(
         loadType: LoadType,
@@ -28,7 +29,10 @@ class ApodRemoteMediator(
                 if (loadType == LoadType.REFRESH) {
                     galaxyPulseDb.apodDao().deleteAll()
                 }
-                val list = apods.map { it.toEntity() }
+                val list =
+                    apods.map {
+                        mappers.mapLocalToEntity(it)
+                    }
                 galaxyPulseDb.apodDao().upsertAllApods(apods = list)
             }
             MediatorResult.Success(

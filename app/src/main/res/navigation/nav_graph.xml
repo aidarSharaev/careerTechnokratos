@@ -6,6 +6,6 @@
 
     <include app:graph="@navigation/auth_graph" />
     <include app:graph="@navigation/menu_graph" />
-
+    <include app:graph="@navigation/apod_graph" />
 
 </navigation>

@@ -11,9 +11,9 @@ import ru.aidar.auth_feature_api.domain.interfaces.LoginUseCases
 import ru.aidar.auth_feature_api.domain.wrappers.LoginStateWrapper
 import ru.aidar.auth_feature_api.model.ScreenStatus
 import ru.aidar.auth_feature_impl.AuthRouter
+import ru.aidar.auth_feature_impl.R
 import ru.aidar.common.base.BaseViewModel
 import ru.aidar.common.core.auth.model.ErrorTypes
-import ru.aidar.signin_feature_impl.R
 import kotlin.coroutines.CoroutineContext
 
 class LoginViewModel(

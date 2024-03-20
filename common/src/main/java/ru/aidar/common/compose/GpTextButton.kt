@@ -42,11 +42,11 @@ fun GpTextButton(
         modifier = modifier,
         onClick = onClick,
     ) {
-        Text(
+        GpText(
             text = text,
             modifier = modifier,
             style = style,
-            color = textColor,
+            textColor = textColor,
         )
     }
 }
@@ -67,10 +67,10 @@ fun GpTextButtonWithDrawBehind(
         modifier = modifier,
         onClick = onClick,
     ) {
-        Text(
+        GpText(
             text = text,
             style = style,
-            color = textColor,
+            textColor = textColor,
             modifier =
                 Modifier
                     .drawBehind {

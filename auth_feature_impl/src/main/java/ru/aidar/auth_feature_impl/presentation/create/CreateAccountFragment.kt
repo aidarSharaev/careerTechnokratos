@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import ru.aidar.auth_feature_api.di.AuthFeatureApi
+import ru.aidar.auth_feature_impl.databinding.FragmentCreateAccountBinding
 import ru.aidar.auth_feature_impl.di.AuthFeatureComponent
 import ru.aidar.common.base.BaseFragment
 import ru.aidar.common.di.FeatureUtils
-import ru.aidar.signin_feature_impl.databinding.FragmentCreateAccountBinding
 
 class CreateAccountFragment : BaseFragment<CreateAccountViewModel>() {
     private lateinit var binding: FragmentCreateAccountBinding

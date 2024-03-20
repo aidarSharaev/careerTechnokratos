@@ -21,7 +21,6 @@ import ru.aidar.common.di.scope.auth.AuthFeatureScope
 
 @Module
 class AuthFeatureModule {
-
     @Provides
     @AuthFeatureScope
     fun providesIODispatcher(): CoroutineDispatcher {

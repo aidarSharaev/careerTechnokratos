@@ -29,9 +29,8 @@ class NetworkModule {
         }
     }
 
-    // todo @ApplicationScope?
+    // @ApplicationScope
     @Provides
-    @ApplicationScope
     fun providesOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
         networkProperties: NetworkProperties,

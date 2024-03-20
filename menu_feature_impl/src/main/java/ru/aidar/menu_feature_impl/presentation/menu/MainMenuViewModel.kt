@@ -28,10 +28,13 @@ class MainMenuViewModel(
         router.navigateToAuthGraph(R.id.menu_graph, "gpapp://auth_destination")
     }
 
+    fun navigateToApod() {
+        router.navigateToApodGraph("gpapp://apod_destination")
+    }
+
     fun signOut() {
         wrapper.updateStatus(status = ScreenStatus.Loading)
         val result = mmUseCases.signOut()
-        Log.d("ViewModelInstance", "resukt == $result")
         if (result) {
             mmUseCases.resetUser()
             navigateToLogin()

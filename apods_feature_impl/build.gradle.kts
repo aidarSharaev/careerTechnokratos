@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.aidar.apod_feature_impl"
+    namespace = "ru.aidar.apods_feature_impl"
     compileSdk = rootProject.extra["compileSdk"] as Int
 
     defaultConfig {
@@ -62,10 +62,15 @@ dependencies {
     implementation(rootProject.extra["roomKtxDep"].toString())
     implementation(rootProject.extra["roomPagingDep"].toString())
     implementation(rootProject.extra["roomToolKspDep"].toString())
+    implementation(rootProject.extra["roomPagingComposeDep"].toString())
 
     // dagger
     implementation(rootProject.extra["daggerDep"].toString())
     ksp(rootProject.extra["daggerKspDep"].toString())
+
+    // navigation
+    implementation(rootProject.extra["navFragmentDep"].toString())
+    implementation(rootProject.extra["navUiDep"].toString())
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

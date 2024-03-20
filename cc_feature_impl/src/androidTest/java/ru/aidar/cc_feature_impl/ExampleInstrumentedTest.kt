@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("ru.aidar.horoscope_feature_impl.test", appContext.packageName)
+        assertEquals("ru.aidar.cc_feature_impl.test", appContext.packageName)
     }
 }
