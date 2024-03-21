@@ -5,6 +5,6 @@ data class ApodLocal(
     val date: String,
     val explanation: String,
     val title: String,
-    val url: String,
+    val url: String?,
     val id: Long = 0,
 )

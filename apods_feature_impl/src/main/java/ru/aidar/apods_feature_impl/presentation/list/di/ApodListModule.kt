@@ -27,8 +27,8 @@ class ApodListModule {
     @ViewModelKey(ApodListViewModel::class)
     fun provideViewModel(
         router: ApodRouter,
-        apodListUseCases: ApodListUseCases,
+        useCases: ApodListUseCases,
     ): ViewModel {
-        return ApodListViewModel(router = router, apodListUseCases = apodListUseCases)
+        return ApodListViewModel(router = router, useCases = useCases)
     }
 }

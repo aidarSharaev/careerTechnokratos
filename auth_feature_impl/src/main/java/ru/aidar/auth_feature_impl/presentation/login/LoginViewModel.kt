@@ -17,7 +17,7 @@ import ru.aidar.common.core.auth.model.ErrorTypes
 import kotlin.coroutines.CoroutineContext
 
 class LoginViewModel(
-    private val loginUseCases: LoginUseCases,
+    private val useCases: LoginUseCases,
     private val router: AuthRouter,
     private val wrapper: LoginStateWrapper,
 ) : BaseViewModel(), CoroutineScope {
@@ -78,7 +78,7 @@ class LoginViewModel(
                 updateStatus(status = ScreenStatus.Loading)
                 viewModelScope.launch {
                     val result =
-                        loginUseCases.signInWithEmailAndPassword(email = email, password = password)
+                        useCases.signInWithEmailAndPassword(email = email, password = password)
                     if (result.instance) {
                         navigateToMenuGraph()
                     } else {

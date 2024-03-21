@@ -17,7 +17,7 @@ import ru.aidar.common.core.auth.model.ErrorTypes
 import kotlin.coroutines.CoroutineContext
 
 class CreateAccountViewModel(
-    private val createAccUseCases: CreateAccUseCases,
+    private val useCases: CreateAccUseCases,
     private val router: AuthRouter,
     private val wrapper: CreateAccStateWrapper,
 ) : BaseViewModel(), CoroutineScope {
@@ -71,7 +71,7 @@ class CreateAccountViewModel(
                 updateStatus(status = ScreenStatus.Loading)
                 viewModelScope.launch {
                     val result =
-                        createAccUseCases.createUserWithEmailAndPassword(
+                        useCases.createUserWithEmailAndPassword(
                             email = email,
                             password = password,
                             nickname = nickname,

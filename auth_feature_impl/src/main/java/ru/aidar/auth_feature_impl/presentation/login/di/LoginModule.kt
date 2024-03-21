@@ -28,9 +28,9 @@ class LoginModule {
     @ViewModelKey(LoginViewModel::class)
     fun provideViewModel(
         router: AuthRouter,
-        loginUseCases: LoginUseCases,
+        useCases: LoginUseCases,
         wrapper: LoginStateWrapper,
     ): ViewModel {
-        return LoginViewModel(router = router, loginUseCases = loginUseCases, wrapper = wrapper)
+        return LoginViewModel(router = router, useCases = useCases, wrapper = wrapper)
     }
 }

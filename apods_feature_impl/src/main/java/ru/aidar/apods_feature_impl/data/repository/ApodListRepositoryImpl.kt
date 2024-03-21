@@ -4,6 +4,7 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.filter
 import androidx.paging.map
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -45,8 +46,15 @@ class ApodListRepositoryImpl
                     ),
             ).flow
                 .map { pagingData ->
-                    pagingData.map { entity ->
-                        mapper.mapEntityLocal(entity)
+                    pagingData
+                        .filter {
+                            it.url != null
+                        }
+                        .filter {
+                            it.url!!.contains(".jpg")
+                        }
+                        .map { entity ->
+                        mapper.mapEntityToLocal(entity)
                     }
                 }
         // TODO cachedIn

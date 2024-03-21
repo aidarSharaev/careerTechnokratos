@@ -1,4 +1,4 @@
-package ru.aidar.auth_feature_impl.presentation.create.wrapper
+package ru.aidar.auth_feature_impl.data.wrapper
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

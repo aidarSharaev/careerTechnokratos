@@ -28,12 +28,12 @@ class CreateModule {
     @ViewModelKey(CreateAccountViewModel::class)
     fun provideViewModel(
         router: AuthRouter,
-        createAccUseCases: CreateAccUseCases,
+        useCases: CreateAccUseCases,
         wrapper: CreateAccStateWrapper,
     ): ViewModel {
         return CreateAccountViewModel(
             router = router,
-            createAccUseCases = createAccUseCases,
+            useCases = useCases,
             wrapper = wrapper,
         )
     }

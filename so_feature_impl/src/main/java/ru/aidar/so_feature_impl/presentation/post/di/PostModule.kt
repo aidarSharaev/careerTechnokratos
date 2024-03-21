@@ -1,4 +1,4 @@
-package ru.aidar.menu_feature_impl.presentation.menu.di
+package ru.aidar.so_feature_impl.presentation.post.di
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -8,30 +8,30 @@ import dagger.Provides
 import dagger.multibindings.IntoMap
 import ru.aidar.common.di.viewmodel.ViewModelKey
 import ru.aidar.common.di.viewmodel.ViewModelModule
-import ru.aidar.menu_feature_api.domain.interfaces.MainMenuUseCases
-import ru.aidar.menu_feature_api.domain.wrappers.MainMenuStateWrapper
-import ru.aidar.menu_feature_impl.MenuRouter
-import ru.aidar.menu_feature_impl.presentation.menu.MainMenuViewModel
+import ru.aidar.so_feature_impl.SoRouter
+import ru.aidar.so_feature_impl.presentation.post.PostViewModel
+import ru.aidar.so_feature_api.domain.PostUseCases
+import ru.aidar.so_feature_api.wrapper.PostStateWrapper
 
 @Module(includes = [ViewModelModule::class])
-class MainMenuModule {
+class PostModule {
     @Provides
     fun provideViewModelProvider(
         fragment: Fragment,
         factory: ViewModelProvider.Factory,
-    ): MainMenuViewModel {
-        return ViewModelProvider(fragment, factory)[MainMenuViewModel::class.java]
+    ): PostViewModel {
+        return ViewModelProvider(fragment, factory)[PostViewModel::class.java]
     }
 
     @Provides
     @IntoMap
-    @ViewModelKey(MainMenuViewModel::class)
+    @ViewModelKey(PostViewModel::class)
     fun provideViewModel(
-        router: MenuRouter,
-        useCases: MainMenuUseCases,
-        wrapper: MainMenuStateWrapper,
+        router: SoRouter,
+        useCases: PostUseCases,
+        wrapper: PostStateWrapper,
     ): ViewModel {
-        return MainMenuViewModel(
+        return PostViewModel(
             router = router,
             useCases = useCases,
             wrapper = wrapper,

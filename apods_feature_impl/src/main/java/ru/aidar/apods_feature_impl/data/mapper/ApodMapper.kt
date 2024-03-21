@@ -7,7 +7,7 @@ import javax.inject.Inject
 class ApodMappers
     @Inject
     constructor() {
-        fun mapEntityLocal(entity: ApodEntity): ApodLocal {
+        fun mapEntityToLocal(entity: ApodEntity): ApodLocal {
             return with(entity) {
                 ApodLocal(
                     url = this.url,

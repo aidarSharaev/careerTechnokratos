@@ -15,8 +15,8 @@ import ru.aidar.auth_feature_api.domain.wrappers.LoginState
 import ru.aidar.auth_feature_api.domain.wrappers.LoginStateWrapper
 import ru.aidar.auth_feature_impl.data.repository.CreateAccRepositoryImpl
 import ru.aidar.auth_feature_impl.data.repository.LoginRepositoryImpl
-import ru.aidar.auth_feature_impl.presentation.create.wrapper.CreateAccStateWrapperImpl
-import ru.aidar.auth_feature_impl.presentation.login.wrapper.LoginStateWrapperImpl
+import ru.aidar.auth_feature_impl.data.wrapper.CreateAccStateWrapperImpl
+import ru.aidar.auth_feature_impl.data.wrapper.LoginStateWrapperImpl
 import ru.aidar.common.di.scope.auth.AuthFeatureScope
 
 @Module
