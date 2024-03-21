@@ -14,10 +14,6 @@ import ru.aidar.common.di.FeatureUtils
 class CreateAccountFragment : BaseFragment<CreateAccountViewModel>() {
     private lateinit var binding: FragmentCreateAccountBinding
 
-    override fun initViews() {
-        TODO("Not yet implemented")
-    }
-
     override fun inject() {
         FeatureUtils.getFeature<AuthFeatureComponent>(this, AuthFeatureApi::class.java)
             .createAccComponentFactory()

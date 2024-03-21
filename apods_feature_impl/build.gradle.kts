@@ -68,9 +68,8 @@ dependencies {
     implementation(rootProject.extra["daggerDep"].toString())
     ksp(rootProject.extra["daggerKspDep"].toString())
 
-    // navigation
-    implementation(rootProject.extra["navFragmentDep"].toString())
-    implementation(rootProject.extra["navUiDep"].toString())
+    // coil
+    implementation("io.coil-kt:coil-compose:2.6.0")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

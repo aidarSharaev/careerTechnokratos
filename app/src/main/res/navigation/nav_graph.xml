@@ -7,5 +7,8 @@
     <include app:graph="@navigation/auth_graph" />
     <include app:graph="@navigation/menu_graph" />
     <include app:graph="@navigation/apod_graph" />
+    <include app:graph="@navigation/apa_graph" />
+    <include app:graph="@navigation/cc_graph" />
+    <include app:graph="@navigation/so_graph" />
 
 </navigation>

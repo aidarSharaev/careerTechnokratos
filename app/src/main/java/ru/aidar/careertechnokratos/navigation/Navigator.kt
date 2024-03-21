@@ -41,10 +41,10 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
         uri: String,
     ) {
         appNavController?.popBackStack(graphId, true)
-        appNavController?.navigate(Uri.parse(uri))
+        navigateInMenu(uri = uri)
     }
 
-    override fun navigateToApodGraph(uri: String) {
+    override fun navigateInMenu(uri: String) {
         appNavController?.navigate(Uri.parse(uri))
     }
 
@@ -63,6 +63,10 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
     }
 
     override fun navigateToApodDetail() {
-        TODO("Not yet implemented")
+        // TODO("Not yet implemented")
+    }
+
+    override fun navigateToApaDetail() {
+        // TODO("Not yet implemented")
     }
 }

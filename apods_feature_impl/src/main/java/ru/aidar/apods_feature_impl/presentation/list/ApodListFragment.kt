@@ -21,10 +21,6 @@ import ru.aidar.common.di.FeatureUtils
 class ApodListFragment : BaseFragment<ApodListViewModel>() {
     private lateinit var binding: FragmentApodListBinding
 
-    override fun initViews() {
-        TODO("Not yet implemented")
-    }
-
     override fun inject() {
         FeatureUtils.getFeature<ApodFeatureComponent>(this, ApodFeatureApi::class.java)
             .apodListComponentFactory()

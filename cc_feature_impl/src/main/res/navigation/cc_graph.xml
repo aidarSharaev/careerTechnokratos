@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cc_graph"
+    app:startDestination="@id/cupidFragment">
+
+    <fragment
+        android:id="@+id/cupidFragment"
+        android:name="ru.aidar.cc_feature_impl.presentation.cupid.CupidFragment"
+        android:label="fragment_cupid"
+        tools:layout="@layout/fragment_cupid" />
+</navigation>

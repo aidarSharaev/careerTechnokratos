@@ -15,10 +15,7 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
         inject()
-        // initViews()
     }
-
-    abstract fun initViews()
 
     abstract fun inject()
 }

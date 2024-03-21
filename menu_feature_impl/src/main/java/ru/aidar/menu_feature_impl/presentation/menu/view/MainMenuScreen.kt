@@ -68,23 +68,23 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
                         // todo fix
                         text = stringResource(ru.aidar.common.R.string.nasa),
                         style =
-                        AppTypography.titleLargeTypo.copy(
-                            shadow =
-                            Shadow(
-                                color = AppBlack,
-                                offset = Offset(2f, 2f),
-                                blurRadius = 4f,
+                            AppTypography.titleLargeTypo.copy(
+                                shadow =
+                                    Shadow(
+                                        color = AppBlack,
+                                        offset = Offset(2f, 2f),
+                                        blurRadius = 4f,
+                                    ),
                             ),
-                        ),
                     )
                 },
                 colors =
-                TopAppBarDefaults.topAppBarColors(
-                    containerColor = AppBlack,
-                    navigationIconContentColor = AppColors.AppTurquoise,
-                    titleContentColor = AppColors.AppTurquoise,
-                    actionIconContentColor = AppColors.AppTurquoise,
-                ),
+                    TopAppBarDefaults.topAppBarColors(
+                        containerColor = AppBlack,
+                        navigationIconContentColor = AppColors.AppTurquoise,
+                        titleContentColor = AppColors.AppTurquoise,
+                        actionIconContentColor = AppColors.AppTurquoise,
+                    ),
                 actions = {
                     IconButton(onClick = { showBottomSheet = true }) {
                         Icon(
@@ -98,14 +98,14 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
     ) {
         LazyColumn(
             modifier =
-            Modifier
-                .fillMaxSize()
-                .padding(it)
-                // todo check
-                .windowInsetsPadding(
-                    WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal),
-                )
-                .background(AppBlack),
+                Modifier
+                    .fillMaxSize()
+                    .padding(it)
+                    // todo check
+                    .windowInsetsPadding(
+                        WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal),
+                    )
+                    .background(AppBlack),
         ) {
             item {
                 Spacer(modifier = Modifier.height(10.dp))
@@ -121,7 +121,7 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
             item { // astreDestination
                 GpMainMenuItem(
                     color = AppGreen,
-                    onClick = {},
+                    onClick = viewModel::navigateToApa,
                     image = R.drawable.ic_planet,
                     text = R.string.astre_per_astre,
                 )
@@ -144,7 +144,7 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
             }
         }
 
-        if(showBottomSheet) {
+        if (showBottomSheet) {
             ModalBottomSheet(
                 containerColor = AppBlack,
                 onDismissRequest = {
@@ -163,9 +163,9 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
                     )
                     HorizontalDivider(
                         modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 4.dp),
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp),
                         color = AppWhite.copy(alpha = 0.4f),
                         thickness = 1.dp,
                     )
@@ -176,9 +176,9 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
 
                     GpTextButtonWithDrawBehind(
                         modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(5.dp),
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(5.dp),
                         onClick = { viewModel.signOut() },
                         text = stringResource(id = R.string.logout),
                         style = buttonLightTypo,

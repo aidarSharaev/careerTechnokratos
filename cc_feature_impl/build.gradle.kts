@@ -25,12 +25,12 @@ android {
         }
     }
     buildFeatures {
-//        compose = true
+        compose = true
         viewBinding = true
     }
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = "1.5.9"
-//    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.9"
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -42,6 +42,9 @@ android {
 
 dependencies {
 
+    implementation(project(":common"))
+    implementation(project(":cc_feature_api"))
+
     // dagger
     implementation(rootProject.extra["daggerDep"].toString())
     ksp(rootProject.extra["daggerKspDep"].toString())
@@ -51,6 +54,17 @@ dependencies {
 
     // activity
     implementation(rootProject.extra["appCompatDep"].toString())
+
+    // navigation
+    implementation(rootProject.extra["navFragmentDep"].toString())
+    implementation(rootProject.extra["navUiDep"].toString())
+
+    // compose
+    debugImplementation(rootProject.extra["composeToolingDep"].toString())
+    implementation(rootProject.extra["composeDep"].toString())
+    implementation(rootProject.extra["composePreviewDep"].toString())
+    implementation(rootProject.extra["composeFoundationDep"].toString())
+    implementation(rootProject.extra["materialDep"].toString())
 
     // test
     testImplementation("junit:junit:4.13.2")

@@ -13,11 +13,8 @@ import ru.aidar.menu_feature_impl.di.MainMenuFeatureComponent
 import ru.aidar.menu_feature_impl.presentation.menu.view.MainMenuScreen
 
 class MainMenuFragment : BaseFragment<MainMenuViewModel>() {
-    private lateinit var binding: FragmentMainMenuBinding
 
-    override fun initViews() {
-        TODO("Not yet implemented")
-    }
+    private lateinit var binding: FragmentMainMenuBinding
 
     override fun inject() {
         FeatureUtils.getFeature<MainMenuFeatureComponent>(this, MainMenuFeatureApi::class.java)

@@ -8,5 +8,5 @@ interface MenuRouter {
         uri: String,
     )
 
-    fun navigateToApodGraph(uri: String)
+    fun navigateInMenu(uri: String)
 }

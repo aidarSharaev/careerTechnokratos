@@ -21,8 +21,8 @@ class ApodFeatureHolder
                     .dbApi(getFeature(DbApi::class.java))
                     .build()
             return DaggerApodFeatureComponent.builder()
-            .withDependencies(apodFeatureDependencies)
-            .router(apodRouter)
-            .build()
+                .withDependencies(apodFeatureDependencies)
+                .router(apodRouter)
+                .build()
         }
     }

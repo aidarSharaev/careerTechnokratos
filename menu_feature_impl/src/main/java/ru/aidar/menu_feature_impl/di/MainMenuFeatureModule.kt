@@ -13,6 +13,7 @@ import ru.aidar.menu_feature_impl.presentation.menu.wrapper.MainMenuStateWrapper
 
 @Module
 class MainMenuFeatureModule {
+
     @Provides
     @RegisteredFeatureScope
     fun provideMmRepository(mmRepository: MainMenuRepositoryImpl): MainMenuRepository = mmRepository

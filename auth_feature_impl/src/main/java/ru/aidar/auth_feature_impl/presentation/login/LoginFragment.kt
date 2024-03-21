@@ -14,10 +14,6 @@ import ru.aidar.common.di.FeatureUtils
 class LoginFragment : BaseFragment<LoginViewModel>() {
     private lateinit var binding: FragmentLoginBinding
 
-    override fun initViews() {
-        TODO("Not yet implemented")
-    }
-
     override fun inject() {
         FeatureUtils.getFeature<AuthFeatureComponent>(this, AuthFeatureApi::class.java)
             .loginComponentFactory()

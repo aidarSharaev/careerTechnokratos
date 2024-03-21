@@ -11,7 +11,7 @@ fun GpText(
     text: String,
     modifier: Modifier,
     style: TextStyle,
-    textColor: Color
+    textColor: Color,
 ) {
     Text(
         text = text,

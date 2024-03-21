@@ -14,7 +14,7 @@ import kotlin.coroutines.CoroutineContext
 
 class MainMenuViewModel(
     private val router: MenuRouter,
-    private val mmUseCases: MainMenuUseCases,
+    private val useCases: MainMenuUseCases,
     private val wrapper: MainMenuStateWrapper,
 ) : BaseViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext
@@ -29,14 +29,18 @@ class MainMenuViewModel(
     }
 
     fun navigateToApod() {
-        router.navigateToApodGraph("gpapp://apod_destination")
+        router.navigateInMenu("gpapp://apod_destination")
+    }
+
+    fun navigateToApa() {
+        router.navigateInMenu("gpapp://apa_destination")
     }
 
     fun signOut() {
         wrapper.updateStatus(status = ScreenStatus.Loading)
-        val result = mmUseCases.signOut()
+        val result = useCases.signOut()
         if (result) {
-            mmUseCases.resetUser()
+            useCases.resetUser()
             navigateToLogin()
         } else {
             wrapper.updateStatus(status = ScreenStatus.Visible)
