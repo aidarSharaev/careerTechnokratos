@@ -12,7 +12,8 @@ import ru.aidar.cc_feature_impl.CcRouter
 import ru.aidar.menu_feature_impl.MenuRouter
 import ru.aidar.so_feature_impl.SoRouter
 
-class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRouter {
+class Navigator() : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRouter {
+
     private var appNavController: NavController? = null
 
     fun attachNavController(
@@ -67,7 +68,11 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
         appNavController?.navigate(action)
     }
 
-    override fun navigateToApaDetail() {
-        // TODO("Not yet implemented")
+    override fun apodNavigateUp() {
+        appNavController?.popBackStack()
+    }
+
+    override fun navigateToApaDetail(action: NavDirections) {
+        appNavController?.navigate(action)
     }
 }

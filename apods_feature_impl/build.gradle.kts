@@ -4,6 +4,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
+    kotlin("plugin.serialization") version "1.8.10"
 }
 
 android {
@@ -50,8 +51,6 @@ dependencies {
     // navigation
     implementation(rootProject.extra["navFragmentDep"].toString())
     implementation(rootProject.extra["navUiDep"].toString())
-    implementation("androidx.constraintlayout:constraintlayout-compose-android:1.1.0-alpha13")
-
 
     // compose
     debugImplementation(rootProject.extra["composeToolingDep"].toString())
@@ -62,6 +61,7 @@ dependencies {
 
     // retrofit
     implementation(rootProject.extra["retrofitDep"].toString())
+    implementation(rootProject.extra["serializationDep"].toString())
 
     // room
     implementation(rootProject.extra["roomRuntimeDep"].toString())
@@ -82,6 +82,9 @@ dependencies {
     // Glance
     implementation("androidx.glance:glance-appwidget:1.0.0")
     implementation("androidx.glance:glance-material3:1.0.0")
+
+    // work manager
+    implementation ("androidx.work:work-runtime-ktx:2.9.0")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

@@ -1,51 +1,47 @@
 package ru.aidar.apods_feature_impl.presentation.picture.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.Wrap
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import ru.aidar.apods_feature_impl.presentation.list.model.ParcelableLocal
 import ru.aidar.apods_feature_impl.presentation.picture.PictureViewModel
-import ru.aidar.common.compose.GpBottomSheetItem
-import ru.aidar.common.compose.GpTextButtonWithDrawBehind
+import ru.aidar.common.compose.GpText
 import ru.aidar.common.utils.AppColors
+import ru.aidar.common.utils.AppColors.AppBlack
+import ru.aidar.common.utils.AppColors.AppDarkGreenBlue
+import ru.aidar.common.utils.AppColors.AppWhite
+import ru.aidar.common.utils.AppColors.AppYellow
 import ru.aidar.common.utils.AppTypography
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,15 +51,9 @@ fun PictureScreen(
     picture: ParcelableLocal
 ) {
 
-    val annotatedString = buildAnnotatedString {
-        append("я ебу собак всегда готов трахнуть сразу несколько котов, ооооооо")
-    }
-
-    val sheetState = rememberModalBottomSheetState()
-    val scope = rememberCoroutineScope()
-    var showBottomSheet by remember { mutableStateOf(false) }
-
-    Scaffold(
+    val scaffoldState = rememberBottomSheetScaffoldState()
+    BottomSheetScaffold(
+        containerColor = AppBlack,
         topBar = {
             TopAppBar(
                 title = {
@@ -74,22 +64,63 @@ fun PictureScreen(
                 },
                 colors =
                 TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent.copy(0.5f),
+                    containerColor = AppBlack,
                     navigationIconContentColor = AppColors.AppTurquoise,
                     titleContentColor = AppColors.AppTurquoise,
                     actionIconContentColor = AppColors.AppTurquoise,
                 ),
                 navigationIcon = {
-                    IconButton(onClick = { /* do something */ }) {
+                    IconButton(onClick = viewModel::navigateUp) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Localized description",
+                            tint = AppColors.AppGreen
                         )
                     }
                 },
             )
         },
-    ) {
+        scaffoldState = scaffoldState,
+        sheetPeekHeight = 80.dp,
+        sheetContainerColor = AppDarkGreenBlue,
+        sheetContent = {
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .height(60.dp)
+                /*.background(AppBlack)*/,
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    "Swipe for details", color = AppWhite, style = TextStyle(
+
+                    )
+                )
+            }
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    /*.background(AppBlack)*/
+                    .padding(top = 10.dp)
+                    .padding(horizontal = 16.dp),
+                horizontalAlignment = Alignment.Start
+            ) {
+                GpText(
+                    text = "Title: ${picture.title}",
+                    modifier = Modifier,
+                    style = AppTypography.buttonLightTypo,
+                    textColor = AppYellow
+                )
+                Spacer(Modifier.height(20.dp))
+                GpText(
+                    text = "Copyright: ${picture.copyright}",
+                    modifier = Modifier,
+                    style = AppTypography.buttonLightTypo,
+                    textColor = AppYellow
+                )
+                Spacer(Modifier.height(20.dp))
+            }
+        }) {
 
         var isImageLoading by remember { mutableStateOf(false) }
         val painter = rememberAsyncImagePainter(
@@ -103,9 +134,10 @@ fun PictureScreen(
         Box(
             Modifier
                 .padding(it)
-                .padding(vertical = 10.dp, horizontal = 16.dp)
-                .height(300.dp)
-                .fillMaxWidth()
+                .fillMaxSize()
+                .background(AppBlack)
+                .padding(vertical = 10.dp, horizontal = 16.dp),
+            contentAlignment = Alignment.TopCenter
         ) {
             Image(
                 modifier = Modifier
@@ -124,22 +156,5 @@ fun PictureScreen(
             }
         }
 
-        /*if (showBottomSheet) {
-            ModalBottomSheet(
-                containerColor = AppColors.AppBlack,
-                onDismissRequest = {
-                    showBottomSheet = false
-                },
-                sheetState = sheetState,
-            ) {
-                Column(
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                ) {
-
-                }
-            }
-        }*/
     }
 }

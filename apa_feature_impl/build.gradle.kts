@@ -2,6 +2,8 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -59,6 +61,13 @@ dependencies {
     implementation(rootProject.extra["composePreviewDep"].toString())
     implementation(rootProject.extra["composeFoundationDep"].toString())
     implementation(rootProject.extra["materialDep"].toString())
+
+    // retrofit
+    implementation(rootProject.extra["retrofitDep"].toString())
+    implementation(rootProject.extra["serializationDep"].toString())
+
+    // viewModel
+    implementation(rootProject.extra["viewModelDep"].toString())
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

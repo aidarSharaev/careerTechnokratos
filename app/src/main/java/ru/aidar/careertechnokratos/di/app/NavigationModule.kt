@@ -1,5 +1,7 @@
 package ru.aidar.careertechnokratos.di.app
 
+import android.app.Activity
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import ru.aidar.apa_feature_impl.ApaRouter
@@ -15,7 +17,7 @@ import ru.aidar.so_feature_impl.SoRouter
 class NavigationModule {
     @ApplicationScope
     @Provides
-    fun provideNavigator(): Navigator = Navigator()
+    fun provideNavigator(context: Context): Navigator = Navigator()
 
     @ApplicationScope
     @Provides

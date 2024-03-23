@@ -35,7 +35,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
@@ -48,6 +47,7 @@ import ru.aidar.common.compose.GpProgressIndicator
 import ru.aidar.common.compose.GpText
 import ru.aidar.common.utils.AppColors
 import ru.aidar.common.utils.AppColors.AppBlack
+import ru.aidar.common.utils.AppColors.AppDarkGreenBlue
 import ru.aidar.common.utils.AppColors.AppGreen
 import ru.aidar.common.utils.AppColors.AppPink
 import ru.aidar.common.utils.AppColors.AppWhite
@@ -71,16 +71,17 @@ fun ApodListScreen(viewModel: ApodListViewModel) {
                 },
                 colors =
                 TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent.copy(0.5f),
+                    containerColor = AppBlack,
                     navigationIconContentColor = AppColors.AppTurquoise,
                     titleContentColor = AppColors.AppTurquoise,
                     actionIconContentColor = AppColors.AppTurquoise,
                 ),
                 navigationIcon = {
-                    IconButton(onClick = { /* do something */ }) {
+                    IconButton(onClick = viewModel::navigateUp) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Localized description",
+                            tint = AppGreen
                         )
                     }
                 },
@@ -115,7 +116,7 @@ fun ApodListScreen(viewModel: ApodListViewModel) {
                         .height(300.dp)
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(15.dp))
-                        .background(Color.Gray)
+                        .background(AppDarkGreenBlue)
                         .clickable { pictures[item]?.let { it1 -> viewModel.openPicture(it1) } },
                     contentAlignment = Alignment.Center
                 ) {

@@ -7,4 +7,9 @@ import ru.aidar.common.base.BaseViewModel
 class PictureViewModel(
     private val router: ApodRouter,
     private val useCases: PictureUseCases,
-) : BaseViewModel()
+) : BaseViewModel() {
+
+    fun navigateUp() {
+        router.apodNavigateUp()
+    }
+}

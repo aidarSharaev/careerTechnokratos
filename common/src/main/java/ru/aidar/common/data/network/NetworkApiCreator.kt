@@ -7,13 +7,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkApiCreator(
     private val okHttpClient: OkHttpClient,
     private val nasaUrl: String,
-    // private val solarieUrl: String,
+    private val solarieUrl: String,
     // private val horoscopeUrl: String,
     // private val testUrl: String,
     // private val calenderUrl: String,
 ) {
     fun <T> getNasaService(service: Class<T>): T {
         return create(url = nasaUrl, service = service)
+    }
+
+    fun <T> getSolarieService(service: Class<T>): T {
+        return create(url = solarieUrl, service = service)
     }
 
     private fun <T> create(

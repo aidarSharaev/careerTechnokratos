@@ -54,6 +54,7 @@ class NetworkModule {
         return NetworkApiCreator(
             okHttpClient = okHttpClient,
             nasaUrl = appProperties.getNasaUrl(),
+            solarieUrl = appProperties.getSolarieUrl(),
         )
     }
 }

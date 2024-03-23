@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 import ru.aidar.apods_feature_api.domain.interfaces.list.ApodListRepository
 import ru.aidar.apods_feature_api.domain.model.ApodLocal
 import ru.aidar.apods_feature_impl.data.mapper.ApodMappers
-import ru.aidar.apods_feature_impl.remote.api.NasaServiceApi
+import ru.aidar.apods_feature_api.remote.NasaServiceApi
 import ru.aidar.apods_feature_impl.remote.mediator.ApodRemoteMediator
 import ru.aidar.common.data.db.GalaxyPulseDatabase
 import ru.aidar.common.utils.Dimens.APOD_INITIAL_SIZE
@@ -25,6 +25,7 @@ constructor(
     private val nasaServiceApi: NasaServiceApi,
     private val mapper: ApodMappers,
 ) : ApodListRepository {
+
     @OptIn(ExperimentalPagingApi::class)
     override fun getPictures(): Flow<PagingData<ApodLocal>> =
         Pager(

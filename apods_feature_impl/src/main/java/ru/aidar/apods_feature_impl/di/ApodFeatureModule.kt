@@ -8,7 +8,7 @@ import ru.aidar.apods_feature_api.domain.interfaces.picture.PictureRepository
 import ru.aidar.apods_feature_api.domain.interfaces.picture.PictureUseCases
 import ru.aidar.apods_feature_impl.data.repository.ApodListRepositoryImpl
 import ru.aidar.apods_feature_impl.data.repository.PictureRepositoryImpl
-import ru.aidar.apods_feature_impl.remote.api.NasaServiceApi
+import ru.aidar.apods_feature_api.remote.NasaServiceApi
 import ru.aidar.common.data.network.NetworkApiCreator
 import ru.aidar.common.di.scope.apod.ApodFeatureScope
 

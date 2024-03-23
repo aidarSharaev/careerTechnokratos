@@ -34,4 +34,8 @@ constructor(
         val action = ApodListFragmentDirections.actionApodListToPicture(local.toParce())
         router.navigateToApodDetail(action)
     }
+
+    fun navigateUp() {
+        router.apodNavigateUp()
+    }
 }

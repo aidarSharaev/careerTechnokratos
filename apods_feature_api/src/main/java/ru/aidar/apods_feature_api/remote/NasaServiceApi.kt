@@ -1,4 +1,4 @@
-package ru.aidar.apods_feature_impl.remote.api
+package ru.aidar.apods_feature_api.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -16,4 +16,10 @@ interface NasaServiceApi {
         @Query("end_date") endDate: String? = null,
         @Query("api_key") apiKey: String = NASA_API_KEY,
     ): List<ApodLocal>
+
+    /*@GET("/apod/image/{id}/{url}")
+    suspend fun getPictureBytes(
+        @Path("id") id: String,
+        @Path("url") url: String,
+    ): Response<ResponseBody>*/
 }

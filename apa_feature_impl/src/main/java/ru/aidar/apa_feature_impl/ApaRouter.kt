@@ -1,5 +1,7 @@
 package ru.aidar.apa_feature_impl
 
+import androidx.navigation.NavDirections
+
 interface ApaRouter {
-    fun navigateToApaDetail()
+    fun navigateToApaDetail(action: NavDirections)
 }

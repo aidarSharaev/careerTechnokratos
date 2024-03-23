@@ -1,5 +1,6 @@
 package ru.aidar.common.utils
 
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -17,6 +18,7 @@ object AppColors {
     val AppPink = Color(0xFFEE1DD2)
     val AppTurquoise = Color(0xFFFFFAFA)
     val AppBlack = Color(0xFF16181F)
+    val AppDarkGreenBlue = Color(0xFF022027)
     val AppWhite = Color(0xFFFFFFFF)
 }
 
@@ -38,6 +40,14 @@ object AppTypography {
             fontSize = 28.sp,
             fontFamily = AppFontFamily,
             fontWeight = FontWeight.ExtraLight,
+            brush = Brush.horizontalGradient(
+                colors = listOf(
+                    AppColors.AppRed,
+                    AppColors.AppPink,
+                    AppColors.AppGreen,
+                    AppColors.AppYellow,
+                )
+            )
         )
 
     val mainMenuCardTypo =

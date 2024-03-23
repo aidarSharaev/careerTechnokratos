@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import ru.aidar.apods_feature_impl.data.mapper.ApodMappers
-import ru.aidar.apods_feature_impl.remote.api.NasaServiceApi
+import ru.aidar.apods_feature_api.remote.NasaServiceApi
 import ru.aidar.common.data.db.GalaxyPulseDatabase
 import ru.aidar.common.data.db.model.ApodEntity
 import ru.aidar.common.data.db.model.RemoteKeysEntity

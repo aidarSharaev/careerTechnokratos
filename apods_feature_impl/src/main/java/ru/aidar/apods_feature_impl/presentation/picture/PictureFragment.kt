@@ -1,7 +1,6 @@
 package ru.aidar.apods_feature_impl.presentation.picture
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,11 +34,7 @@ class PictureFragment : BaseFragment<PictureViewModel>() {
     ): View {
         binding = FragmentPictureBinding.inflate(inflater)
         val view = binding.root
-        val picture = try {
-            args.pictureInfo
-        } catch(e: Exception) {
-            Log.d("SaveArgs", "--- $e")
-        }
+        val picture = args.pictureInfo
         binding.composePictureDetailView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.navigation.fragment.navArgs
 import ru.aidar.apa_feature_api.di.ApaFeatureApi
 import ru.aidar.apa_feature_impl.databinding.FragmentDetailBinding
 import ru.aidar.apa_feature_impl.di.ApaFeatureComponent
@@ -15,6 +16,7 @@ import ru.aidar.common.di.FeatureUtils
 class DetailFragment : BaseFragment<ApaDetailViewModel>() {
 
     private lateinit var binding: FragmentDetailBinding
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun inject() {
         FeatureUtils.getFeature<ApaFeatureComponent>(this, ApaFeatureApi::class.java)
@@ -30,10 +32,11 @@ class DetailFragment : BaseFragment<ApaDetailViewModel>() {
     ): View {
         binding = FragmentDetailBinding.inflate(inflater)
         val view = binding.root
+        val info = args.astre
         binding.apaDetailComposeView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                ApaDetailScreen(viewModel = viewModel)
+                ApaDetailScreen(viewModel = viewModel, info = info)
             }
         }
         return view

@@ -25,4 +25,5 @@ class AppProperties(private val context: Context) {
 
     // TODO
     fun getNasaUrl(): String = properties["nasa_url"] ?: ""
+    fun getSolarieUrl(): String = properties["solarie_url"] ?: ""
 }
