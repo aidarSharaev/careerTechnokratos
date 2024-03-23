@@ -4,7 +4,7 @@ object Constants {
     const val GP_DATABASE = "GalaxyPulseDb"
 
     const val APOD_ENTITY_TABLE = "apodEntityTable"
-//    const val CHART_ENTITY_TABLE = "chartEntityTable"
+    const val REMOTE_KEYS_ENTITY_TABLE = "remoteKeysEntityTable"
 
     const val NASA_PHOTOGRAPHY = "Nasa"
 }

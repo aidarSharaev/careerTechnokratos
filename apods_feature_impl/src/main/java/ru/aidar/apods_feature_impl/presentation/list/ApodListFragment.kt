@@ -8,7 +8,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import ru.aidar.apods_feature_api.di.ApodFeatureApi
 import ru.aidar.apods_feature_impl.databinding.FragmentApodListBinding
 import ru.aidar.apods_feature_impl.di.ApodFeatureComponent
-import ru.aidar.apods_feature_impl.presentation.list.view.VisibleApodListScreen
+import ru.aidar.apods_feature_impl.presentation.list.view.ApodListScreen
 import ru.aidar.common.base.BaseFragment
 import ru.aidar.common.di.FeatureUtils
 
@@ -38,7 +38,7 @@ class ApodListFragment : BaseFragment<ApodListViewModel>() {
         binding.composeApodLazyColumnView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                VisibleApodListScreen(viewModel = viewModel)
+                ApodListScreen(viewModel = viewModel)
             }
         }
         return view

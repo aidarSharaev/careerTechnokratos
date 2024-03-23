@@ -16,7 +16,7 @@ class MainMenuFeatureModule {
 
     @Provides
     @RegisteredFeatureScope
-    fun provideMmRepository(mmRepository: MainMenuRepositoryImpl): MainMenuRepository = mmRepository
+    fun provideMmRepository(repository: MainMenuRepositoryImpl): MainMenuRepository = repository
 
     @Provides
     @RegisteredFeatureScope

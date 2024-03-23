@@ -2,9 +2,12 @@ package ru.aidar.apods_feature_impl.di
 
 import dagger.Module
 import dagger.Provides
-import ru.aidar.apods_feature_api.domain.interfaces.ApodListRepository
-import ru.aidar.apods_feature_api.domain.interfaces.ApodListUseCases
+import ru.aidar.apods_feature_api.domain.interfaces.list.ApodListRepository
+import ru.aidar.apods_feature_api.domain.interfaces.list.ApodListUseCases
+import ru.aidar.apods_feature_api.domain.interfaces.picture.PictureRepository
+import ru.aidar.apods_feature_api.domain.interfaces.picture.PictureUseCases
 import ru.aidar.apods_feature_impl.data.repository.ApodListRepositoryImpl
+import ru.aidar.apods_feature_impl.data.repository.PictureRepositoryImpl
 import ru.aidar.apods_feature_impl.remote.api.NasaServiceApi
 import ru.aidar.common.data.network.NetworkApiCreator
 import ru.aidar.common.di.scope.apod.ApodFeatureScope
@@ -13,17 +16,44 @@ import ru.aidar.common.di.scope.apod.ApodFeatureScope
 class ApodFeatureModule {
     @Provides
     @ApodFeatureScope
-    fun provideApodListRepository(apodListRepository: ApodListRepositoryImpl): ApodListRepository = apodListRepository
+    fun provideApodListRepository(
+        repository: ApodListRepositoryImpl
+    ): ApodListRepository =
+        repository
 
     @Provides
     @ApodFeatureScope
-    fun provideApodListUseCases(repository: ApodListRepository): ApodListUseCases {
-        return ApodListUseCases(apodListRepository = repository)
+    fun provideApodListUseCases(
+        repository: ApodListRepository
+    ): ApodListUseCases {
+        return ApodListUseCases(
+            repository = repository
+        )
     }
 
     @Provides
     @ApodFeatureScope
-    fun provideNasaServiceApi(networkApiCreator: NetworkApiCreator): NasaServiceApi {
-        return networkApiCreator.getNasaService(service = NasaServiceApi::class.java)
+    fun providePictureRepository(
+        repository: PictureRepositoryImpl
+    ): PictureRepository = repository
+
+    @Provides
+    @ApodFeatureScope
+    fun providePictureUseCases(
+        repository: PictureRepository
+    ): PictureUseCases {
+        return PictureUseCases(
+            repository = repository
+        )
+    }
+
+    @Provides
+    @ApodFeatureScope
+    fun provideNasaServiceApi(
+        networkApiCreator: NetworkApiCreator
+    ): NasaServiceApi {
+        return networkApiCreator.getNasaService(
+            service = NasaServiceApi::class.java
+        )
     }
 }

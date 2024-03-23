@@ -2,6 +2,8 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -45,6 +47,12 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":apods_feature_api"))
 
+    // navigation
+    implementation(rootProject.extra["navFragmentDep"].toString())
+    implementation(rootProject.extra["navUiDep"].toString())
+    implementation("androidx.constraintlayout:constraintlayout-compose-android:1.1.0-alpha13")
+
+
     // compose
     debugImplementation(rootProject.extra["composeToolingDep"].toString())
     implementation(rootProject.extra["composeDep"].toString())
@@ -70,6 +78,10 @@ dependencies {
 
     // coil
     implementation("io.coil-kt:coil-compose:2.6.0")
+
+    // Glance
+    implementation("androidx.glance:glance-appwidget:1.0.0")
+    implementation("androidx.glance:glance-material3:1.0.0")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

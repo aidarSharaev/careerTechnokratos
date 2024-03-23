@@ -12,14 +12,14 @@ class LoginRepositoryImpl
     @Inject
     constructor(
         private val firebaseManager: FirebaseManager,
-        private val defaultDispatcher: CoroutineDispatcher,
+        private val ioDispatcher: CoroutineDispatcher,
         private val mappers: AuthMappers,
     ) : LoginRepository {
         override suspend fun signInWithEmailAndPassword(
             email: String,
             password: String,
         ): AuthResponse {
-            return withContext(defaultDispatcher) {
+            return withContext(ioDispatcher) {
                 val response =
                     firebaseManager.signInWithEmailAndPassword(
                         email = email,

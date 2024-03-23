@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ru.aidar.apods_feature_impl.presentation.detail.ApodDetailFragment">
+    tools:context="ru.aidar.apods_feature_impl.presentation.picture.PictureFragment">
 
     <androidx.compose.ui.platform.ComposeView
-        android:id="@+id/composeApodDetailView"
+        android:id="@+id/compose_picture_detail_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

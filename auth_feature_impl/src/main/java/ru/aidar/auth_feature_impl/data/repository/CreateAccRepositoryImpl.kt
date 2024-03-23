@@ -13,14 +13,14 @@ class CreateAccRepositoryImpl
     constructor(
         private val firebaseManager: FirebaseManager,
         private val mapper: AuthMappers,
-        private val defaultDispatcher: CoroutineDispatcher,
+        private val ioDispatcher: CoroutineDispatcher,
     ) : CreateAccRepository {
         override suspend fun createUserWithEmailAndPassword(
             email: String,
             password: String,
             nickname: String,
         ): AuthResponse {
-            return withContext(defaultDispatcher) {
+            return withContext(ioDispatcher) {
                 val response =
                     firebaseManager.createUserWithEmailAndPassword(
                         email = email,

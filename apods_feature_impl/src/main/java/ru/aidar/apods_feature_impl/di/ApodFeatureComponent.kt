@@ -4,6 +4,7 @@ import dagger.BindsInstance
 import dagger.Component
 import ru.aidar.apods_feature_api.di.ApodFeatureApi
 import ru.aidar.apods_feature_impl.ApodRouter
+import ru.aidar.apods_feature_impl.presentation.picture.di.PictureComponent
 import ru.aidar.apods_feature_impl.presentation.list.di.ApodListComponent
 import ru.aidar.common.data.db.di.DbApi
 import ru.aidar.common.di.CommonApi
@@ -17,7 +18,7 @@ import ru.aidar.common.di.scope.apod.ApodFeatureScope
 interface ApodFeatureComponent : ApodFeatureApi {
     fun apodListComponentFactory(): ApodListComponent.Factory
 
-    // fun apodDetailAccComponentFactory(): ApodDetailComponent.Factory
+    fun pictureComponentFactory(): PictureComponent.Factory
 
     @Component.Builder
     interface Builder {

@@ -3,6 +3,7 @@ package ru.aidar.careertechnokratos.navigation
 import android.net.Uri
 import androidx.annotation.IdRes
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.NavGraph
 import ru.aidar.apa_feature_impl.ApaRouter
 import ru.aidar.apods_feature_impl.ApodRouter
@@ -23,7 +24,7 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
     }
 
     fun detachNavController(navController: NavController) {
-        if (appNavController == navController) {
+        if(appNavController == navController) {
             appNavController = null
         }
     }
@@ -62,8 +63,8 @@ class Navigator : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRou
         )
     }
 
-    override fun navigateToApodDetail() {
-        // TODO("Not yet implemented")
+    override fun navigateToApodDetail(action: NavDirections) {
+        appNavController?.navigate(action)
     }
 
     override fun navigateToApaDetail() {

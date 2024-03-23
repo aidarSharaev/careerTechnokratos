@@ -29,26 +29,26 @@ class AuthFeatureModule {
 
     @Provides
     @AuthFeatureScope
-    fun provideLoginRepository(loginRepository: LoginRepositoryImpl): LoginRepository {
-        return loginRepository
+    fun provideLoginRepository(repository: LoginRepositoryImpl): LoginRepository {
+        return repository
     }
 
     @Provides
     @AuthFeatureScope
-    fun provideCreateRepository(createAccRepository: CreateAccRepositoryImpl): CreateAccRepository {
-        return createAccRepository
+    fun provideCreateRepository(repository: CreateAccRepositoryImpl): CreateAccRepository {
+        return repository
     }
 
     @Provides
     @AuthFeatureScope
-    fun provideLoginUseCases(loginRepository: LoginRepository): LoginUseCases {
-        return LoginUseCases(loginRepository = loginRepository)
+    fun provideLoginUseCases(repository: LoginRepository): LoginUseCases {
+        return LoginUseCases(repository = repository)
     }
 
     @Provides
     @AuthFeatureScope
-    fun provideCreateUseCases(createAccRepository: CreateAccRepository): CreateAccUseCases {
-        return CreateAccUseCases(createAccRepository = createAccRepository)
+    fun provideCreateUseCases(repository: CreateAccRepository): CreateAccUseCases {
+        return CreateAccUseCases(repository = repository)
     }
 
     @Provides

@@ -7,15 +7,19 @@
 
     <fragment
         android:id="@+id/apodDetailFragment"
-        android:name="ru.aidar.apods_feature_impl.presentation.detail.ApodDetailFragment"
+        android:name="ru.aidar.apods_feature_impl.presentation.picture.PictureFragment"
         android:label="fragment_apod_detail"
-        tools:layout="@layout/fragment_apod_detail" />
+        tools:layout="@layout/fragment_picture" >
+        <argument
+            android:name="pictureInfo"
+            app:argType="ru.aidar.apods_feature_impl.presentation.list.model.ParcelableLocal" />
+    </fragment>
     <fragment
         android:id="@+id/apodListFragment"
         android:name="ru.aidar.apods_feature_impl.presentation.list.ApodListFragment"
         android:label="ApodListFragment" >
         <action
-            android:id="@+id/action_apodListFragment_to_apodDetailFragment"
+            android:id="@+id/action_apodList_to_picture"
             app:destination="@id/apodDetailFragment" />
     </fragment>
 

@@ -5,11 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import ru.aidar.common.data.db.dao.ApodDao
+import ru.aidar.common.data.db.dao.RemoteKeyDao
 import ru.aidar.common.data.db.model.ApodEntity
+import ru.aidar.common.data.db.model.RemoteKeysEntity
 import ru.aidar.common.utils.Constants.GP_DATABASE
 
 @Database(
-    entities = [ApodEntity::class],
+    entities = [ApodEntity::class, RemoteKeysEntity::class],
     version = 1,
 )
 abstract class GalaxyPulseDatabase : RoomDatabase() {
@@ -26,4 +28,5 @@ abstract class GalaxyPulseDatabase : RoomDatabase() {
     }
 
     abstract fun apodDao(): ApodDao
+    abstract fun remoteKeysDao(): RemoteKeyDao
 }
