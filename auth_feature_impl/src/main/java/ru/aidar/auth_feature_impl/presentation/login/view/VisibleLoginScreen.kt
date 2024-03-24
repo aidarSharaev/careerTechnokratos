@@ -23,8 +23,8 @@ import ru.aidar.auth_feature_api.domain.wrappers.LoginState
 import ru.aidar.auth_feature_impl.presentation.login.LoginViewModel
 import ru.aidar.common.compose.GpTextButtonWithAnnotatedString
 import ru.aidar.common.compose.GpTextButtonWithDrawBehind
-import ru.aidar.common.compose.TextFieldWithOnDone
-import ru.aidar.common.compose.TextFieldWithOnNext
+import ru.aidar.common.compose.GpTextFieldWithOnDone
+import ru.aidar.common.compose.GpTextFieldWithOnNext
 import ru.aidar.common.compose.rememberImeState
 import ru.aidar.common.utils.AppColors
 import ru.aidar.common.utils.AppFontFamily
@@ -51,7 +51,7 @@ fun VisibleLoginScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        TextFieldWithOnNext(
+        GpTextFieldWithOnNext(
             modifier = Modifier,
             onValueChange = viewModel::updateEmail,
             value = state.email,
@@ -59,7 +59,7 @@ fun VisibleLoginScreen(
             keyboardType = KeyboardType.Email,
             label = "Email", // todo
         )
-        TextFieldWithOnDone(
+        GpTextFieldWithOnDone(
             modifier = Modifier.padding(top = 20.dp),
             onValueChange = viewModel::updatePassword,
             value = state.password,

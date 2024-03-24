@@ -3,6 +3,8 @@ package ru.aidar.common.compose
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -11,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.SoftwareKeyboardController
@@ -25,7 +28,7 @@ import ru.aidar.common.utils.AppFontFamily
 import ru.aidar.common.utils.AppTypography.textFieldTypo
 
 @Composable
-fun TextFieldWithOnNext(
+fun GpTextFieldWithOnNext(
     focusManager: FocusManager = LocalFocusManager.current,
     modifier: Modifier,
     onValueChange: (String) -> Unit,
@@ -34,6 +37,8 @@ fun TextFieldWithOnNext(
     keyboardType: KeyboardType,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     width: Float = 0.8f,
+    trailingIcon: ImageVector? = null,
+    trailingIconAction: () -> Unit = {},
     singleLine: Boolean = true,
     textStyle: TextStyle = textFieldTypo,
     containerColor: Color = AppBlack,
@@ -41,6 +46,7 @@ fun TextFieldWithOnNext(
     label: String? = null,
     placeholder: String? = null,
     readOnly: Boolean = false,
+    enableIndicator: Boolean = true,
 ) {
     GpTextField(
         modifier = modifier,
@@ -51,25 +57,28 @@ fun TextFieldWithOnNext(
         singleLine = singleLine,
         textStyle = textStyle,
         keyboardOptions =
-            KeyboardOptions(
-                keyboardType = keyboardType,
-                imeAction = ImeAction.Next,
-            ),
+        KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = ImeAction.Next,
+        ),
         keyboardActions =
-            KeyboardActions(
-                onNext = { focusManager.moveFocus(FocusDirection.Down) },
-            ),
+        KeyboardActions(
+            onNext = { focusManager.moveFocus(FocusDirection.Down) },
+        ),
         visualTransformation = visualTransformation,
         containerColor = containerColor,
         additionalColor = additionalColor,
         label = label,
         placeholder = placeholder,
         readOnly = readOnly,
+        enableIndicator = enableIndicator,
+        trailingIcon = trailingIcon,
+        trailingIconAction = trailingIconAction
     )
 }
 
 @Composable
-fun TextFieldWithOnDone(
+fun GpTextFieldWithOnDone(
     keyboardController: SoftwareKeyboardController? = LocalSoftwareKeyboardController.current,
     focusManager: FocusManager = LocalFocusManager.current,
     modifier: Modifier,
@@ -77,8 +86,11 @@ fun TextFieldWithOnDone(
     value: String,
     isError: Boolean,
     keyboardType: KeyboardType,
+    additionalKeyboardAction: () -> Unit = {},
     visualTransformation: VisualTransformation = VisualTransformation.None,
     width: Float = 0.8f,
+    trailingIcon: ImageVector? = null,
+    trailingIconAction: () -> Unit = {},
     singleLine: Boolean = true,
     textStyle: TextStyle = textFieldTypo,
     containerColor: Color = AppBlack,
@@ -86,6 +98,7 @@ fun TextFieldWithOnDone(
     label: String? = null,
     placeholder: String? = null,
     readOnly: Boolean = false,
+    enableIndicator: Boolean = true,
 ) {
     GpTextField(
         modifier = modifier,
@@ -97,20 +110,24 @@ fun TextFieldWithOnDone(
         singleLine = singleLine,
         textStyle = textStyle,
         keyboardOptions =
-            KeyboardOptions(
-                keyboardType = keyboardType,
-                imeAction = ImeAction.Done,
-            ),
+        KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = ImeAction.Done,
+        ),
         keyboardActions =
-            KeyboardActions(onDone = {
-                keyboardController?.hide()
-                focusManager.clearFocus()
-            }),
+        KeyboardActions(onDone = {
+            keyboardController?.hide()
+            additionalKeyboardAction()
+            focusManager.clearFocus()
+        }),
         visualTransformation = visualTransformation,
         containerColor = containerColor,
         additionalColor = additionalColor,
         label = label,
         placeholder = placeholder,
+        enableIndicator = enableIndicator,
+        trailingIcon = trailingIcon,
+        trailingIconAction = trailingIconAction
     )
 }
 
@@ -126,11 +143,14 @@ fun GpTextField(
     textStyle: TextStyle = textFieldTypo,
     keyboardActions: KeyboardActions,
     keyboardOptions: KeyboardOptions,
+    trailingIcon: ImageVector? = null,
+    trailingIconAction: () -> Unit = {},
     containerColor: Color = AppBlack,
     additionalColor: Color = AppWhite,
     label: String? = null,
     placeholder: String? = null,
     readOnly: Boolean = false,
+    enableIndicator: Boolean = true,
 ) {
     OutlinedTextField(
         modifier = modifier.fillMaxWidth(width),
@@ -151,29 +171,45 @@ fun GpTextField(
                 )
             }
         },
+        trailingIcon = {
+            trailingIcon?.let {
+                IconButton(onClick = {
+                    if(value.isNotEmpty()) {
+                        onValueChange("")
+                    } else {
+                        trailingIconAction()
+                    }
+                }) {
+                    Icon(
+                        imageVector = trailingIcon,
+                        contentDescription = "Close Icon",
+                        tint = Color.White
+                    )
+                }
+            }
+        },
         label = {
             label?.let {
                 Text(
                     text = label,
-                    // color = additionalColor.copy(0.5f),
                     fontFamily = AppFontFamily,
                 )
             }
         },
         colors =
-            TextFieldDefaults.colors(
-                focusedIndicatorColor = additionalColor.copy(0.8f),
-                unfocusedIndicatorColor = additionalColor.copy(0.3f),
-                focusedTextColor = additionalColor,
-                unfocusedTextColor = additionalColor.copy(0.85f),
-                focusedLabelColor = additionalColor.copy(0.8f),
-                unfocusedLabelColor = additionalColor.copy(0.3f),
-                focusedContainerColor = containerColor,
-                unfocusedContainerColor = containerColor,
-                errorIndicatorColor = AppRed,
-                errorContainerColor = containerColor,
-                errorTextColor = AppRed,
-            ),
+        TextFieldDefaults.colors(
+            focusedIndicatorColor = if(enableIndicator) additionalColor.copy(0.8f) else Color.Transparent,
+            unfocusedIndicatorColor = if(enableIndicator) additionalColor.copy(0.3f) else Color.Transparent,
+            focusedTextColor = additionalColor,
+            unfocusedTextColor = additionalColor.copy(0.85f),
+            focusedLabelColor = additionalColor.copy(0.8f),
+            unfocusedLabelColor = additionalColor.copy(0.3f),
+            focusedContainerColor = containerColor,
+            unfocusedContainerColor = containerColor,
+            errorIndicatorColor = if(enableIndicator) AppRed else Color.Transparent,
+            errorContainerColor = containerColor,
+            errorTextColor = AppRed,
+        ),
         isError = isError,
     )
 }

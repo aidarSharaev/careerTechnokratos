@@ -4,4 +4,6 @@ import androidx.navigation.NavDirections
 
 interface ApaRouter {
     fun navigateToApaDetail(action: NavDirections)
+
+    fun apaNavigateUp()
 }

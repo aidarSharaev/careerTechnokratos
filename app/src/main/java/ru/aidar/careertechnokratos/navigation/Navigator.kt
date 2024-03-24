@@ -72,6 +72,10 @@ class Navigator() : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoR
         appNavController?.popBackStack()
     }
 
+    override fun apaNavigateUp() {
+        appNavController?.popBackStack()
+    }
+
     override fun navigateToApaDetail(action: NavDirections) {
         appNavController?.navigate(action)
     }

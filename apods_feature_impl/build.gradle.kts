@@ -79,6 +79,8 @@ dependencies {
     // coil
     implementation("io.coil-kt:coil-compose:2.6.0")
 
+
+
     // Glance
     implementation("androidx.glance:glance-appwidget:1.0.0")
     implementation("androidx.glance:glance-material3:1.0.0")

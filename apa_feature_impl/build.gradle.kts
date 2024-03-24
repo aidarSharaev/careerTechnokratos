@@ -65,9 +65,15 @@ dependencies {
     // retrofit
     implementation(rootProject.extra["retrofitDep"].toString())
     implementation(rootProject.extra["serializationDep"].toString())
+    implementation(rootProject.extra["retrofitConverterDep"].toString())
+
 
     // viewModel
     implementation(rootProject.extra["viewModelDep"].toString())
+
+
+    //activity
+    implementation("androidx.activity:activity-ktx:1.8.2")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

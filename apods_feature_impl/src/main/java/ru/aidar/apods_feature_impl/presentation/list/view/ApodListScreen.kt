@@ -72,16 +72,14 @@ fun ApodListScreen(viewModel: ApodListViewModel) {
                 colors =
                 TopAppBarDefaults.topAppBarColors(
                     containerColor = AppBlack,
-                    navigationIconContentColor = AppColors.AppTurquoise,
-                    titleContentColor = AppColors.AppTurquoise,
-                    actionIconContentColor = AppColors.AppTurquoise,
+                    navigationIconContentColor = AppColors.AppRed,
+                    actionIconContentColor = AppColors.AppYellow,
                 ),
                 navigationIcon = {
                     IconButton(onClick = viewModel::navigateUp) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Localized description",
-                            tint = AppGreen
                         )
                     }
                 },

@@ -60,12 +60,10 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
     var showBottomSheet by remember { mutableStateOf(false) }
 
     Scaffold(
-        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
             TopAppBar(
                 title = {
                     Text(
-                        // todo fix
                         text = stringResource(ru.aidar.common.R.string.nasa),
                         style =
                             AppTypography.titleLargeTypo.copy(
@@ -81,9 +79,8 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
                 colors =
                     TopAppBarDefaults.topAppBarColors(
                         containerColor = AppBlack,
-                        navigationIconContentColor = AppColors.AppTurquoise,
-                        titleContentColor = AppColors.AppTurquoise,
-                        actionIconContentColor = AppColors.AppTurquoise,
+                        navigationIconContentColor = AppColors.AppRed,
+                        actionIconContentColor = AppColors.AppYellow,
                     ),
                 actions = {
                     IconButton(onClick = { showBottomSheet = true }) {
@@ -101,10 +98,6 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
                 Modifier
                     .fillMaxSize()
                     .padding(it)
-                    // todo check
-                    .windowInsetsPadding(
-                        WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal),
-                    )
                     .background(AppBlack),
         ) {
             item {

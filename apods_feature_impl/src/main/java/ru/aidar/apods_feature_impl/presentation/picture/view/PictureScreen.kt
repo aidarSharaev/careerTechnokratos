@@ -74,16 +74,14 @@ fun PictureScreen(
                 colors =
                 TopAppBarDefaults.topAppBarColors(
                     containerColor = AppBlack,
-                    navigationIconContentColor = AppColors.AppTurquoise,
-                    titleContentColor = AppColors.AppTurquoise,
-                    actionIconContentColor = AppColors.AppTurquoise,
+                    navigationIconContentColor = AppColors.AppRed,
+                    actionIconContentColor = AppColors.AppYellow,
                 ),
                 navigationIcon = {
                     IconButton(onClick = viewModel::navigateUp) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Localized description",
-                            tint = AppColors.AppGreen
                         )
                     }
                 },
@@ -183,9 +181,7 @@ fun PictureScreen(
                         awaitEachGesture {
                             do {
                                 val event = awaitPointerEvent()
-                                //val canceled = event.changes.any { input-> input.consumed.positionChange }
                                 if(event.changes.size == fingerCount) {
-                                    //Log.d("GESTURE", "two finger")
                                     val firstX = event.changes[0].position.x
                                     val firstY = event.changes[0].position.y
 
@@ -201,11 +197,6 @@ fun PictureScreen(
                                         if(size < 500)
                                             size += 5
                                         previousDistance = currentDistance
-                                    } else {
-                                        Log.d(
-                                            "GESTURE",
-                                            "elseelseelse -- ${currentDistance - previousDistance}"
-                                        )
                                     }
                                 }
                             } while(event.changes.any { input ->
@@ -213,12 +204,10 @@ fun PictureScreen(
                                 })
                             size = 200
                             previousDistance = 0f
-                            Log.d("GESTURE", "00000")
                         }
                     },
                 painter = painter,
                 contentDescription = null,
-//                contentScale = ContentScale.Fit,
             )
             if(isImageLoading) {
                 CircularProgressIndicator(

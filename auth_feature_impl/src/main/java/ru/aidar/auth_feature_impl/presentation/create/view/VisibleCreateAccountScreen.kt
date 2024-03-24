@@ -19,8 +19,8 @@ import ru.aidar.auth_feature_api.domain.wrappers.CreateAccState
 import ru.aidar.auth_feature_impl.presentation.create.CreateAccountViewModel
 import ru.aidar.common.compose.GpTextButtonWithAnnotatedString
 import ru.aidar.common.compose.GpTextButtonWithDrawBehind
-import ru.aidar.common.compose.TextFieldWithOnDone
-import ru.aidar.common.compose.TextFieldWithOnNext
+import ru.aidar.common.compose.GpTextFieldWithOnDone
+import ru.aidar.common.compose.GpTextFieldWithOnNext
 import ru.aidar.common.utils.AppColors
 import ru.aidar.common.utils.AppFontFamily
 
@@ -37,7 +37,7 @@ fun VisibleCreateAccountScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        TextFieldWithOnNext(
+        GpTextFieldWithOnNext(
             modifier = Modifier,
             onValueChange = {},
             value = state.nickname,
@@ -48,7 +48,7 @@ fun VisibleCreateAccountScreen(
             readOnly = true,
             additionalColor = AppColors.AppYellow,
         )
-        TextFieldWithOnNext(
+        GpTextFieldWithOnNext(
             modifier = Modifier.padding(top = 20.dp),
             onValueChange = viewModel::updateEmail,
             value = state.email,
@@ -57,7 +57,7 @@ fun VisibleCreateAccountScreen(
             // label = "stringResource(R.string.email)"
             label = "Email",
         )
-        TextFieldWithOnDone(
+        GpTextFieldWithOnDone(
             modifier = Modifier.padding(top = 20.dp),
             onValueChange = viewModel::updatePassword,
             value = state.password,

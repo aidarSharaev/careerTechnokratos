@@ -10,6 +10,7 @@ import ru.aidar.apa_feature_api.domain.interfaces.SearchUseCases
 import ru.aidar.apa_feature_api.domain.model.ScreenStatus
 import ru.aidar.apa_feature_api.domain.wrappers.SearchStateWrapper
 import ru.aidar.apa_feature_api.remote.ApaLocal
+import ru.aidar.apa_feature_api.utils.Constants
 import ru.aidar.apa_feature_impl.ApaRouter
 import ru.aidar.apa_feature_impl.data.model.toParce
 import ru.aidar.common.base.BaseViewModel
@@ -32,14 +33,18 @@ class ApaSearchViewModel(
         wrapper.updateQuery(query = query)
         launch {
             job?.cancelAndJoin()
-            getObject(query)
-            useCases.getObjects(regex = query)
+            if(query.isNotBlank())
+                getObject(query)
+            else
+                wrapper.updateResponses(listOf(Constants.Earth, Constants.Venus, Constants.Mars))
+            //useCases.getObjects(regex = query)
         }
     }
 
     private fun getObject(query: String) {
         job = launch {
-            wrapper.updateResponses(useCases.getObjects(regex = query))
+            val list = useCases.getObjects(regex = query)
+            wrapper.updateResponses(list)
         }
     }
 
@@ -52,8 +57,13 @@ class ApaSearchViewModel(
     }
 
     fun navigateToDetail(local: ApaLocal) {
-        val action = SearchFragmentDirections.actionSearchToAstre(local.toParce())
+        val action =
+            SearchFragmentDirections.actionSearchToAstre(local.toParce())
         router.navigateToApaDetail(action)
+    }
+
+    fun navigateUp() {
+        router.apaNavigateUp()
     }
 }
 

@@ -13,6 +13,8 @@ data class ApaLocal(
     val moons: List<Moon>?,
     @SerializedName("mass")
     val mass: Mass?,
+    @SerializedName("vol")
+    val vol: Vol?,
     @SerializedName("discoveredBy")
     val discoveredBy: String?,
     @SerializedName("discoveryDate")
@@ -29,7 +31,13 @@ data class Moon(
 
 data class Mass(
     @SerializedName("massValue")
-    val massValue: Int,
+    val massValue: Double,
     @SerializedName("massExponent")
     val massExponent: Int,
+)
+data class Vol(
+    @SerializedName("volValue")
+    val volValue: Double,
+    @SerializedName("volExponent")
+    val volExponent: Int,
 )

@@ -65,7 +65,7 @@ fun GpAnnotatedText(
                 fontSize = 14.sp
             )
         )
-        append("$param2")
+        append(param2)
         pop()
     })
 }
