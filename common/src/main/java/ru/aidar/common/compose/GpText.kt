@@ -3,8 +3,8 @@ package ru.aidar.common.compose
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -42,7 +42,7 @@ fun GpTextBrush(
 }
 
 @Composable
-fun GpAnnotatedText(
+fun GpAnnotatedTextWithConstStyle(
     param1: String,
     param2: String,
 ) {
@@ -68,4 +68,12 @@ fun GpAnnotatedText(
         append(param2)
         pop()
     })
+}
+
+@Composable
+fun GpAnnotatedText(
+    text: AnnotatedString,
+    modifier: Modifier,
+) {
+    Text(text = text, modifier = modifier)
 }

@@ -1,6 +1,7 @@
 package ru.aidar.apa_feature_impl.presentation.search.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,18 +21,24 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.google.android.material.motion.MaterialBackHandler
+import ru.aidar.apa_feature_impl.R
 import ru.aidar.apa_feature_impl.presentation.search.ApaSearchViewModel
 import ru.aidar.common.compose.GpText
 import ru.aidar.common.compose.GpTextFieldWithOnDone
@@ -43,12 +50,22 @@ import ru.aidar.common.utils.AppTypography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun VisibleApaSearchScreen(viewModel: ApaSearchViewModel) {
+fun VisibleApaSearchScreen(viewModel: ApaSearchViewModel, monitor: Boolean) {
 
     val state by viewModel.state.collectAsState()
-
     val scrollState = rememberScrollState()
+    val snackbarHostState = remember { SnackbarHostState() }
 
+    val notConnectedMessage = stringResource(R.string.not_connected)
+
+    LaunchedEffect(monitor) {
+        if(monitor) {
+            snackbarHostState.showSnackbar(
+                message = notConnectedMessage,
+                duration = SnackbarDuration.Indefinite,
+            )
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -57,14 +74,11 @@ fun VisibleApaSearchScreen(viewModel: ApaSearchViewModel) {
                 searchBarActive = state.active,
                 searchQuery = state.query,
                 onQueryChange = viewModel::updateQuery,
-                onSearchClicked = {
-                    viewModel.updateActive(true)
-                },
-                onDoneClicked = {
-                    viewModel.updateActive(false)
-                }
+                onSearchClicked = { viewModel.updateActive(true) },
+                onDoneClicked = { viewModel.updateActive(false) }
             )
-        }
+        },
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
     ) {
         Column(
             modifier = Modifier
@@ -77,7 +91,8 @@ fun VisibleApaSearchScreen(viewModel: ApaSearchViewModel) {
             state.responses.forEach {
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .clickable { viewModel.navigateToDetail(it) },
                     horizontalArrangement = Arrangement.Start,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -86,7 +101,7 @@ fun VisibleApaSearchScreen(viewModel: ApaSearchViewModel) {
                         modifier = Modifier
                             .padding(start = 20.dp)
                             .padding(vertical = 5.dp),
-                        style = AppTypography.mainMenuCardTypo,
+                        style = AppTypography.detailInfoTypo,
                         textColor = AppBlue
                     )
                 }

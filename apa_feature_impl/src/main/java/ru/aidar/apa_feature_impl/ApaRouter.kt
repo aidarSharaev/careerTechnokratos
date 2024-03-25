@@ -5,5 +5,7 @@ import androidx.navigation.NavDirections
 interface ApaRouter {
     fun navigateToApaDetail(action: NavDirections)
 
+    fun navigateToApaMoonDetail(action: NavDirections)
+
     fun apaNavigateUp()
 }

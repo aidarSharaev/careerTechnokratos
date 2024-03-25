@@ -13,6 +13,8 @@ fun ApaLocal.toParce(): ParcelableApa {
         discoveryDate = discoveryDate,
         massValue = mass?.massValue?.toString() ?: "Unknown",
         massExponent = mass?.massExponent?.toString() ?: "Unknown",
+        volValue = vol?.volValue?.toString() ?: "Unknown",
+        volExponent = vol?.volExponent?.toString() ?: "Unknown",
         listMoons = if(moons != null && moons!!.isNotEmpty()) {
             val mutableList = mutableListOf<String>()
             moons!!.forEach { mutableList.add(it.moon) }
@@ -36,6 +38,8 @@ data class ParcelableApa(
     val discoveryDate: String?,
     val massValue: String,
     val massExponent: String,
+    val volValue: String,
+    val volExponent: String,
     val listMoons: MutableList<String>? = null,
     val listRels: MutableList<String>?,
 ) : Parcelable

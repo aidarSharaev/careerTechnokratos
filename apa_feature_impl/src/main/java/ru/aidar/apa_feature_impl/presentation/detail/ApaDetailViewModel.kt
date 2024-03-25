@@ -9,4 +9,10 @@ class ApaDetailViewModel(
     private val router: ApaRouter,
     private val useCases: DetailUseCases,
     private val wrapper: DetailStateWrapper,
-) : BaseViewModel()
+) : BaseViewModel() {
+
+    fun navigateUp() {
+        router.apaNavigateUp()
+    }
+}
+

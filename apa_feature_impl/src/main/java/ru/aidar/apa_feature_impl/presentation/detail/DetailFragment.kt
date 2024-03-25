@@ -10,6 +10,7 @@ import ru.aidar.apa_feature_api.di.ApaFeatureApi
 import ru.aidar.apa_feature_impl.databinding.FragmentDetailBinding
 import ru.aidar.apa_feature_impl.di.ApaFeatureComponent
 import ru.aidar.apa_feature_impl.presentation.detail.view.ApaDetailScreen
+import ru.aidar.apa_feature_impl.presentation.detail.view.VisibleApaDetailScreen
 import ru.aidar.common.base.BaseFragment
 import ru.aidar.common.di.FeatureUtils
 
@@ -32,11 +33,11 @@ class DetailFragment : BaseFragment<ApaDetailViewModel>() {
     ): View {
         binding = FragmentDetailBinding.inflate(inflater)
         val view = binding.root
-        val info = args.astre
+        val apa = args.astre
         binding.apaDetailComposeView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                ApaDetailScreen(viewModel = viewModel, info = info)
+                VisibleApaDetailScreen(viewModel = viewModel, apa = apa)
             }
         }
         return view

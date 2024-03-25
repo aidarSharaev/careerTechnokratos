@@ -79,4 +79,8 @@ class Navigator() : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoR
     override fun navigateToApaDetail(action: NavDirections) {
         appNavController?.navigate(action)
     }
+
+    override fun navigateToApaMoonDetail(action: NavDirections) {
+        //appNavController?.navigate(action)
+    }
 }

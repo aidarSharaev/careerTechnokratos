@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.aidar.apa_feature_api.di.ApaFeatureApi
 import ru.aidar.apa_feature_impl.databinding.FragmentSearchBinding
 import ru.aidar.apa_feature_impl.di.ApaFeatureComponent
@@ -32,7 +34,9 @@ class SearchFragment : BaseFragment<ApaSearchViewModel>() {
         binding.apaSearchComposeView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                VisibleApaSearchScreen(viewModel = viewModel)
+                val monitor by
+                    viewModel.isOffline.collectAsStateWithLifecycle(initialValue = false)
+                VisibleApaSearchScreen(viewModel = viewModel, monitor = monitor)
             }
         }
         return view

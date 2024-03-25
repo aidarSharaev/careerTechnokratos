@@ -42,7 +42,7 @@ import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import ru.aidar.apods_feature_impl.presentation.list.model.ParcelableLocal
 import ru.aidar.apods_feature_impl.presentation.picture.PictureViewModel
-import ru.aidar.common.compose.GpAnnotatedText
+import ru.aidar.common.compose.GpAnnotatedTextWithConstStyle
 import ru.aidar.common.compose.GpTextBrush
 import ru.aidar.common.utils.AppColors
 import ru.aidar.common.utils.AppColors.AppBlack
@@ -120,25 +120,25 @@ fun PictureScreen(
                     .padding(horizontal = 16.dp),
                 horizontalAlignment = Alignment.Start
             ) {
-                GpAnnotatedText(
+                GpAnnotatedTextWithConstStyle(
                     param1 = "Title: ",
                     param2 = picture.title
                 )
                 Spacer(Modifier.height(15.dp))
 
-                GpAnnotatedText(
+                GpAnnotatedTextWithConstStyle(
                     param1 = "Copyright: ",
                     param2 = picture.copyright
                 )
                 Spacer(Modifier.height(15.dp))
 
-                GpAnnotatedText(
+                GpAnnotatedTextWithConstStyle(
                     param1 = "Date: ",
                     param2 = picture.date
                 )
                 Spacer(Modifier.height(15.dp))
 
-                GpAnnotatedText(
+                GpAnnotatedTextWithConstStyle(
                     param1 = "Explanation: ",
                     param2 = picture.explanation
                 )

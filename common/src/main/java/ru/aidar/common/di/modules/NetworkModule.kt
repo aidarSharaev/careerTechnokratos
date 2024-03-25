@@ -1,5 +1,6 @@
 package ru.aidar.common.di.modules
 
+import android.content.Context
 import android.util.Log
 import dagger.Module
 import dagger.Provides
@@ -9,6 +10,8 @@ import ru.aidar.common.core.config.AppProperties
 import ru.aidar.common.core.config.NetworkProperties
 import ru.aidar.common.data.network.NetworkApiCreator
 import ru.aidar.common.di.scope.app.ApplicationScope
+import ru.aidar.common.monitor.NetworkMonitor
+import ru.aidar.common.monitor.NetworkMonitorImpl
 import java.util.concurrent.TimeUnit
 
 // private const val SOLARIE_URL = "https://api.le-systeme-solaire.net"
@@ -56,5 +59,11 @@ class NetworkModule {
             nasaUrl = appProperties.getNasaUrl(),
             solarieUrl = appProperties.getSolarieUrl(),
         )
+    }
+
+    @Provides
+    @ApplicationScope
+    fun provideNetworkMonitor(context: Context): NetworkMonitor {
+        return NetworkMonitorImpl(context = context)
     }
 }

@@ -12,6 +12,7 @@ import ru.aidar.apa_feature_impl.ApaRouter
 import ru.aidar.apa_feature_impl.presentation.search.ApaSearchViewModel
 import ru.aidar.common.di.viewmodel.ViewModelKey
 import ru.aidar.common.di.viewmodel.ViewModelModule
+import ru.aidar.common.monitor.NetworkMonitor
 
 @Module(includes = [ViewModelModule::class])
 class SearchModule {
@@ -30,11 +31,13 @@ class SearchModule {
         router: ApaRouter,
         useCases: SearchUseCases,
         wrapper: SearchStateWrapper,
+        monitor: NetworkMonitor,
     ): ViewModel {
         return ApaSearchViewModel(
             router = router,
             useCases = useCases,
             wrapper = wrapper,
+            monitor = monitor,
         )
     }
 }

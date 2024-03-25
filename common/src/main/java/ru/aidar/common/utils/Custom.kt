@@ -2,10 +2,12 @@ package ru.aidar.common.utils
 
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.unit.sp
 import ru.aidar.common.R
 import ru.aidar.common.utils.AppColors.AppWhite
@@ -55,6 +57,29 @@ object AppTypography {
             fontSize = 20.sp,
             fontFamily = AppFontFamily,
             fontWeight = FontWeight.Thin,
+        )
+
+    val detailInfoTypo =
+        TextStyle(
+            fontSize = 18.sp,
+            fontFamily = AppFontFamily,
+            fontWeight = FontWeight.Thin,
+        )
+
+    val spanDetailInfoTypo =
+        SpanStyle(
+            fontSize = 18.sp,
+            color = AppWhite,
+            fontFamily = AppFontFamily,
+            fontWeight = FontWeight.Thin,
+        )
+    val spanSuperScriptDetailInfoTypo =
+        SpanStyle(
+            color = AppWhite,
+            fontSize = 14.sp,
+            fontFamily = AppFontFamily,
+            fontWeight = FontWeight.ExtraLight,
+            baselineShift = BaselineShift.Superscript
         )
 
     val textFieldTypo =

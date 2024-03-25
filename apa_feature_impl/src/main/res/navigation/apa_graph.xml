@@ -9,17 +9,20 @@
         android:id="@+id/detailFragment"
         android:name="ru.aidar.apa_feature_impl.presentation.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_detail">
         <argument
             android:name="astre"
             app:argType="ru.aidar.apa_feature_impl.data.model.ParcelableApa" />
+        <action
+            android:id="@+id/action_detailFragment_self"
+            app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="ru.aidar.apa_feature_impl.presentation.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_search_to_astre"
             app:destination="@id/detailFragment" />

@@ -6,6 +6,7 @@ import ru.aidar.common.core.config.AppProperties
 import ru.aidar.common.core.preferences.LocalManager
 import ru.aidar.common.core.resources.ResourceManager
 import ru.aidar.common.data.network.NetworkApiCreator
+import ru.aidar.common.monitor.NetworkMonitor
 
 interface CommonApi {
     fun applicationContext(): Context
@@ -19,4 +20,6 @@ interface CommonApi {
     fun provideLocalManager(): LocalManager
 
     fun provideFirebaseManager(): FirebaseManager
+
+    fun provideNetworkMonitor(): NetworkMonitor
 }

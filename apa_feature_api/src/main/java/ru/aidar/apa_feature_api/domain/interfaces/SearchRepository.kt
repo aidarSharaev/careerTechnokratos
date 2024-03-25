@@ -1,8 +1,8 @@
 package ru.aidar.apa_feature_api.domain.interfaces
 
-import ru.aidar.apa_feature_api.remote.ApaLocal
+import ru.aidar.apa_feature_api.remote.Response
 
 interface SearchRepository {
 
-    suspend fun getObjects(regex: String): List<ApaLocal>
+    suspend fun getObjects(regex: String): Response
 }

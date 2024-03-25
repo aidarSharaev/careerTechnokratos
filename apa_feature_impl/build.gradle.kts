@@ -68,8 +68,9 @@ dependencies {
     implementation(rootProject.extra["retrofitConverterDep"].toString())
 
 
-    // viewModel
+    // lifecycle
     implementation(rootProject.extra["viewModelDep"].toString())
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
 
 
     //activity
