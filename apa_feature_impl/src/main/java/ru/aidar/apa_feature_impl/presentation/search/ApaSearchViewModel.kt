@@ -1,6 +1,5 @@
 package ru.aidar.apa_feature_impl.presentation.search
 
-import androidx.compose.animation.scaleIn
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -9,6 +8,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import ru.aidar.apa_feature_api.domain.interfaces.SearchUseCases
@@ -27,16 +27,23 @@ class ApaSearchViewModel(
     private val router: ApaRouter,
     private val useCases: SearchUseCases,
     private val wrapper: SearchStateWrapper,
-    private val monitor: NetworkMonitor
+    private val monitor: NetworkMonitor,
 ) : BaseViewModel(), CoroutineScope {
+    val state =
+        wrapper.flow().stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = SearchState(),
+        )
 
-    val state = wrapper.flow().stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = SearchState()
-    )
-
-    val isOffline = monitor.isOnline
+    val isOffline =
+        monitor.isOnline
+            .map(Boolean::not)
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = false,
+            )
 
     private var job: Job? = null
 
@@ -47,18 +54,20 @@ class ApaSearchViewModel(
         wrapper.updateQuery(query = query)
         launch {
             job?.cancelAndJoin()
-            if(query.isNotBlank())
+            if (query.isNotBlank()) {
                 getObject(query)
-            else
+            } else {
                 wrapper.updateResponses(listOf(Constants.Earth, Constants.Venus, Constants.Mars))
+            }
         }
     }
 
     private fun getObject(query: String) {
-        job = launch {
-            val list = useCases.getObjects(regex = query)
-            wrapper.updateResponses(list.data)
-        }
+        job =
+            launch {
+                val list = useCases.getObjects(regex = query)
+                wrapper.updateResponses(list.data)
+            }
     }
 
     fun updateActive(active: Boolean) {
@@ -84,4 +93,3 @@ class ApaSearchViewModel(
         super.onCleared()
     }
 }
-

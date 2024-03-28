@@ -8,7 +8,6 @@ class PictureViewModel(
     private val router: ApodRouter,
     private val useCases: PictureUseCases,
 ) : BaseViewModel() {
-
     fun navigateUp() {
         router.apodNavigateUp()
     }

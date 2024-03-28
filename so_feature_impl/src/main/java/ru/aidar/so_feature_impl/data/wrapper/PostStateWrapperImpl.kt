@@ -7,7 +7,7 @@ import ru.aidar.so_feature_api.wrapper.PostStateWrapper
 
 class PostStateWrapperImpl(
     private val flow: MutableStateFlow<PostState>,
-): PostStateWrapper {
+) : PostStateWrapper {
     override fun flow(): StateFlow<PostState> {
         return flow
     }

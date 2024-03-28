@@ -46,28 +46,31 @@ fun GpAnnotatedTextWithConstStyle(
     param1: String,
     param2: String,
 ) {
-    Text(text = buildAnnotatedString {
-        pushStyle(
-            SpanStyle(
-                color = AppColors.AppWhite.copy(0.8f),
-                fontFamily = AppFontFamily,
-                fontWeight = FontWeight.Thin,
-                fontSize = 14.sp
-            )
-        )
-        append(param1)
-        pop()
-        pushStyle(
-            SpanStyle(
-                color = AppColors.AppWhite,
-                fontFamily = AppFontFamily,
-                fontWeight = FontWeight.Thin,
-                fontSize = 14.sp
-            )
-        )
-        append(param2)
-        pop()
-    })
+    Text(
+        text =
+            buildAnnotatedString {
+                pushStyle(
+                    SpanStyle(
+                        color = AppColors.AppWhite.copy(0.8f),
+                        fontFamily = AppFontFamily,
+                        fontWeight = FontWeight.Thin,
+                        fontSize = 14.sp,
+                    ),
+                )
+                append(param1)
+                pop()
+                pushStyle(
+                    SpanStyle(
+                        color = AppColors.AppWhite,
+                        fontFamily = AppFontFamily,
+                        fontWeight = FontWeight.Thin,
+                        fontSize = 14.sp,
+                    ),
+                )
+                append(param2)
+                pop()
+            },
+    )
 }
 
 @Composable

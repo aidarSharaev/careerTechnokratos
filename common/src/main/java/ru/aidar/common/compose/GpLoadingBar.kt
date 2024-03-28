@@ -21,7 +21,7 @@ import ru.aidar.common.utils.AppTypography
 fun GpLoadingBar(
     text: String,
     barColor: Color = AppYellow,
-    modifier: Modifier = Modifier.fillMaxSize()
+    modifier: Modifier = Modifier.fillMaxSize(),
 ) {
     Column(
         modifier = modifier,
@@ -34,12 +34,15 @@ fun GpLoadingBar(
             text = text,
             modifier = Modifier.padding(top = 20.dp),
             style = AppTypography.textFieldTypo,
-            textColor = AppWhite
+            textColor = AppWhite,
         )
     }
 }
 
 @Composable
-fun GpProgressIndicator(modifier: Modifier = Modifier, color: Color = AppYellow) {
+fun GpProgressIndicator(
+    modifier: Modifier = Modifier,
+    color: Color = AppYellow,
+) {
     CircularProgressIndicator(modifier = modifier, color = color)
 }

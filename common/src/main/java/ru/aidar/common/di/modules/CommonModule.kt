@@ -4,6 +4,8 @@ import android.content.Context
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
 import dagger.Module
 import dagger.Provides
 import ru.aidar.common.core.auth.FirebaseManager
@@ -43,7 +45,19 @@ class CommonModule {
 
     @Provides
     @ApplicationScope
-    fun provideFirebaseManager(firebaseAuth: FirebaseAuth): FirebaseManager {
-        return FirebaseManagerImpl(firebaseAuth = firebaseAuth)
+    fun provideFirestore(): FirebaseFirestore {
+        return Firebase.firestore
+    }
+
+    @Provides
+    @ApplicationScope
+    fun provideFirebaseManager(
+        firebaseAuth: FirebaseAuth,
+        firestore: FirebaseFirestore,
+    ): FirebaseManager {
+        return FirebaseManagerImpl(
+            firebaseAuth = firebaseAuth,
+            firestore = firestore
+        )
     }
 }

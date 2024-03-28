@@ -11,31 +11,30 @@ import ru.aidar.common.base.BaseViewModel
 import javax.inject.Inject
 
 class ApodListViewModel
-@Inject
-constructor(
-    private val router: ApodRouter,
-    private val useCases: ApodListUseCases,
-) : BaseViewModel() {
+    @Inject
+    constructor(
+        private val router: ApodRouter,
+        private val useCases: ApodListUseCases,
+    ) : BaseViewModel() {
+        init {
+            Log.d("ViewModelInstance", "init ApodListViewModel")
+        }
 
-    init {
-        Log.d("ViewModelInstance", "init ApodListViewModel")
-    }
+        fun getPictures(): Flow<PagingData<ApodLocal>> {
+            return useCases.getPictures()
+        }
 
-    fun getPictures(): Flow<PagingData<ApodLocal>> {
-        return useCases.getPictures()
-    }
+        override fun onCleared() {
+            Log.d("ViewModelInstance", "clear ApodListViewModel")
+            super.onCleared()
+        }
 
-    override fun onCleared() {
-        Log.d("ViewModelInstance", "clear ApodListViewModel")
-        super.onCleared()
-    }
+        fun openPicture(local: ApodLocal) {
+            val action = ApodListFragmentDirections.actionApodListToPicture(local.toParce())
+            router.navigateToApodDetail(action)
+        }
 
-    fun openPicture(local: ApodLocal) {
-        val action = ApodListFragmentDirections.actionApodListToPicture(local.toParce())
-        router.navigateToApodDetail(action)
+        fun navigateUp() {
+            router.apodNavigateUp()
+        }
     }
-
-    fun navigateUp() {
-        router.apodNavigateUp()
-    }
-}

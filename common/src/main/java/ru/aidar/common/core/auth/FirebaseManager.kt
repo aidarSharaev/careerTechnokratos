@@ -4,6 +4,7 @@ import com.google.firebase.auth.FirebaseUser
 import ru.aidar.common.core.auth.model.FbResponse
 
 interface FirebaseManager {
+
     companion object {
         const val TAG = "FirebaseManager"
     }
@@ -19,7 +20,9 @@ interface FirebaseManager {
         password: String,
     ): FbResponse
 
-    suspend fun setUserName(nickname: String)
+    suspend fun setUserName(
+        nickname: String,
+    ): Boolean
 
     fun resetUser()
 
@@ -31,4 +34,6 @@ interface FirebaseManager {
     ): FbResponse
 
     fun signOut(): Boolean
+
+    suspend fun setTrainingData(): Boolean
 }

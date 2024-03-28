@@ -9,13 +9,11 @@ import androidx.navigation.fragment.navArgs
 import ru.aidar.apa_feature_api.di.ApaFeatureApi
 import ru.aidar.apa_feature_impl.databinding.FragmentDetailBinding
 import ru.aidar.apa_feature_impl.di.ApaFeatureComponent
-import ru.aidar.apa_feature_impl.presentation.detail.view.ApaDetailScreen
 import ru.aidar.apa_feature_impl.presentation.detail.view.VisibleApaDetailScreen
 import ru.aidar.common.base.BaseFragment
 import ru.aidar.common.di.FeatureUtils
 
 class DetailFragment : BaseFragment<ApaDetailViewModel>() {
-
     private lateinit var binding: FragmentDetailBinding
     private val args: DetailFragmentArgs by navArgs()
 

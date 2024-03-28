@@ -1,6 +1,9 @@
 package ru.aidar.common.compose
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -39,7 +42,6 @@ fun GpTextButton(
     style: TextStyle = AppTypography.buttonMediumTypo,
 ) {
     TextButton(
-        modifier = modifier,
         onClick = onClick,
     ) {
         GpText(
@@ -72,14 +74,38 @@ fun GpTextButtonWithDrawBehind(
             style = style,
             textColor = textColor,
             modifier =
-                Modifier
-                    .drawBehind {
-                        drawRoundRect(
-                            drawColor,
-                            cornerRadius = CornerRadius(cornerRadius.dp.toPx()),
-                        )
-                    }
-                    .padding(horizontal = horizontalPadding.dp, vertical = verticalPadding.dp),
+            Modifier
+                .drawBehind {
+                    drawRoundRect(
+                        drawColor,
+                        cornerRadius = CornerRadius(cornerRadius.dp.toPx()),
+                    )
+                }
+                .padding(horizontal = horizontalPadding.dp, vertical = verticalPadding.dp),
+        )
+    }
+}
+
+@Composable
+fun GpButton(
+    modifier: Modifier,
+    onClick: () -> Unit,
+    text: String,
+    textModifier: Modifier = Modifier,
+    buttonColor: Color,
+    textColor: Color = AppWhite,
+    style: TextStyle = AppTypography.messageTextTypo,
+) {
+    Button(
+        modifier = modifier,
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(containerColor = buttonColor)
+    ) {
+        GpText(
+            text = text,
+            style = style,
+            textColor = textColor,
+            modifier = textModifier,
         )
     }
 }

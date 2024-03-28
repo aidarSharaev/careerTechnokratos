@@ -15,51 +15,54 @@ import kotlinx.coroutines.flow.conflate
 class NetworkMonitorImpl(
     private val context: Context,
 ) : NetworkMonitor {
-    override val isOnline: Flow<Boolean> = callbackFlow {
-        val connectivityManager = context.getSystemService<ConnectivityManager>()
-        if(connectivityManager == null) {
-            channel.trySend(false)
-            channel.close()
-            return@callbackFlow
-        }
-        val callback = object : ConnectivityManager.NetworkCallback() {
-
-            private val networks = mutableSetOf<Network>()
-
-            override fun onAvailable(network: Network) {
-                networks += network
-                channel.trySend(true)
+    override val isOnline: Flow<Boolean> =
+        callbackFlow {
+            val connectivityManager = context.getSystemService<ConnectivityManager>()
+            if (connectivityManager == null) {
+                channel.trySend(false)
+                channel.close()
+                return@callbackFlow
             }
+            val callback =
+                object : ConnectivityManager.NetworkCallback() {
+                    private val networks = mutableSetOf<Network>()
 
-            override fun onLost(network: Network) {
-                networks -= network
-                channel.trySend(networks.isNotEmpty())
+                    override fun onAvailable(network: Network) {
+                        networks += network
+                        channel.trySend(true)
+                    }
+
+                    override fun onLost(network: Network) {
+                        networks -= network
+                        channel.trySend(networks.isNotEmpty())
+                    }
+                }
+
+            val request =
+                Builder()
+                    .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                    .build()
+            connectivityManager.registerNetworkCallback(request, callback)
+
+            /**
+             * Sends the latest connectivity status to the underlying channel.
+             */
+            channel.trySend(connectivityManager.isCurrentlyConnected())
+
+            awaitClose {
+                connectivityManager.unregisterNetworkCallback(callback)
             }
         }
-
-        val request = Builder()
-            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-            .build()
-        connectivityManager.registerNetworkCallback(request, callback)
-
-        /**
-         * Sends the latest connectivity status to the underlying channel.
-         */
-        channel.trySend(connectivityManager.isCurrentlyConnected())
-
-        awaitClose {
-            connectivityManager.unregisterNetworkCallback(callback)
-        }
-    }
-        .conflate()
+            .conflate()
 
     @Suppress("DEPRECATION")
-    private fun ConnectivityManager.isCurrentlyConnected() = when {
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ->
-            activeNetwork
-                ?.let(::getNetworkCapabilities)
-                ?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+    private fun ConnectivityManager.isCurrentlyConnected() =
+        when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ->
+                activeNetwork
+                    ?.let(::getNetworkCapabilities)
+                    ?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
 
-        else -> activeNetworkInfo?.isConnected
-    } ?: false
+            else -> activeNetworkInfo?.isConnected
+        } ?: false
 }

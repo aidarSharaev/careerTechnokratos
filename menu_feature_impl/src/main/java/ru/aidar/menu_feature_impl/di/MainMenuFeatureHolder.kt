@@ -14,12 +14,12 @@ class MainMenuFeatureHolder
         private val menuRouter: MenuRouter,
     ) : FeatureApiHolder(featureContainer) {
         override fun initializeDependencies(): Any {
-            val mmFeatureDependencies =
+            val deps =
                 DaggerMainMenuFeatureComponent_MainMenuFeatureDependenciesComponent.builder()
                     .commonApi(commonApi())
                     .build()
             return DaggerMainMenuFeatureComponent.builder()
-                .withDependencies(mmFeatureDependencies)
+                .withDependencies(deps)
                 .router(menuRouter)
                 .build()
         }

@@ -8,10 +8,10 @@ import dagger.Provides
 import dagger.multibindings.IntoMap
 import ru.aidar.common.di.viewmodel.ViewModelKey
 import ru.aidar.common.di.viewmodel.ViewModelModule
-import ru.aidar.so_feature_impl.SoRouter
-import ru.aidar.so_feature_impl.presentation.blog.BlogViewModel
 import ru.aidar.so_feature_api.domain.BlogUseCases
 import ru.aidar.so_feature_api.wrapper.BlogStateWrapper
+import ru.aidar.so_feature_impl.SoRouter
+import ru.aidar.so_feature_impl.presentation.blog.BlogViewModel
 
 @Module(includes = [ViewModelModule::class])
 class BlogModule {

@@ -9,33 +9,44 @@ fun ApaLocal.toParce(): ParcelableApa {
         id = id,
         name = name,
         isPlanet = isPlanet,
-        discoveredBy = discoveredBy,
-        discoveryDate = discoveryDate,
+        discoveredBy =
+            discoveredBy?.let {
+                it.ifBlank { "Unknown" }
+            } ?: "Unknown",
+        discoveryDate =
+            discoveryDate?.let {
+                it.ifBlank { "Unknown" }
+            } ?: "Unknown",
         massValue = mass?.massValue?.toString() ?: "Unknown",
         massExponent = mass?.massExponent?.toString() ?: "Unknown",
         volValue = vol?.volValue?.toString() ?: "Unknown",
         volExponent = vol?.volExponent?.toString() ?: "Unknown",
-        listMoons = if(moons != null && moons!!.isNotEmpty()) {
-            val mutableList = mutableListOf<String>()
-            moons!!.forEach { mutableList.add(it.moon) }
-            mutableList
-        } else null,
-        listRels = if(moons != null && moons!!.isNotEmpty()) {
-            val mutableList = mutableListOf<String>()
-            moons!!.forEach { mutableList.add(it.rel) }
-            mutableList
-        } else null,
+        listMoons =
+            if (moons != null && moons!!.isNotEmpty()) {
+                val mutableList = mutableListOf<String>()
+                moons!!.forEach { mutableList.add(it.moon) }
+                mutableList
+            } else {
+                null
+            },
+        listRels =
+            if (moons != null && moons!!.isNotEmpty()) {
+                val mutableList = mutableListOf<String>()
+                moons!!.forEach { mutableList.add(it.rel) }
+                mutableList
+            } else {
+                null
+            },
     )
 }
-
 
 @Parcelize
 data class ParcelableApa(
     val id: String,
     val name: String,
     val isPlanet: Boolean,
-    val discoveredBy: String?,
-    val discoveryDate: String?,
+    val discoveredBy: String,
+    val discoveryDate: String,
     val massValue: String,
     val massExponent: String,
     val volValue: String,

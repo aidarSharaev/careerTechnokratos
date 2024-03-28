@@ -1,6 +1,5 @@
 package ru.aidar.careertechnokratos.di.app
 
-import android.app.Activity
 import android.content.Context
 import dagger.Module
 import dagger.Provides
@@ -17,41 +16,43 @@ import ru.aidar.so_feature_impl.SoRouter
 class NavigationModule {
     @ApplicationScope
     @Provides
-    fun provideNavigator(context: Context): Navigator = Navigator()
+    fun provideNavigator(
+        context: Context,
+    ): Navigator = Navigator()
 
     @ApplicationScope
     @Provides
     fun provideMenuRouter(
-        navigator: Navigator
+        navigator: Navigator,
     ): MenuRouter = navigator
 
     @ApplicationScope
     @Provides
     fun provideAuthRouter(
-        navigator: Navigator
+        navigator: Navigator,
     ): AuthRouter = navigator
 
     @ApplicationScope
     @Provides
     fun provideApodRouter(
-        navigator: Navigator
+        navigator: Navigator,
     ): ApodRouter = navigator
 
     @ApplicationScope
     @Provides
     fun provideApaRouter(
-        navigator: Navigator
+        navigator: Navigator,
     ): ApaRouter = navigator
 
     @ApplicationScope
     @Provides
     fun provideCcRouter(
-        navigator: Navigator
+        navigator: Navigator,
     ): CcRouter = navigator
 
     @ApplicationScope
     @Provides
     fun provideSoRouter(
-        navigator: Navigator
+        navigator: Navigator,
     ): SoRouter = navigator
 }

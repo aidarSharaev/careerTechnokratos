@@ -67,13 +67,11 @@ dependencies {
     implementation(rootProject.extra["serializationDep"].toString())
     implementation(rootProject.extra["retrofitConverterDep"].toString())
 
-
     // lifecycle
     implementation(rootProject.extra["viewModelDep"].toString())
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
 
-
-    //activity
+    // activity
     implementation("androidx.activity:activity-ktx:1.8.2")
 
     implementation("androidx.core:core-ktx:1.12.0")

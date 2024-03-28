@@ -39,6 +39,8 @@ fun GpTextFieldWithOnNext(
     width: Float = 0.8f,
     trailingIcon: ImageVector? = null,
     trailingIconAction: () -> Unit = {},
+    trailingIconActionOnEmpty: () -> Unit = {},
+    trailingIconCondition: Boolean = true,
     singleLine: Boolean = true,
     textStyle: TextStyle = textFieldTypo,
     containerColor: Color = AppBlack,
@@ -73,7 +75,9 @@ fun GpTextFieldWithOnNext(
         readOnly = readOnly,
         enableIndicator = enableIndicator,
         trailingIcon = trailingIcon,
-        trailingIconAction = trailingIconAction
+        trailingIconAction = trailingIconAction,
+        trailingIconActionOnEmpty = trailingIconActionOnEmpty,
+        trailingIconCondition = trailingIconCondition,
     )
 }
 
@@ -91,6 +95,8 @@ fun GpTextFieldWithOnDone(
     width: Float = 0.8f,
     trailingIcon: ImageVector? = null,
     trailingIconAction: () -> Unit = {},
+    trailingIconActionOnEmpty: () -> Unit = {},
+    trailingIconCondition: Boolean = true,
     singleLine: Boolean = true,
     textStyle: TextStyle = textFieldTypo,
     containerColor: Color = AppBlack,
@@ -127,7 +133,9 @@ fun GpTextFieldWithOnDone(
         placeholder = placeholder,
         enableIndicator = enableIndicator,
         trailingIcon = trailingIcon,
-        trailingIconAction = trailingIconAction
+        trailingIconAction = trailingIconAction,
+        trailingIconActionOnEmpty = trailingIconActionOnEmpty,
+        trailingIconCondition = trailingIconCondition,
     )
 }
 
@@ -145,12 +153,14 @@ fun GpTextField(
     keyboardOptions: KeyboardOptions,
     trailingIcon: ImageVector? = null,
     trailingIconAction: () -> Unit = {},
+    trailingIconActionOnEmpty: () -> Unit = {},
     containerColor: Color = AppBlack,
     additionalColor: Color = AppWhite,
     label: String? = null,
     placeholder: String? = null,
     readOnly: Boolean = false,
     enableIndicator: Boolean = true,
+    trailingIconCondition: Boolean = true,
 ) {
     OutlinedTextField(
         modifier = modifier.fillMaxWidth(width),
@@ -173,17 +183,16 @@ fun GpTextField(
         },
         trailingIcon = {
             trailingIcon?.let {
+                if (trailingIconCondition)
                 IconButton(onClick = {
-                    if(value.isNotEmpty()) {
-                        onValueChange("")
-                    } else {
-                        trailingIconAction()
-                    }
+                    if(value.isEmpty()) trailingIconActionOnEmpty()
+                    else trailingIconAction()
+
                 }) {
                     Icon(
                         imageVector = trailingIcon,
                         contentDescription = "Close Icon",
-                        tint = Color.White
+                        tint = Color.White,
                     )
                 }
             }

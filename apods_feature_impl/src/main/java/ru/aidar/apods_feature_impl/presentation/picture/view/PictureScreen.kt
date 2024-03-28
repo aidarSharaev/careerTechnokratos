@@ -55,9 +55,8 @@ import kotlin.math.sqrt
 @Composable
 fun PictureScreen(
     viewModel: PictureViewModel,
-    picture: ParcelableLocal
+    picture: ParcelableLocal,
 ) {
-
     val scaffoldState = rememberBottomSheetScaffoldState()
     val scrollState = rememberScrollState()
 
@@ -72,11 +71,11 @@ fun PictureScreen(
                     )
                 },
                 colors =
-                TopAppBarDefaults.topAppBarColors(
-                    containerColor = AppBlack,
-                    navigationIconContentColor = AppColors.AppRed,
-                    actionIconContentColor = AppColors.AppYellow,
-                ),
+                    TopAppBarDefaults.topAppBarColors(
+                        containerColor = AppBlack,
+                        navigationIconContentColor = AppColors.AppRed,
+                        actionIconContentColor = AppColors.AppYellow,
+                    ),
                 navigationIcon = {
                     IconButton(onClick = viewModel::navigateUp) {
                         Icon(
@@ -95,20 +94,23 @@ fun PictureScreen(
                 Modifier
                     .fillMaxWidth()
                     .height(50.dp),
-                contentAlignment = Alignment.Center
+                contentAlignment = Alignment.Center,
             ) {
                 GpTextBrush(
                     text = "Description",
-                    style = AppTypography.mainMenuCardTypo.copy(
-                        brush = Brush.horizontalGradient(
-                            colors = listOf(
-                                AppColors.AppRed,
-                                AppColors.AppPink,
-                                AppColors.AppGreen,
-                                AppColors.AppYellow,
-                            )
-                        )
-                    ),
+                    style =
+                        AppTypography.mainMenuCardTypo.copy(
+                            brush =
+                                Brush.horizontalGradient(
+                                    colors =
+                                        listOf(
+                                            AppColors.AppRed,
+                                            AppColors.AppPink,
+                                            AppColors.AppGreen,
+                                            AppColors.AppYellow,
+                                        ),
+                                ),
+                        ),
                     modifier = Modifier,
                 )
             }
@@ -118,101 +120,108 @@ fun PictureScreen(
                     .padding(top = 10.dp)
                     .verticalScroll(scrollState)
                     .padding(horizontal = 16.dp),
-                horizontalAlignment = Alignment.Start
+                horizontalAlignment = Alignment.Start,
             ) {
                 GpAnnotatedTextWithConstStyle(
                     param1 = "Title: ",
-                    param2 = picture.title
+                    param2 = picture.title,
                 )
                 Spacer(Modifier.height(15.dp))
 
                 GpAnnotatedTextWithConstStyle(
                     param1 = "Copyright: ",
-                    param2 = picture.copyright
+                    param2 = picture.copyright,
                 )
                 Spacer(Modifier.height(15.dp))
 
                 GpAnnotatedTextWithConstStyle(
                     param1 = "Date: ",
-                    param2 = picture.date
+                    param2 = picture.date,
                 )
                 Spacer(Modifier.height(15.dp))
 
                 GpAnnotatedTextWithConstStyle(
                     param1 = "Explanation: ",
-                    param2 = picture.explanation
+                    param2 = picture.explanation,
                 )
                 Spacer(Modifier.height(15.dp))
-
             }
-        }) {
-
+        },
+    ) {
         var isImageLoading by remember { mutableStateOf(false) }
 
-        val painter = rememberAsyncImagePainter(
-            model = picture.url
-                ?: "https://www.google.ru/url?sa=i&url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fhow-space-tries-kill-you-make-you-ugly%2F&psig=AOvVaw1-liUTaDA2O6ZLW4_ZLB6y&ust=1711184836992000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNiMwrTCh4UDFQAAAAAdAAAAABAE",
-        )
+        val painter =
+            rememberAsyncImagePainter(
+                model =
+                    picture.url
+                        ?: "https://www.google.ru/url?sa=i&url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fhow-space-tries-kill-you-make-you-ugly%2F&psig=AOvVaw1-liUTaDA2O6ZLW4_ZLB6y&ust=1711184836992000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNiMwrTCh4UDFQAAAAAdAAAAABAE",
+            )
 
         var size by remember {
             mutableIntStateOf(200)
         }
 
-        isImageLoading = when(painter.state) {
-            is AsyncImagePainter.State.Loading -> true
-            else -> false
-        }
+        isImageLoading =
+            when (painter.state) {
+                is AsyncImagePainter.State.Loading -> true
+                else -> false
+            }
         Box(
             Modifier
                 .padding(it)
                 .fillMaxSize()
                 .background(AppBlack)
                 .padding(vertical = 10.dp, horizontal = 16.dp),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             Image(
-                modifier = Modifier
-                    .padding(horizontal = 10.dp, vertical = 8.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .size(size.dp)
-                    .pointerInput(Unit) {
-                        val fingerCount = 2
-                        var previousDistance = 0f
-                        awaitEachGesture {
-                            do {
-                                val event = awaitPointerEvent()
-                                if(event.changes.size == fingerCount) {
-                                    val firstX = event.changes[0].position.x
-                                    val firstY = event.changes[0].position.y
+                modifier =
+                    Modifier
+                        .padding(horizontal = 10.dp, vertical = 8.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .size(size.dp)
+                        .pointerInput(Unit) {
+                            val fingerCount = 2
+                            var previousDistance = 0f
+                            awaitEachGesture {
+                                do {
+                                    val event = awaitPointerEvent()
+                                    if (event.changes.size == fingerCount) {
+                                        val firstX = event.changes[0].position.x
+                                        val firstY = event.changes[0].position.y
 
-                                    val secondX = event.changes[1].position.x
-                                    val secondY = event.changes[1].position.y
+                                        val secondX = event.changes[1].position.x
+                                        val secondY = event.changes[1].position.y
 
-                                    val currentDistance = sqrt(
-                                        (secondX - firstX).pow(2) + (secondY - firstY).pow(2)
-                                    )
+                                        val currentDistance =
+                                            sqrt(
+                                                (secondX - firstX).pow(2) + (secondY - firstY).pow(2),
+                                            )
 
-                                    if(currentDistance - previousDistance > 10) {
-                                        Log.d("GESTURE", "ififif -- $size")
-                                        if(size < 500)
-                                            size += 5
-                                        previousDistance = currentDistance
+                                        if (currentDistance - previousDistance > 10) {
+                                            Log.d("GESTURE", "ififif -- $size")
+                                            if (size < 500) {
+                                                size += 5
+                                            }
+                                            previousDistance = currentDistance
+                                        }
                                     }
-                                }
-                            } while(event.changes.any { input ->
-                                    input.pressed
-                                })
-                            size = 200
-                            previousDistance = 0f
-                        }
-                    },
+                                } while (event.changes.any { input ->
+                                        input.pressed
+                                    }
+                                )
+                                size = 200
+                                previousDistance = 0f
+                            }
+                        },
                 painter = painter,
                 contentDescription = null,
             )
-            if(isImageLoading) {
+            if (isImageLoading) {
                 CircularProgressIndicator(
-                    modifier = Modifier
-                        .padding(horizontal = 6.dp, vertical = 3.dp),
+                    modifier =
+                        Modifier
+                            .padding(horizontal = 6.dp, vertical = 3.dp),
                     color = AppColors.AppYellow,
                 )
             }

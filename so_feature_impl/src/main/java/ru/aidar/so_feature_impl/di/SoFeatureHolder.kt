@@ -8,21 +8,20 @@ import javax.inject.Inject
 
 @ApplicationScope
 class SoFeatureHolder
-@Inject
-constructor(
-    featureContainer: FeatureContainer,
-    private val apodRouter: SoRouter,
-) : FeatureApiHolder(featureContainer) {
-    override fun initializeDependencies(): Any {
+    @Inject
+    constructor(
+        featureContainer: FeatureContainer,
+        private val soRouter: SoRouter,
+    ) : FeatureApiHolder(featureContainer) {
+        override fun initializeDependencies(): Any {
+            val deps =
+                DaggerSoFeatureComponent_SoFeatureDependenciesComponent.builder()
+                    .commonApi(commonApi())
+                    .build()
 
-        val soFeatureDependencies =
-            DaggerSoFeatureComponent_SoFeatureDependenciesComponent.builder()
-                .commonApi(commonApi())
+            return DaggerSoFeatureComponent.builder()
+                .router(soRouter)
+                .withDependencies(deps)
                 .build()
-
-        return DaggerSoFeatureComponent.builder()
-            .router(apodRouter)
-            .withDependencies(soFeatureDependencies)
-            .build()
+        }
     }
-}

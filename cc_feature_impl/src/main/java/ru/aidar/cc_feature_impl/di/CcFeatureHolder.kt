@@ -1,7 +1,6 @@
 package ru.aidar.cc_feature_impl.di
 
 import ru.aidar.cc_feature_impl.CcRouter
-import ru.aidar.common.data.db.di.DbApi
 import ru.aidar.common.di.FeatureApiHolder
 import ru.aidar.common.di.FeatureContainer
 import ru.aidar.common.di.scope.app.ApplicationScope
@@ -15,16 +14,13 @@ constructor(
     private val ccRouter: CcRouter,
 ) : FeatureApiHolder(featureContainer) {
     override fun initializeDependencies(): Any {
-
-        /*val apodFeatureDependencies =
-            DaggerApodFeatureComponent_ApodFeatureDependenciesComponent.builder()
-                .commonApi(commonApi())
-                .dbApi(getFeature(DbApi::class.java))
-                .build()
+        val deps = DaggerCcFeatureComponent_СompatibilityFeatureDependenciesComponent.builder()
+            .commonApi(commonApi())
+            .build()
 
         return DaggerCcFeatureComponent.builder()
+            .withDependencies(deps)
             .router(ccRouter)
-            .build()*/
-        return "aa"
+            .build()
     }
 }

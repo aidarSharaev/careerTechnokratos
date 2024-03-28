@@ -3,15 +3,10 @@ package ru.aidar.menu_feature_impl.presentation.menu.view
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -53,7 +48,6 @@ import ru.aidar.menu_feature_impl.presentation.menu.MainMenuViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainMenuScreen(viewModel: MainMenuViewModel) {
-    // when(view)
 
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
@@ -66,22 +60,22 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
                     Text(
                         text = stringResource(ru.aidar.common.R.string.nasa),
                         style =
-                            AppTypography.titleLargeTypo.copy(
-                                shadow =
-                                    Shadow(
-                                        color = AppBlack,
-                                        offset = Offset(2f, 2f),
-                                        blurRadius = 4f,
-                                    ),
+                        AppTypography.titleLargeTypo.copy(
+                            shadow =
+                            Shadow(
+                                color = AppBlack,
+                                offset = Offset(2f, 2f),
+                                blurRadius = 4f,
                             ),
+                        ),
                     )
                 },
                 colors =
-                    TopAppBarDefaults.topAppBarColors(
-                        containerColor = AppBlack,
-                        navigationIconContentColor = AppColors.AppRed,
-                        actionIconContentColor = AppColors.AppYellow,
-                    ),
+                TopAppBarDefaults.topAppBarColors(
+                    containerColor = AppBlack,
+                    navigationIconContentColor = AppColors.AppRed,
+                    actionIconContentColor = AppColors.AppYellow,
+                ),
                 actions = {
                     IconButton(onClick = { showBottomSheet = true }) {
                         Icon(
@@ -95,10 +89,10 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
     ) {
         LazyColumn(
             modifier =
-                Modifier
-                    .fillMaxSize()
-                    .padding(it)
-                    .background(AppBlack),
+            Modifier
+                .fillMaxSize()
+                .padding(it)
+                .background(AppBlack),
         ) {
             item {
                 Spacer(modifier = Modifier.height(10.dp))
@@ -130,14 +124,14 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
             item { // loveDestination
                 GpMainMenuItem(
                     color = AppPink,
-                    onClick = {},
+                    onClick = viewModel::navigateToCc,
                     image = R.drawable.ic_tarot,
                     text = R.string.celestial_compatibility,
                 )
             }
         }
 
-        if (showBottomSheet) {
+        if(showBottomSheet) {
             ModalBottomSheet(
                 containerColor = AppBlack,
                 onDismissRequest = {
@@ -156,9 +150,9 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
                     )
                     HorizontalDivider(
                         modifier =
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 4.dp),
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp),
                         color = AppWhite.copy(alpha = 0.4f),
                         thickness = 1.dp,
                     )
@@ -169,9 +163,9 @@ fun MainMenuScreen(viewModel: MainMenuViewModel) {
 
                     GpTextButtonWithDrawBehind(
                         modifier =
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(5.dp),
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(5.dp),
                         onClick = { viewModel.signOut() },
                         text = stringResource(id = R.string.logout),
                         style = buttonLightTypo,

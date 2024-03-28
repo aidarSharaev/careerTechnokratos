@@ -74,6 +74,7 @@ dependencies {
     // activity
     implementation(rootProject.extra["appCompatDep"].toString())
     implementation(rootProject.extra["activityDep"].toString())
+    implementation("com.google.firebase:firebase-firestore:24.11.0")
 
     // compose
     debugImplementation(rootProject.extra["composeToolingDep"].toString())

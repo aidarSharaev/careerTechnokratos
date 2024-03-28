@@ -11,4 +11,3 @@ data class ParcelableLocal(
     val title: String,
     val url: String?,
 ) : Parcelable
-

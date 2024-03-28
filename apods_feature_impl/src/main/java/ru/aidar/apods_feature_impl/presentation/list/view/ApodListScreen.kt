@@ -57,7 +57,6 @@ import ru.aidar.common.utils.AppTypography
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ApodListScreen(viewModel: ApodListViewModel) {
-
     val pictures = viewModel.getPictures().collectAsLazyPagingItems()
 
     Scaffold(
@@ -70,11 +69,11 @@ fun ApodListScreen(viewModel: ApodListViewModel) {
                     )
                 },
                 colors =
-                TopAppBarDefaults.topAppBarColors(
-                    containerColor = AppBlack,
-                    navigationIconContentColor = AppColors.AppRed,
-                    actionIconContentColor = AppColors.AppYellow,
-                ),
+                    TopAppBarDefaults.topAppBarColors(
+                        containerColor = AppBlack,
+                        navigationIconContentColor = AppColors.AppRed,
+                        actionIconContentColor = AppColors.AppYellow,
+                    ),
                 navigationIcon = {
                     IconButton(onClick = viewModel::navigateUp) {
                         Icon(
@@ -87,50 +86,54 @@ fun ApodListScreen(viewModel: ApodListViewModel) {
         },
     ) {
         LazyColumn(
-            modifier = Modifier
-                .padding(it)
-                .background(AppBlack),
+            modifier =
+                Modifier
+                    .padding(it)
+                    .background(AppBlack),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-
-
             items(count = pictures.itemCount) { item ->
 
                 var isImageLoading by remember { mutableStateOf(false) }
 
-                val painter = rememberAsyncImagePainter(
-                    model = pictures[item]?.url
-                        ?: "https://www.google.ru/url?sa=i&url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fhow-space-tries-kill-you-make-you-ugly%2F&psig=AOvVaw1-liUTaDA2O6ZLW4_ZLB6y&ust=1711184836992000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNiMwrTCh4UDFQAAAAAdAAAAABAE",
-                )
+                val painter =
+                    rememberAsyncImagePainter(
+                        model =
+                            pictures[item]?.url
+                                ?: "https://www.google.ru/url?sa=i&url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fhow-space-tries-kill-you-make-you-ugly%2F&psig=AOvVaw1-liUTaDA2O6ZLW4_ZLB6y&ust=1711184836992000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNiMwrTCh4UDFQAAAAAdAAAAABAE",
+                    )
 
-
-                isImageLoading = when(painter.state) {
-                    is AsyncImagePainter.State.Loading -> true
-                    else -> false
-                }
+                isImageLoading =
+                    when (painter.state) {
+                        is AsyncImagePainter.State.Loading -> true
+                        else -> false
+                    }
                 Box(
-                    modifier = Modifier
-                        .padding(vertical = 10.dp, horizontal = 16.dp)
-                        .height(300.dp)
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(15.dp))
-                        .background(AppDarkGreenBlue)
-                        .clickable { pictures[item]?.let { it1 -> viewModel.openPicture(it1) } },
-                    contentAlignment = Alignment.Center
+                    modifier =
+                        Modifier
+                            .padding(vertical = 10.dp, horizontal = 16.dp)
+                            .height(300.dp)
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(15.dp))
+                            .background(AppDarkGreenBlue)
+                            .clickable { pictures[item]?.let { it1 -> viewModel.openPicture(it1) } },
+                    contentAlignment = Alignment.Center,
                 ) {
                     Image(
-                        modifier = Modifier
-                            .padding(horizontal = 10.dp, vertical = 8.dp)
-                            .clip(RoundedCornerShape(15.dp))
-                            .fillMaxSize(),
+                        modifier =
+                            Modifier
+                                .padding(horizontal = 10.dp, vertical = 8.dp)
+                                .clip(RoundedCornerShape(15.dp))
+                                .fillMaxSize(),
                         painter = painter,
                         contentDescription = null,
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Crop,
                     )
-                    if(isImageLoading) {
+                    if (isImageLoading) {
                         CircularProgressIndicator(
-                            modifier = Modifier
-                                .padding(horizontal = 6.dp, vertical = 3.dp),
+                            modifier =
+                                Modifier
+                                    .padding(horizontal = 6.dp, vertical = 3.dp),
                             color = AppYellow,
                         )
                     }
@@ -139,46 +142,51 @@ fun ApodListScreen(viewModel: ApodListViewModel) {
             item {
                 val loadState = pictures.loadState.mediator
 
-                if(loadState?.append == LoadState.Loading) {
+                if (loadState?.append == LoadState.Loading) {
                     Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(25.dp),
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(25.dp),
                         contentAlignment = Alignment.Center,
                     ) {
                         GpProgressIndicator(color = AppPink)
                     }
-                } else if(loadState?.refresh == LoadState.Loading) {
+                } else if (loadState?.refresh == LoadState.Loading) {
                     GpLoadingBar(
                         text = "Refresh Loading",
                         barColor = AppGreen,
-                        modifier = Modifier.fillParentMaxSize()
+                        modifier = Modifier.fillParentMaxSize(),
                     )
-                } else if(loadState?.refresh is LoadState.Error || loadState?.append is LoadState.Error) {
+                } else if (loadState?.refresh is LoadState.Error || loadState?.append is LoadState.Error) {
                     val isPaginatingError =
                         (loadState.append is LoadState.Error) || pictures.itemCount > 1
-                    val error = if(loadState.append is LoadState.Error)
-                        (loadState.append as LoadState.Error).error
-                    else
-                        (loadState.refresh as LoadState.Error).error
+                    val error =
+                        if (loadState.append is LoadState.Error) {
+                            (loadState.append as LoadState.Error).error
+                        } else {
+                            (loadState.refresh as LoadState.Error).error
+                        }
 
-                    val modifier = if(isPaginatingError) {
-                        Modifier.padding(8.dp)
-                    } else {
-                        Modifier.fillParentMaxSize()
-                    }
+                    val modifier =
+                        if (isPaginatingError) {
+                            Modifier.padding(8.dp)
+                        } else {
+                            Modifier.fillParentMaxSize()
+                        }
                     Column(
                         modifier = modifier,
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-                        if(!isPaginatingError) {
+                        if (!isPaginatingError) {
                             Icon(
-                                modifier = Modifier
-                                    .size(64.dp),
+                                modifier =
+                                    Modifier
+                                        .size(64.dp),
                                 imageVector = Icons.Rounded.Warning,
                                 contentDescription = null,
-                                tint = AppYellow
+                                tint = AppYellow,
                             )
                         }
 
@@ -186,7 +194,7 @@ fun ApodListScreen(viewModel: ApodListViewModel) {
                             modifier = Modifier,
                             text = "Ошибка загрузки",
                             style = AppTypography.buttonLightTypo,
-                            textColor = AppWhite
+                            textColor = AppWhite,
                         )
 
                         Button(
@@ -197,12 +205,13 @@ fun ApodListScreen(viewModel: ApodListViewModel) {
                             content = {
                                 Text(text = "Refresh")
                             },
-                            colors = ButtonColors(
-                                containerColor = AppPink,
-                                contentColor = AppWhite,
-                                disabledContainerColor = AppPink,
-                                disabledContentColor = AppWhite,
-                            )
+                            colors =
+                                ButtonColors(
+                                    containerColor = AppPink,
+                                    contentColor = AppWhite,
+                                    disabledContainerColor = AppPink,
+                                    disabledContentColor = AppWhite,
+                                ),
                         )
                     }
                 }

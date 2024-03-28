@@ -1,11 +1,11 @@
 package ru.aidar.cc_feature_api.di
 
-import ru.aidar.cc_feature_api.domain.repository.CupidRepository
-import ru.aidar.cc_feature_api.domain.repository.CupidUseCases
+import ru.aidar.cc_feature_api.domain.repository.ChatRepository
+import ru.aidar.cc_feature_api.domain.repository.ChatUseCases
 
 interface CcFeatureApi {
 
-    fun provideCupidRepository(): CupidRepository
+    fun provideChatRepository(): ChatRepository
 
-    fun provideCupidUseCases(): CupidUseCases
+    fun provideChatUseCases(): ChatUseCases
 }

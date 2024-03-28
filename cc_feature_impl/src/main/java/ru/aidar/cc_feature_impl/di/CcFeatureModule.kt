@@ -3,41 +3,32 @@ package ru.aidar.cc_feature_impl.di
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.flow.MutableStateFlow
-import ru.aidar.cc_feature_api.domain.repository.CupidRepository
-import ru.aidar.cc_feature_api.domain.repository.CupidUseCases
-import ru.aidar.cc_feature_api.domain.wrapper.CupidState
-import ru.aidar.cc_feature_api.domain.wrapper.CupidStateWrapper
-import ru.aidar.cc_feature_impl.data.repository.CupidRepositoryImpl
-import ru.aidar.cc_feature_impl.data.wrapper.CupidStateWrapperImpl
+import ru.aidar.cc_feature_api.domain.repository.ChatRepository
+import ru.aidar.cc_feature_api.domain.repository.ChatUseCases
+import ru.aidar.cc_feature_api.domain.wrapper.ChatState
+import ru.aidar.cc_feature_api.domain.wrapper.ChatStateWrapper
+import ru.aidar.cc_feature_impl.data.repository.ChatRepositoryImpl
+import ru.aidar.cc_feature_impl.data.wrapper.ChatStateWrapperImpl
 import ru.aidar.common.di.scope.cc.CcFeatureScope
 
 @Module
 class CcFeatureModule {
     @Provides
     @CcFeatureScope
-    fun provideCupidRepository(
-        repository: CupidRepositoryImpl
-    ): CupidRepository = repository
+    fun provideChatRepository(repository: ChatRepositoryImpl): ChatRepository = repository
 
     @Provides
     @CcFeatureScope
-    fun provideCupidUseCases(
-        repository: CupidRepository
-    ): CupidUseCases {
-        return CupidUseCases(repository = repository)
+    fun provideChatUseCases(repository: ChatRepository): ChatUseCases {
+        return ChatUseCases(repository = repository)
     }
 
     @Provides
-    fun provideCupidState(
-
-    ): MutableStateFlow<CupidState> =
-        MutableStateFlow(CupidState())
+    fun provideChatState(): MutableStateFlow<ChatState> = MutableStateFlow(ChatState())
 
     @Provides
-    fun provideCupidStateWrapper(
-        flow: MutableStateFlow<CupidState>
-    ): CupidStateWrapper {
-        return CupidStateWrapperImpl(flow = flow)
+    fun provideChatStateWrapper(flow: MutableStateFlow<ChatState>): ChatStateWrapper {
+        return ChatStateWrapperImpl(flow = flow)
     }
 
     /*@Provides

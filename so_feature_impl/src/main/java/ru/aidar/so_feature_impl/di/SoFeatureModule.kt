@@ -6,8 +6,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import ru.aidar.auth_feature_impl.data.repository.BlogRepositoryImpl
 import ru.aidar.auth_feature_impl.data.repository.PostRepositoryImpl
 import ru.aidar.common.di.scope.so.SoFeatureScope
-import ru.aidar.so_feature_impl.data.wrapper.BlogStateWrapperImpl
-import ru.aidar.so_feature_impl.data.wrapper.PostStateWrapperImpl
 import ru.aidar.so_feature_api.domain.BlogRepository
 import ru.aidar.so_feature_api.domain.BlogUseCases
 import ru.aidar.so_feature_api.domain.PostRepository
@@ -16,31 +14,26 @@ import ru.aidar.so_feature_api.wrapper.BlogState
 import ru.aidar.so_feature_api.wrapper.BlogStateWrapper
 import ru.aidar.so_feature_api.wrapper.PostState
 import ru.aidar.so_feature_api.wrapper.PostStateWrapper
+import ru.aidar.so_feature_impl.data.wrapper.BlogStateWrapperImpl
+import ru.aidar.so_feature_impl.data.wrapper.PostStateWrapperImpl
 
 @Module
 class SoFeatureModule {
     @Provides
     @SoFeatureScope
-    fun provideBlogRepository(
-        repository: BlogRepositoryImpl
-    ): BlogRepository = repository
+    fun provideBlogRepository(repository: BlogRepositoryImpl): BlogRepository = repository
 
     @Provides
     @SoFeatureScope
-    fun provideBlogUseCases(
-        repository: BlogRepository
-    ): BlogUseCases {
+    fun provideBlogUseCases(repository: BlogRepository): BlogUseCases {
         return BlogUseCases(repository = repository)
     }
 
     @Provides
-    fun provideBlogState(): MutableStateFlow<BlogState> =
-        MutableStateFlow(BlogState())
+    fun provideBlogState(): MutableStateFlow<BlogState> = MutableStateFlow(BlogState())
 
     @Provides
-    fun provideBlogStateWrapper(
-        flow: MutableStateFlow<BlogState>
-    ): BlogStateWrapper {
+    fun provideBlogStateWrapper(flow: MutableStateFlow<BlogState>): BlogStateWrapper {
         return BlogStateWrapperImpl(flow = flow)
     }
 
@@ -52,26 +45,19 @@ class SoFeatureModule {
 
     @Provides
     @SoFeatureScope
-    fun providePostRepository(
-        repository: PostRepositoryImpl
-    ): PostRepository = repository
+    fun providePostRepository(repository: PostRepositoryImpl): PostRepository = repository
 
     @Provides
     @SoFeatureScope
-    fun providePostUseCases(
-        repository: PostRepository
-    ): PostUseCases {
+    fun providePostUseCases(repository: PostRepository): PostUseCases {
         return PostUseCases(repository = repository)
     }
 
     @Provides
-    fun providePostState(): MutableStateFlow<PostState> =
-        MutableStateFlow(PostState())
+    fun providePostState(): MutableStateFlow<PostState> = MutableStateFlow(PostState())
 
     @Provides
-    fun providePostStateWrapper(
-        flow: MutableStateFlow<PostState>
-    ): PostStateWrapper {
+    fun providePostStateWrapper(flow: MutableStateFlow<PostState>): PostStateWrapper {
         return PostStateWrapperImpl(flow = flow)
     }
 }

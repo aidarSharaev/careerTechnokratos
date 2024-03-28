@@ -15,7 +15,6 @@ import ru.aidar.common.di.scope.apa.ApaFeatureScope
     modules = [ApaFeatureModule::class],
 )
 interface ApaFeatureComponent : ApaFeatureApi {
-
     fun searchComponentFactory(): SearchComponent.Factory
 
     fun detailComponentFactory(): DetailComponent.Factory

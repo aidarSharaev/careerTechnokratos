@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
-import ru.aidar.apods_feature_api.domain.interfaces.list.ApodListUseCases
 import ru.aidar.apods_feature_api.domain.interfaces.picture.PictureUseCases
 import ru.aidar.apods_feature_impl.ApodRouter
 import ru.aidar.apods_feature_impl.presentation.picture.PictureViewModel

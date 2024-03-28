@@ -11,7 +11,6 @@ import ru.aidar.apa_feature_api.remote.ApaLocal
 class SearchStateWrapperImpl(
     private val flow: MutableStateFlow<SearchState>,
 ) : SearchStateWrapper {
-
     override fun flow(): StateFlow<SearchState> {
         return flow
     }

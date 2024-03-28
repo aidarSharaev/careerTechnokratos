@@ -59,12 +59,19 @@ dependencies {
     implementation(rootProject.extra["navFragmentDep"].toString())
     implementation(rootProject.extra["navUiDep"].toString())
 
+    // lifecycle
+    implementation(rootProject.extra["viewModelDep"].toString())
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+
     // compose
     debugImplementation(rootProject.extra["composeToolingDep"].toString())
     implementation(rootProject.extra["composeDep"].toString())
     implementation(rootProject.extra["composePreviewDep"].toString())
     implementation(rootProject.extra["composeFoundationDep"].toString())
     implementation(rootProject.extra["materialDep"].toString())
+
+    // lottie
+    implementation("com.airbnb.android:lottie-compose:5.0.3")
 
     // test
     testImplementation("junit:junit:4.13.2")

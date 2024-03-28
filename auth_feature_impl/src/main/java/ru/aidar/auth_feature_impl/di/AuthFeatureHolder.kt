@@ -14,12 +14,12 @@ class AuthFeatureHolder
         private val authRouter: AuthRouter,
     ) : FeatureApiHolder(featureContainer) {
         override fun initializeDependencies(): Any {
-            val authFeatureDependencies =
+            val deps =
                 DaggerAuthFeatureComponent_AuthFeatureDependenciesComponent.builder()
                     .commonApi(commonApi())
                     .build()
             return DaggerAuthFeatureComponent.builder()
-                .withDependencies(authFeatureDependencies)
+                .withDependencies(deps)
                 .router(authRouter)
                 .build()
         }

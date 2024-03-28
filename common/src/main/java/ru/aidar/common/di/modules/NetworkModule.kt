@@ -14,8 +14,6 @@ import ru.aidar.common.monitor.NetworkMonitor
 import ru.aidar.common.monitor.NetworkMonitorImpl
 import java.util.concurrent.TimeUnit
 
-// private const val SOLARIE_URL = "https://api.le-systeme-solaire.net"
-
 @Module
 class NetworkModule {
     @Provides

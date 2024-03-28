@@ -6,7 +6,6 @@ import ru.aidar.apa_feature_api.domain.interfaces.SearchRepository
 import ru.aidar.apa_feature_api.domain.interfaces.SearchUseCases
 
 interface ApaFeatureApi {
-
     fun provideSearchRepository(): SearchRepository
 
     fun provideDetailRepository(): DetailRepository

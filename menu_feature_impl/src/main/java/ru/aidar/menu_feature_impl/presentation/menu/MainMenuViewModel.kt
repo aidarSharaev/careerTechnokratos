@@ -36,6 +36,10 @@ class MainMenuViewModel(
         router.navigateInMenu("gpapp://apa_destination")
     }
 
+    fun navigateToCc() {
+        router.navigateInMenu("gpapp://cc_destination")
+    }
+
     fun signOut() {
         wrapper.updateStatus(status = ScreenStatus.Loading)
         val result = useCases.signOut()

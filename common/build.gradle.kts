@@ -2,7 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
-    // id("com.google.gms.google-services")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -50,8 +50,11 @@ dependencies {
 
     // dagger
     implementation(rootProject.extra["daggerDep"].toString())
-    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
     ksp(rootProject.extra["daggerKspDep"].toString())
+
+    // firebase
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+    implementation("com.google.firebase:firebase-firestore:24.11.0")
 
     // compose
     implementation(rootProject.extra["composeDep"].toString())

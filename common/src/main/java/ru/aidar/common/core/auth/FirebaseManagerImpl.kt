@@ -6,14 +6,18 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.userProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.suspendCancellableCoroutine
 import ru.aidar.common.core.auth.model.ErrorTypes
 import ru.aidar.common.core.auth.model.FbResponse
 import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class FirebaseManagerImpl(
     private val firebaseAuth: FirebaseAuth,
+    private val firestore: FirebaseFirestore,
 ) : FirebaseManager {
+
     init {
         Log.d("ViewModelInstance", "Firebase init")
     }
@@ -28,6 +32,7 @@ class FirebaseManagerImpl(
         val create = createUser(email = email, password = password)
         user?.let {
             setUserName(nickname)
+            setTrainingData()
         }
         return create
     }
@@ -39,7 +44,7 @@ class FirebaseManagerImpl(
         suspendCancellableCoroutine { continuation ->
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
+                    if(task.isSuccessful) {
                         Log.d(FirebaseManager.TAG, "createUserWithEmail:success")
                         user = firebaseAuth.currentUser
                         continuation.resume(FbResponse(user = user))
@@ -67,7 +72,7 @@ class FirebaseManagerImpl(
         suspendCancellableCoroutine { continuation ->
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
+                    if(task.isSuccessful) {
                         Log.d(FirebaseManager.TAG, "createUserWithEmail:success")
                         user = firebaseAuth.currentUser
                         continuation.resume(FbResponse(user = user))
@@ -83,19 +88,18 @@ class FirebaseManagerImpl(
             }
         }
 
-    override suspend fun setUserName(nickname: String) {
-        val profileUpdates =
-            userProfileChangeRequest {
-                displayName = nickname
-            }
-
-        user!!.updateProfile(profileUpdates)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d(FirebaseManager.TAG, "User profile updated.")
+    override suspend fun setUserName(nickname: String): Boolean =
+        suspendCoroutine { cont ->
+            val profileUpdates =
+                userProfileChangeRequest {
+                    displayName = nickname
                 }
-            }
-    }
+            user!!.updateProfile(profileUpdates)
+                .addOnCompleteListener { task ->
+                    cont.resume(task.isSuccessful)
+                }
+        }
+
 
     override fun resetUser() {
         user = null
@@ -105,8 +109,24 @@ class FirebaseManagerImpl(
         return firebaseAuth.currentUser
     }
 
+
+    override suspend fun setTrainingData(): Boolean =
+        suspendCoroutine { cont ->
+            firestore.collection("users").document(user!!.uid).set(
+                mapOf(
+                    "count" to 0,
+                    "success" to 0,
+                    "attempts" to mapOf<Int, Int>(),
+                    "average" to 0,
+                )
+            ).addOnCompleteListener {
+                cont.resume(it.isSuccessful)
+            }
+        }
+
+
     private fun handleLoginError(exception: Exception?): Int {
-        return when (exception) {
+        return when(exception) {
             is FirebaseAuthInvalidCredentialsException -> {
                 ErrorTypes.PASSWORD_ERROR.number
             }

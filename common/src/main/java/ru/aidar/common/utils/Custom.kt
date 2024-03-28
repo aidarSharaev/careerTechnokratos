@@ -8,6 +8,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.BaselineShift
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import ru.aidar.common.R
 import ru.aidar.common.utils.AppColors.AppWhite
@@ -41,15 +42,17 @@ object AppTypography {
         TextStyle(
             fontSize = 28.sp,
             fontFamily = AppFontFamily,
-            fontWeight = FontWeight.ExtraLight,
-            brush = Brush.horizontalGradient(
-                colors = listOf(
+            fontWeight = FontWeight.Light,
+            brush =
+            Brush.horizontalGradient(
+                colors =
+                listOf(
                     AppColors.AppRed,
                     AppColors.AppPink,
                     AppColors.AppGreen,
                     AppColors.AppYellow,
-                )
-            )
+                ),
+            ),
         )
 
     val mainMenuCardTypo =
@@ -79,7 +82,7 @@ object AppTypography {
             fontSize = 14.sp,
             fontFamily = AppFontFamily,
             fontWeight = FontWeight.ExtraLight,
-            baselineShift = BaselineShift.Superscript
+            baselineShift = BaselineShift.Superscript,
         )
 
     val textFieldTypo =
@@ -107,5 +110,13 @@ object AppTypography {
             fontFamily = AppFontFamily,
             fontWeight = FontWeight.Light,
             color = AppWhite,
+        )
+
+    val messageTextTypo =
+        TextStyle(
+            fontFamily = AppFontFamily,
+            fontWeight = FontWeight.Medium,
+            fontSize = 15.sp,
+            textAlign = TextAlign.Start
         )
 }

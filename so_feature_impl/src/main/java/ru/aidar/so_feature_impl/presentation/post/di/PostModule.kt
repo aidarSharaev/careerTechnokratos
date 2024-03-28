@@ -8,10 +8,10 @@ import dagger.Provides
 import dagger.multibindings.IntoMap
 import ru.aidar.common.di.viewmodel.ViewModelKey
 import ru.aidar.common.di.viewmodel.ViewModelModule
-import ru.aidar.so_feature_impl.SoRouter
-import ru.aidar.so_feature_impl.presentation.post.PostViewModel
 import ru.aidar.so_feature_api.domain.PostUseCases
 import ru.aidar.so_feature_api.wrapper.PostStateWrapper
+import ru.aidar.so_feature_impl.SoRouter
+import ru.aidar.so_feature_impl.presentation.post.PostViewModel
 
 @Module(includes = [ViewModelModule::class])
 class PostModule {

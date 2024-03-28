@@ -79,14 +79,12 @@ dependencies {
     // coil
     implementation("io.coil-kt:coil-compose:2.6.0")
 
-
-
     // Glance
     implementation("androidx.glance:glance-appwidget:1.0.0")
     implementation("androidx.glance:glance-material3:1.0.0")
 
     // work manager
-    implementation ("androidx.work:work-runtime-ktx:2.9.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

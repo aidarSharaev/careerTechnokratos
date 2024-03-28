@@ -13,7 +13,6 @@ import ru.aidar.menu_feature_impl.MenuRouter
 import ru.aidar.so_feature_impl.SoRouter
 
 class Navigator() : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoRouter {
-
     private var appNavController: NavController? = null
 
     fun attachNavController(
@@ -25,7 +24,7 @@ class Navigator() : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoR
     }
 
     fun detachNavController(navController: NavController) {
-        if(appNavController == navController) {
+        if (appNavController == navController) {
             appNavController = null
         }
     }
@@ -81,6 +80,6 @@ class Navigator() : MenuRouter, ApodRouter, ApaRouter, CcRouter, AuthRouter, SoR
     }
 
     override fun navigateToApaMoonDetail(action: NavDirections) {
-        //appNavController?.navigate(action)
+        // appNavController?.navigate(action)
     }
 }

@@ -4,5 +4,4 @@ import kotlinx.coroutines.flow.StateFlow
 
 interface PostStateWrapper {
     fun flow(): StateFlow<PostState>
-
 }

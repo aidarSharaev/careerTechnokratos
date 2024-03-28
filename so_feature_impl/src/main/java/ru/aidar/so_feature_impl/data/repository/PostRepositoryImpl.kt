@@ -4,9 +4,5 @@ import ru.aidar.so_feature_api.domain.PostRepository
 import javax.inject.Inject
 
 class PostRepositoryImpl
-@Inject
-constructor(
-
-) : PostRepository {
-
-}
+    @Inject
+    constructor() : PostRepository

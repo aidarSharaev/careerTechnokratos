@@ -10,7 +10,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.aidar.apa_feature_api.di.ApaFeatureApi
 import ru.aidar.apa_feature_impl.databinding.FragmentSearchBinding
 import ru.aidar.apa_feature_impl.di.ApaFeatureComponent
-import ru.aidar.apa_feature_impl.presentation.search.view.VisibleApaSearchScreen
+import ru.aidar.apa_feature_impl.presentation.search.view.ApaSearchScreen
 import ru.aidar.common.base.BaseFragment
 import ru.aidar.common.di.FeatureUtils
 
@@ -35,8 +35,8 @@ class SearchFragment : BaseFragment<ApaSearchViewModel>() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 val monitor by
-                    viewModel.isOffline.collectAsStateWithLifecycle(initialValue = false)
-                VisibleApaSearchScreen(viewModel = viewModel, monitor = monitor)
+                    viewModel.isOffline.collectAsStateWithLifecycle()
+                ApaSearchScreen(viewModel = viewModel, monitor = monitor)
             }
         }
         return view

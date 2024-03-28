@@ -15,7 +15,6 @@ import ru.aidar.common.base.BaseFragment
 import ru.aidar.common.di.FeatureUtils
 
 class PictureFragment : BaseFragment<PictureViewModel>() {
-
     private lateinit var binding: FragmentPictureBinding
 
     private val args: PictureFragmentArgs by navArgs()
